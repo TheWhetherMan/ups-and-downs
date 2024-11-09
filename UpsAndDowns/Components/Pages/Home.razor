@@ -2,6 +2,11 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello From Blazor</h1>
+<h1>@GetHomePageHeader()</h1>
 
-Welcome to your new app.
+@code {
+    private string GetHomePageHeader()
+    {
+        return Constants.AppName;
+    }
+}

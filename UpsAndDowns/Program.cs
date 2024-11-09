@@ -1,12 +1,9 @@
 using UpsAndDowns.Components;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
-
-var app = builder.Build();
+// Build the web application
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+builder.Services.AddRazorComponents().AddInteractiveServerComponents();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -16,12 +13,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+// Configure web app, run it
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
+// app.MapRazorPages();
 app.UseAntiforgery();
-
-app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode();
-
+app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
 app.Run();
