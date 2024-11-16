@@ -8,15 +8,15 @@ public abstract record GameEventModifier
     public required ModifierLevel ModifierLevel { get; init; }
     public readonly double[] PercentageModifiers = { 0.00, 0.50, 0.75, 1.00, 1.25, 1.50, 2.00 };
 
-    public virtual int GetModifiedCashMoney(int cashChange) => 0;
-    public virtual int GetModifiedLifePoints(int lifePointsChange) => 0;
-    public virtual int GetModifiedCareerLevel() => 0;
-    public virtual int GetModifiedSalary(int salaryAdjustment) => 0;
+    public virtual int ModifyCashMoney(int cashChange) => 0;
+    public virtual int ModifyLifePoints(int lifePointsChange) => 0;
+    public virtual int ModifyCareerLevel() => 0;
+    public virtual int ModifySalary(int salaryAdjustment) => 0;
 }
 
 public sealed record CashMoneyModifier : GameEventModifier
 {
-    public override int GetModifiedCashMoney(int cashChange) 
+    public override int ModifyCashMoney(int cashChange) 
         => (int)(cashChange * cashChange > 0 
             ? PercentageModifiers[(int)ModifierLevel] 
             : PercentageModifiers[6 - (int)ModifierLevel]);
@@ -24,17 +24,17 @@ public sealed record CashMoneyModifier : GameEventModifier
 
 public sealed record LifePointsModifier : GameEventModifier
 {
-    public override int GetModifiedLifePoints(int lifePointsChange) 
+    public override int ModifyLifePoints(int lifePointsChange) 
         => (int)(lifePointsChange * lifePointsChange > 0 
             ? PercentageModifiers[(int)ModifierLevel] 
             : PercentageModifiers[6 - (int)ModifierLevel]);
 }
 
-public record CareerModifer : GameEventModifier;
+public abstract record CareerModifer : GameEventModifier;
 
 public sealed record CareerPromotionModifier : CareerModifer
 {
-    public override int GetModifiedCareerLevel() 
+    public override int ModifyCareerLevel() 
     {
         switch (ModifierLevel)
         {
@@ -60,7 +60,7 @@ public sealed record CareerPromotionModifier : CareerModifer
 
 public sealed record CareerDemotionModifier : CareerModifer
 {
-    public override int GetModifiedCareerLevel() 
+    public override int ModifyCareerLevel() 
     {
         switch (ModifierLevel)
         {
@@ -86,7 +86,7 @@ public sealed record CareerDemotionModifier : CareerModifer
 
 public sealed record SalaryModifier : GameEventModifier
 {
-    public override int GetModifiedSalary(int salaryAdjustment) 
+    public override int ModifySalary(int salaryAdjustment) 
         => (int)(salaryAdjustment * salaryAdjustment > 0 
             ? PercentageModifiers[(int)ModifierLevel] 
             : PercentageModifiers[6 - (int)ModifierLevel]);

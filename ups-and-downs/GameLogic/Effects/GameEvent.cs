@@ -22,7 +22,7 @@ public record GameEvent
     public LifePointsModifier GetLifePointsModifier(ModifierLevel modLevel) 
         => new() { ModifierLevel = modLevel };
 
-    public CareerModifer GetCareerPromotionModifier(ModifierLevel modLevel)
+    public CareerModifer GetCareerChangeModifier(ModifierLevel modLevel)
         => CareerChange > 0 
             ? new CareerPromotionModifier() { ModifierLevel = modLevel }
             : new CareerDemotionModifier() { ModifierLevel = modLevel };

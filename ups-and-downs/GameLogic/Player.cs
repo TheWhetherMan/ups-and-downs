@@ -13,7 +13,7 @@ public class Player
     public bool Married { get; private set; } = false;
     public int Children { get; private set; } = 0;
     public List<Asset> Assets { get; private set; } = new();
-    public SpaceTypes CurrentSpace { get; private set; } = SpaceTypes.Start;
+    public SpaceTypes CurrentSpace { get; set; } = SpaceTypes.Start;
 
     public void AdvanceYear()
     {
@@ -25,16 +25,16 @@ public class Player
     public void ApplyGameEvent(GameEvent eve, ModifierLevel modLevel)
     {
         if (eve.CashMoneyChange is int cash)
-            CashMoney += eve.GetCashMoneyModifier(modLevel).GetModifiedCashMoney(cash);
+            CashMoney += eve.GetCashMoneyModifier(modLevel).ModifyCashMoney(cash);
 
         if (eve.LifePointsChange is int life)
-            LifePoints += eve.GetLifePointsModifier(modLevel).GetModifiedLifePoints(life);
+            LifePoints += eve.GetLifePointsModifier(modLevel).ModifyLifePoints(life);
 
         if (eve.CareerChange is not null)
-            CareerLevel += eve.GetCareerPromotionModifier(modLevel).GetModifiedCareerLevel();
+            CareerLevel += eve.GetCareerChangeModifier(modLevel).ModifyCareerLevel();
 
         if (eve.SalaryChange is int salary)
-            Salary += eve.GetSalaryModifier(modLevel).GetModifiedSalary(salary);
+            Salary += eve.GetSalaryModifier(modLevel).ModifySalary(salary);
 
         CheckCurrentState();
     }
