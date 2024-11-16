@@ -1,3 +1,6 @@
+using UpsAndDowns.GameLogic.Effects;
+using UpsAndDowns.GameLogic.Enums;
+
 namespace UpsAndDowns.GameLogic
 {
 	public class GameManager
@@ -19,7 +22,12 @@ namespace UpsAndDowns.GameLogic
 			_players.Add(player);
 			Console.WriteLine($"Player {player} added.");
 		}
-		
-		
-	}
+
+		public void FireGameEvent(GameEvent eve, ModifierLevel modLevel, Player affectedPlayer)
+		{
+			// TODO
+			//var mod = GetModifier(modLevel);
+			//affectedPlayer.ApplyGameEvent(eve, mod);
+		}
+    }
 }

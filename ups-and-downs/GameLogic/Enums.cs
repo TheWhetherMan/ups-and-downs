@@ -7,10 +7,26 @@ namespace UpsAndDowns.GameLogic.Enums
         Completed
     }
 
+    public enum ModifierLevel
+    {
+        Terrible,
+        Bad,
+        Poor,
+        Neutral,
+        Okay,
+        Good,
+        Great
+    }
+
     public enum SpaceTypes
     {
         Start,
         Blank,
+        Special,
+        CarLot,
+        RealEstate,
+        Promotion,
+        Graduation
     }
 
     public enum EducationLevels
