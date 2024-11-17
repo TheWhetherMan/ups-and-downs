@@ -1,7 +1,25 @@
 ﻿@page "/startnewgame"
 
-<h3>StartNewGame</h3>
+<h3>Enter number of players</h3>
+
+
+<p>@PlayerCountLabel</p>
+<button @onclick="DecrementPlayerCount">-1</button>
+<button @onclick="IncrementPlayerCount">+1</button>
 
 @code {
+	public string PlayerCountLabel => $"{_playerCount} Players";
+	private int _playerCount = 1;
 
+    private void IncrementPlayerCount()
+    {
+		if (_playerCount < 6)
+			_playerCount++;
+    }
+
+	private void DecrementPlayerCount()
+    {
+		if (_playerCount > 1)
+			_playerCount--;
+    }
 }
