@@ -1,0 +1,27 @@
+@namespace UpsAndDowns.Components
+
+<link href="css/player.css" rel="stylesheet" />
+
+<div class="player-detail-component" style="top: @Top; left: @Left;">
+    <h2>@Player.PlayerNumber</h2>
+    <h2>@Player.CashMoney</h2>
+    <div>
+        @ChildContent
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public required Player Player { get; set; }
+    [Parameter]
+    public required RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public string Top { get; set; } = "0px";
+    [Parameter]
+    public string Left { get; set; } = "0px";
+
+    protected override void OnInitialized()
+    {
+        //Console.WriteLine($"Rendering PlayerDetailsComponent for Player {Player.PlayerNumber}");
+    }
+}

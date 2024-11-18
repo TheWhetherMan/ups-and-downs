@@ -1,6 +1,7 @@
 using UpsAndDowns.GameLogic.Assets;
 using UpsAndDowns.GameLogic.Effects;
 using UpsAndDowns.GameLogic.Enums;
+using UpsAndDowns.GameLogic.Misc;
 
 public class Player
 {
@@ -14,6 +15,12 @@ public class Player
     public int Children { get; private set; } = 0;
     public List<Asset> Assets { get; private set; } = new();
     public SpaceTypes CurrentSpace { get; set; } = SpaceTypes.Start;
+    public CardPosPoint CardPosition { get; set; } = new(0, 0);
+
+    public Player(int playerNumber)
+    {
+        PlayerNumber = playerNumber;
+    }
 
     public void AdvanceYear()
     {
