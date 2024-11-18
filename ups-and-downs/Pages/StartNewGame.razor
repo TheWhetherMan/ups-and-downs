@@ -1,17 +1,17 @@
 ﻿@page "/startnewgame"
 @using UpsAndDowns.GameLogic
 
-@* Add Bootstrap CSS *@
 <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+<link href="css/base.css" rel="stylesheet" />
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6 text-center">
-            <h1>Ups & Downs</h1>
+            <h1 class="base-text-color">Ups & Downs</h1>
             <br/>
             <br/>
-            <h3>How many are playing?</h3>
-            <p class="lead">@PlayerCountLabel</p>
+            <h3 class="base-text-color">How many are playing?</h3>
+            <p class="lead base-text-color">@PlayerCountLabel</p>
             <div class="btn-group" role="group" aria-label="Player count controls">
                 <button class="btn btn-danger" @onclick="DecrementPlayerCount">-1</button>
                 <button class="btn btn-success" @onclick="IncrementPlayerCount">+1</button>
