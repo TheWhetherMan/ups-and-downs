@@ -1,25 +1,49 @@
 ﻿@page "/startnewgame"
+@using UpsAndDowns.GameLogic
 
-<h3>Enter number of players</h3>
+@* Add Bootstrap CSS *@
+<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
-
-<p>@PlayerCountLabel</p>
-<button @onclick="DecrementPlayerCount">-1</button>
-<button @onclick="IncrementPlayerCount">+1</button>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h1>Ups & Downs</h1>
+            <br/>
+            <br/>
+            <h3>How many are playing?</h3>
+            <p class="lead">@PlayerCountLabel</p>
+            <div class="btn-group" role="group" aria-label="Player count controls">
+                <button class="btn btn-danger" @onclick="DecrementPlayerCount">-1</button>
+                <button class="btn btn-success" @onclick="IncrementPlayerCount">+1</button>
+            </div>
+            <div class="mt-3">
+                <button class="btn btn-primary" @onclick="StartGame">Start</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
-	public string PlayerCountLabel => $"{_playerCount} Players";
-	private int _playerCount = 1;
+    public string PlayerCountLabel => $"{_playerCount} Player(s)";
+    private int _playerCount = 1;
 
     private void IncrementPlayerCount()
     {
-		if (_playerCount < 6)
-			_playerCount++;
+        Console.WriteLine("IncrementPlayerCount clicked, player count: " + _playerCount);
+        if (_playerCount < 6)
+            _playerCount++;
     }
 
-	private void DecrementPlayerCount()
+    private void DecrementPlayerCount()
     {
-		if (_playerCount > 1)
-			_playerCount--;
+        Console.WriteLine("DecrementPlayerCount clicked, player count: " + _playerCount);
+        if (_playerCount > 1)
+            _playerCount--;
+    }
+
+    private void StartGame()
+    {
+        Console.WriteLine("StartGame clicked");
+        GameManager.Instance.StartNewGame(_playerCount);
     }
 }

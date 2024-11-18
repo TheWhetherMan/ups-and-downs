@@ -5,6 +5,17 @@ namespace UpsAndDowns.GameLogic
 {
 	public class GameManager
 	{
+		private static GameManager? _instance;
+		public static GameManager Instance
+		{
+			get
+			{
+				if (_instance == null)
+					_instance = new GameManager();
+				return _instance;
+			}
+		}
+
 		public GameStates CurrentState = GameStates.NotStarted;
 		public int GameLengthYears { get; private set; } = 10;
 		public int CurrentYear { get; private set; } = 0;
@@ -13,17 +24,17 @@ namespace UpsAndDowns.GameLogic
 		private List<Player> _unselectedPlayers = new();
 		private Random _random = new();
 		
-		public void StartGame()
+		public void StartNewGame(int playerCount)
 		{
 			CurrentState = GameStates.InProgress;
 			Console.WriteLine("Game started");
 		}
 
-		public void AddPlayer(Player player)
-		{
-			_players.Add(player);
-			Console.WriteLine($"Player {player.PlayerNumber} added.");
-		}
+		// public void AddPlayer(Player player)
+		// {
+		// 	_players.Add(player);
+		// 	Console.WriteLine($"Player {player.PlayerNumber} added.");
+		// }
 
 		public Player GetPlayer(int playerNumber)
 		{
