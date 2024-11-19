@@ -1,0 +1,39 @@
+@namespace UpsAndDowns.Components
+
+<link href="css/player.css" rel="stylesheet" />
+
+<div class="modal" tabindex="-1" style="display:block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">What has happened to Player #@SelectedPlayer?.PlayerNumber?</h5>
+            </div>
+            <div class="modal-body">
+                <button type="button" class="btn btn-primary player-menu-buttons">Cash Money</button>
+                <button type="button" class="btn btn-primary player-menu-buttons">Life Points</button>
+                <button type="button" class="btn btn-primary player-menu-buttons">Education</button>
+                <button type="button" class="btn btn-primary player-menu-buttons">Career</button>
+                <button type="button" class="btn btn-primary player-menu-buttons">Salary</button>
+                <button type="button" class="btn btn-primary player-menu-buttons">Marriage</button>
+                <button type="button" class="btn btn-primary player-menu-buttons">Children</button>
+                <button type="button" class="btn btn-primary player-menu-buttons">House</button>
+                <button type="button" class="btn btn-primary player-menu-buttons">Car</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="async () => await OnClick.InvokeAsync(null)">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Player? SelectedPlayer { get; set; }
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+
+    protected override void OnInitialized()
+    {
+        //Console.WriteLine($"Rendering PlayerDetailsComponent for Player {Player.PlayerNumber}");
+    }
+}

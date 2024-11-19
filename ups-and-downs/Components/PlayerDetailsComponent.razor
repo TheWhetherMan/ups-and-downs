@@ -2,9 +2,10 @@
 
 <link href="css/player.css" rel="stylesheet" />
 
-<div class="player-detail-component" style="top: @Top; left: @Left;">
-    <h2>@Player.PlayerNumber</h2>
-    <h2>@Player.CashMoney</h2>
+<div class="player-detail-component" style="top: @Top; left: @Left;" @onclick="async () => await OnClick.InvokeAsync(null)">
+    <h2>Player #@Player.PlayerNumber</h2>
+    <h2>$$ @Player.CashMoney</h2>
+    <h2>LP @Player.LifePoints</h2>
     <div>
         @ChildContent
     </div>
@@ -19,6 +20,8 @@
     public string Top { get; set; } = "0px";
     [Parameter]
     public string Left { get; set; } = "0px";
+    [Parameter]
+    public EventCallback OnClick { get; set; }
 
     protected override void OnInitialized()
     {

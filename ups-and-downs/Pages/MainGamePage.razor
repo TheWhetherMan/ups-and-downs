@@ -1,11 +1,11 @@
 @page "/maingamepage"
 @inject NavigationManager Navigation
-@using System.Diagnostics
 @using UpsAndDowns.GameLogic
 @using UpsAndDowns.Components
 
 <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
 <link href="css/base.css" rel="stylesheet" />
+<link href="css/player.css" rel="stylesheet" />
 
 <div class="game-grid">
     @foreach (var player in Players)
@@ -13,16 +13,38 @@
         <PlayerDetailsComponent Player="@player" 
             Left="@($"{player.CardPosition.X}px")" 
             Top="@($"{player.CardPosition.Y}px")" 
+            OnClick="@(async () => await OnPlayerClick(player))"
         />    
     }
 </div>
 
+@if (ShowModal) {
+    <PlayerOperationsComponent SelectedPlayer="@SelectedPlayer" 
+        OnClick="CloseModal"
+    />
+}
+
 @code {
     public List<Player> Players { get; set; } = new List<Player>();
+    public Player? SelectedPlayer { get; set; }
+    public bool ShowModal { get; set; }
 
     protected override void OnInitialized()
     {
         Console.WriteLine($"MainGamePage: Building controls for {GameManager.Instance.Players.Count} players");
         Players = GameManager.Instance.Players;
+    }
+
+    public async Task OnPlayerClick(Player player)
+    {
+        Console.WriteLine($"MainGamePage: Player {player.PlayerNumber} clicked");
+        SelectedPlayer = player;
+        ShowModal = true;
+    }
+
+    public void CloseModal()
+    {
+        SelectedPlayer = null;
+        ShowModal = false;
     }
 }
