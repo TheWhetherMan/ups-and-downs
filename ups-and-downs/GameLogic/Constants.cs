@@ -4,7 +4,7 @@ namespace UpsAndDowns.GameLogic;
 
 public static class Constants
 {
-    public static int CardsRightSideOffset = 660;
+    public static int CardsRightSideOffset = 560;
 
     public static int CardsSecondRowOffset = 200;
     public static int CardsThirdRowOffset = 400;
