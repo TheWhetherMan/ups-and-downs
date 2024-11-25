@@ -30,6 +30,11 @@ public class Player
         LifePoints += 100;
     }
 
+    public void SetLandedSpace(string space)
+    {
+        CurrentSpace = (SpaceTypes)Enum.Parse(typeof(SpaceTypes), space, false);
+    }
+
     public void ApplyGameEvent(GameEvent eve, ModifierLevel modLevel)
     {
         if (eve.CashMoneyChange is int cash)

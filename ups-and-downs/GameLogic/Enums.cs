@@ -22,11 +22,13 @@ namespace UpsAndDowns.GameLogic.Enums
     {
         Start,
         Blank,
-        Special,
-        CarLot,
-        RealEstate,
+        Event,
+        Car,
+        House,
         Promotion,
-        Graduation
+        Education,
+        Children,
+        Marriage
     }
 
     public enum EducationLevels

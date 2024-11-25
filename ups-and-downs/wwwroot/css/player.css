@@ -20,7 +20,7 @@
 }
 
 .modal-content {
-    height: 400px;
+    height: 550px;
 }
 
 .player-menu-buttons {
@@ -28,4 +28,30 @@
     height: 70px;
     margin-bottom: 10px;
     background-color: blueviolet;
+}
+
+.player-menu-buttons.standard {
+    background-color: blueviolet;
+    color: white;
+    font-weight: 500;
+}
+
+.player-menu-buttons.assets {
+    background-color: darkcyan;
+    color: white;
+    font-weight: 500;
+}
+
+.player-menu-buttons.life-events {
+    background-color: goldenrod;
+    color: black;
+    font-weight: 500;
+}
+
+.btn.btn-secondary.ops-back {
+    float: left;
+}
+
+.btn.btn-secondary.ops-close {
+    float: right;
 }
