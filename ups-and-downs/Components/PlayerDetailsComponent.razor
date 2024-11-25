@@ -4,8 +4,8 @@
 
 <div class="player-detail-component" style="top: @Top; left: @Left;" @onclick="async () => await OnClick.InvokeAsync(null)">
     <h2>Player #@Player.PlayerNumber</h2>
-    <h2>$$ @Player.CashMoney</h2>
-    <h2>LP @Player.LifePoints</h2>
+    <h2>Life Points:  @Player.LifePoints</h2>
+    <h2>$$@Player.CashMoney</h2>
     <div>
         @ChildContent
     </div>

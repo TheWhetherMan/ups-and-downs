@@ -27,15 +27,35 @@
                 else if (SelectedPanel == "cashMoney")
                 {
                     <div>
-                        <h5>Cash Money</h5>
-                        <p>Details about cash money...</p>
+                        <h2>$$@CashMoneyAdjustmentValue</h2>
+                        <h5>Gained Cash Money?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => await AdjustCashMoney(100))">+ $$100</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => await AdjustCashMoney(1000))">+ $$1000</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => await AdjustCashMoney(10000))">+ $$10k</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => await AdjustCashMoney(100000))">+ $$100k</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => await AdjustCashMoney(1000000))">+ $$1MM</button>
+                        <h5>Lost Cash Money?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => await AdjustCashMoney(-100))">- $$100</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => await AdjustCashMoney(-1000))">- $$1000</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => await AdjustCashMoney(-10000))">- $$10k</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => await AdjustCashMoney(-100000))">- $$100k</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => await AdjustCashMoney(-1000000))">- $$1MM</button>
+                        <h5>Done?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow" onclick="@(async () => await SetCashMoney())">Apply</button>
                     </div>
                 }
                 else if (SelectedPanel == "lifePoints")
                 {
                     <div>
-                        <h5>Life Points</h5>
-                        <p>Details about life points...</p>
+                        <h2>LP @LifePointsAdjustmentValue</h2>
+                        <h5>Gained Life Points?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => await AdjustLifePoints(100))">+ LP100</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => await AdjustLifePoints(1000))">+ LP1000</button>
+                        <h5>Lost Life Points?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => await AdjustLifePoints(-100))">- LP100</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => await AdjustLifePoints(-1000))">- LP1000</button>
+                        <h5>Done?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow" onclick="@(async () => await SetLifePoints())">Apply</button>
                     </div>
                 }
                 else if (SelectedPanel == "salary")
@@ -118,7 +138,10 @@
     public Player? SelectedPlayer { get; set; }
     [Parameter]
     public EventCallback OnClick { get; set; }
+
     public string SelectedPanel = "default";
+    public int CashMoneyAdjustmentValue = 0;
+    public int LifePointsAdjustmentValue = 0;
 
     protected override void OnInitialized()
     {
@@ -129,11 +152,37 @@
     {
         Console.WriteLine("ShowPanel: '" + panel + "' for player " + SelectedPlayer?.PlayerNumber);
         SelectedPanel = panel;
+        CashMoneyAdjustmentValue = 0;
     }
 
     public async Task SetLandedSpace(string space)
     {
         Console.WriteLine("SetLandedSpace: '" + space + "' for player " + SelectedPlayer?.PlayerNumber);
-        SelectedPlayer.SetLandedSpace(space);
+        SelectedPlayer?.SetLandedSpace(space);
+        SelectedPanel = "default";
+    }
+
+    public async Task AdjustCashMoney(int amount)
+    {
+        Console.WriteLine("AdjustCashMoney: '" + amount + "' for player " + SelectedPlayer?.PlayerNumber);
+        CashMoneyAdjustmentValue += amount;
+    }
+
+    public async Task SetCashMoney()
+    {
+        Console.WriteLine("SetCashMoney: '" + CashMoneyAdjustmentValue + "' for player " + SelectedPlayer?.PlayerNumber);
+        SelectedPlayer?.AdjustCashMoney(CashMoneyAdjustmentValue);
+    }
+
+    public async Task AdjustLifePoints(int amount)
+    {
+        Console.WriteLine("AdjustLifePoints: '" + amount + "' for player " + SelectedPlayer?.PlayerNumber);
+        LifePointsAdjustmentValue += amount;
+    }
+
+    public async Task SetLifePoints()
+    {
+        Console.WriteLine("SetLifePoints: '" + LifePointsAdjustmentValue + "' for player " + SelectedPlayer?.PlayerNumber);
+        SelectedPlayer?.AdjustLifePoints(LifePointsAdjustmentValue);
     }
 }

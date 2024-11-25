@@ -35,6 +35,16 @@ public class Player
         CurrentSpace = (SpaceTypes)Enum.Parse(typeof(SpaceTypes), space, false);
     }
 
+    public void AdjustCashMoney(int valueChange)
+    {
+        CashMoney += valueChange;
+    }
+
+    public void AdjustLifePoints(int valueChange)
+    {
+        LifePoints += valueChange;
+    }
+
     public void ApplyGameEvent(GameEvent eve, ModifierLevel modLevel)
     {
         if (eve.CashMoneyChange is int cash)
