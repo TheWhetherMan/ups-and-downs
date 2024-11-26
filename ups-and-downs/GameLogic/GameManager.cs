@@ -58,10 +58,17 @@ namespace UpsAndDowns.GameLogic
 			return selectedPlayer;
 		}
 		
-		public void SetPlayerLandedSpace(Player player, SpaceTypes space)
+		public void AdvanceGameByOneYear()
 		{
-			Console.WriteLine($"Player {player.PlayerNumber} landed on {space}");
-			player.CurrentSpace = space;
+			Console.WriteLine($"Year {CurrentYear} has ended.");
+			CurrentYear++;
+			foreach (Player player in Players)
+				player.AdvanceYear();
+
+			if (CurrentYear >= GameLengthYears)
+				Console.WriteLine($"Game over!");
+			else
+				Console.WriteLine($"Starting year {CurrentYear}...");
 		}
 
 		public void ApplyGameEvent(GameEvent eve, ModifierLevel modLevel, Player affectedPlayer)

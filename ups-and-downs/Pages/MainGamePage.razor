@@ -13,9 +13,13 @@
         <PlayerDetailsComponent Player="@player" 
             Left="@($"{player.CardPosition.X}px")" 
             Top="@($"{player.CardPosition.Y}px")" 
-            OnClick="@(async () => await OnPlayerClick(player))"
+            OnClick="@(async () => OnPlayerClick(player))"
         />    
     }
+</div>
+
+<div class="center-buttons">
+    <button class="btn btn-primary center-button" @onclick="async () => EndGameYearButtonPressed()">Advance One Year</button>
 </div>
 
 @if (ShowModal) {
@@ -36,11 +40,17 @@
         Players = GameManager.Instance.Players;
     }
 
-    public async Task OnPlayerClick(Player player)
+    public void OnPlayerClick(Player player)
     {
         Console.WriteLine($"MainGamePage: Player {player.PlayerNumber} clicked");
         SelectedPlayer = player;
         ShowModal = true;
+    }
+
+    public void EndGameYearButtonPressed()
+    {
+        Console.WriteLine("MainGamePage: Advancing by one year");
+        GameManager.Instance.AdvanceGameByOneYear();
     }
 
     public void CloseModal()

@@ -1,3 +1,16 @@
 .base-text-color {
    color: white; 
 }
+
+.center-buttons {
+   position: absolute;
+   top: 100px;
+   left: 460px;
+}
+
+.btn.btn-primary.center-button {
+   background-color: blueviolet;
+   color: white;
+   height: 165px;
+   width: 105px;
+}
