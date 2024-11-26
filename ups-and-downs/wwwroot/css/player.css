@@ -41,12 +41,16 @@
     height: 45px;
 }
 
-.player-menu-buttons.narrow.red {
+.player-menu-buttons.wide {
+    width: 150px;
+}
+
+.player-menu-buttons.red {
     background-color: red;
     color: white;
 }
 
-.player-menu-buttons.narrow.green {
+.player-menu-buttons.green {
     background-color: green;
     color: white;
 }

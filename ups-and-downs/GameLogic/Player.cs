@@ -1,3 +1,4 @@
+using UpsAndDowns.GameLogic;
 using UpsAndDowns.GameLogic.Assets;
 using UpsAndDowns.GameLogic.Effects;
 using UpsAndDowns.GameLogic.Enums;
@@ -5,15 +6,16 @@ using UpsAndDowns.GameLogic.Misc;
 
 public class Player
 {
-    public int PlayerNumber { get; private set; }
-    public int CashMoney { get; private set; } = 0;
-    public double LifePoints { get; private set; } = 0;
-    public EducationLevels EducationLevel { get; private set; } = EducationLevels.Secondary;
-    public int CareerLevel { get; private set; } = 0;
-    public int Salary { get; private set; } = 0;
-    public bool Married { get; private set; } = false;
-    public int Children { get; private set; } = 0;
-    public List<Asset> Assets { get; private set; } = new();
+    public int PlayerNumber { get; set; }
+    public int CashMoney { get; set; } = 0;
+    public double LifePoints { get; set; } = 0;
+    public EducationLevels EducationLevel { get; set; } = EducationLevels.Secondary;
+    public int CareerLevel { get; set; } = 0;
+    public int Salary { get; set; } = 0;
+    public int SalaryOffset { get; set; } = 0;
+    public bool Married { get; set; } = false;
+    public int Children { get; set; } = 0;
+    public List<Asset> Assets { get; set; } = new();
     public SpaceTypes CurrentSpace { get; set; } = SpaceTypes.Start;
     public CardPosPoint CardPosition { get; set; } = new(0, 0);
     public bool MovedThisTurn { get; set; } = false;
@@ -26,23 +28,8 @@ public class Player
     public void AdvanceYear()
     {
         MovedThisTurn = false;
-        CashMoney += Salary;
+        CashMoney += Salary + SalaryOffset;
         LifePoints += 100;
-    }
-
-    public void SetLandedSpace(string space)
-    {
-        CurrentSpace = (SpaceTypes)Enum.Parse(typeof(SpaceTypes), space, false);
-    }
-
-    public void AdjustCashMoney(int valueChange)
-    {
-        CashMoney += valueChange;
-    }
-
-    public void AdjustLifePoints(int valueChange)
-    {
-        LifePoints += valueChange;
     }
 
     public void ApplyGameEvent(GameEvent eve, ModifierLevel modLevel)
@@ -65,6 +52,82 @@ public class Player
     public void AddAsset(Asset asset)
     {
         Assets.Add(asset);
+    }
+
+    public void BuyOrSellCar(Cars car, bool buying)
+    {
+        int carValue = 0;
+        switch (car)
+        {
+            case Cars.Basic:
+                carValue = 15000; break;
+            case Cars.Luxury:
+                carValue = 50000; break;
+        }
+
+        if (buying) 
+        {
+            CashMoney -= carValue;
+            AddAsset(new Car(GameManager.Instance.CurrentYear, carValue));
+        }
+        else 
+        {
+            foreach (Asset asset in Assets)
+            {
+                if (asset is Car carAsset && 
+                    carAsset.InitialValue == carValue && 
+                    carAsset.CarType == car)
+                {
+                    CashMoney += carValue;
+                    Assets.Remove(asset);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void BuyOrSellHouse(Houses house, bool buying)
+    {
+        int houseValue = 0;
+        switch (house)
+        {
+            case Houses.Apartment:
+                houseValue = 100000; break;
+            case Houses.House:
+                houseValue = 250000; break;
+            case Houses.Mansion:
+                houseValue = 1000000; break;
+        }
+
+        if (buying) 
+        {
+            CashMoney -= houseValue;
+            AddAsset(new House(GameManager.Instance.CurrentYear, houseValue));
+        }
+        else 
+        {
+            foreach (Asset asset in Assets)
+            {
+                if (asset is House houseAsset && 
+                    houseAsset.InitialValue == houseValue && 
+                    houseAsset.HouseType == house)
+                {
+                    CashMoney += houseValue;
+                    Assets.Remove(asset);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void GainOrLoseEducation(int educationChange)
+    {
+        EducationLevel += educationChange;
+    }
+
+    public void PromoteOrDemoteCareer(int careerChange)
+    {
+        CareerLevel += careerChange;
     }
 
     public double ConvertAllAssetsToLifePoints()

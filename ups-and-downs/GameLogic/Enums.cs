@@ -44,4 +44,17 @@ namespace UpsAndDowns.GameLogic.Enums
         Car,
         House
     }
+
+    public enum Cars
+    {
+        Basic,
+        Luxury
+    }
+
+    public enum Houses
+    {
+        Apartment,
+        House,
+        Mansion
+    }
 }

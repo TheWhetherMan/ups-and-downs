@@ -15,13 +15,13 @@
                     <div>
                         <h5>Moved On Board</h5>
                         <p>Details about moving on board...</p>
-                        <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => await SetLandedSpace("Blank"))">Blank Space</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => await SetLandedSpace("Education"))">Education Space</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => await SetLandedSpace("Promotion"))">Promotion Space</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => await SetLandedSpace("Marriage"))">Marriage Space</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => await SetLandedSpace("Events"))">Events Space</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => await SetLandedSpace("Car"))">Buy Car Space</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => await SetLandedSpace("House"))">Buy House Space</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => SetLandedSpace("Blank"))">Blank Space</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => SetLandedSpace("Education"))">Education Space</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => SetLandedSpace("Promotion"))">Promotion Space</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => SetLandedSpace("Marriage"))">Marriage Space</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => SetLandedSpace("Events"))">Events Space</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => SetLandedSpace("Car"))">Buy Car Space</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => SetLandedSpace("House"))">Buy House Space</button>
                     </div>
                 }
                 else if (SelectedPanel == "cashMoney")
@@ -29,19 +29,19 @@
                     <div>
                         <h2>$$@CashMoneyAdjustmentValue</h2>
                         <h5>Gained Cash Money?</h5>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => await AdjustCashMoney(100))">+ $$100</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => await AdjustCashMoney(1000))">+ $$1000</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => await AdjustCashMoney(10000))">+ $$10k</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => await AdjustCashMoney(100000))">+ $$100k</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => await AdjustCashMoney(1000000))">+ $$1MM</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => AdjustCashMoney(100))">+ $$100</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => AdjustCashMoney(1000))">+ $$1000</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => AdjustCashMoney(10000))">+ $$10k</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => AdjustCashMoney(100000))">+ $$100k</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => AdjustCashMoney(1000000))">+ $$1MM</button>
                         <h5>Lost Cash Money?</h5>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => await AdjustCashMoney(-100))">- $$100</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => await AdjustCashMoney(-1000))">- $$1000</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => await AdjustCashMoney(-10000))">- $$10k</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => await AdjustCashMoney(-100000))">- $$100k</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => await AdjustCashMoney(-1000000))">- $$1MM</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustCashMoney(-100))">- $$100</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustCashMoney(-1000))">- $$1000</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustCashMoney(-10000))">- $$10k</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustCashMoney(-100000))">- $$100k</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustCashMoney(-1000000))">- $$1MM</button>
                         <h5>Done?</h5>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow" onclick="@(async () => await SetCashMoney())">Apply</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow" onclick="@(async () => SetCashMoney())">Apply</button>
                     </div>
                 }
                 else if (SelectedPanel == "lifePoints")
@@ -49,83 +49,107 @@
                     <div>
                         <h2>LP @LifePointsAdjustmentValue</h2>
                         <h5>Gained Life Points?</h5>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => await AdjustLifePoints(100))">+ LP100</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => await AdjustLifePoints(1000))">+ LP1000</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => AdjustLifePoints(100))">+ LP100</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => AdjustLifePoints(1000))">+ LP1000</button>
                         <h5>Lost Life Points?</h5>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => await AdjustLifePoints(-100))">- LP100</button>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => await AdjustLifePoints(-1000))">- LP1000</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustLifePoints(-100))">- LP100</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustLifePoints(-1000))">- LP1000</button>
                         <h5>Done?</h5>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow" onclick="@(async () => await SetLifePoints())">Apply</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow" onclick="@(async () => SetLifePoints())">Apply</button>
                     </div>
                 }
                 else if (SelectedPanel == "salary")
                 {
                     <div>
-                        <h5>Salary</h5>
-                        <p>Details about salary...</p>
+                        <h2>LP @SalaryAdjustmentValue</h2>
+                        <h5>Got a Raise?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => AdjustSalary(100))">+ $$100</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow green" onclick="@(async () => AdjustSalary(1000))">+ $$1000</button>
+                        <h5>Got a Demerit?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustSalary(-100))">- $$100</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustSalary(-1000))">- $$1000</button>
+                        <h5>Done?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons narrow" onclick="@(async () => SetSalary())">Apply</button>
                     </div>
                 }
                 else if (SelectedPanel == "house")
                 {
                     <div>
-                        <h5>House</h5>
-                        <p>Details about house...</p>
+                        <h5>Buying a House?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide green" onclick="@(async () => AdjustHouse(@GameLogic.Enums.Houses.Apartment, true))">+1 Apartment</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide green" onclick="@(async () => AdjustHouse(@GameLogic.Enums.Houses.House, true))">+1 House</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide green" onclick="@(async () => AdjustHouse(@GameLogic.Enums.Houses.Mansion, true))">+1 Mansion</button>
+                        <h5>Selling a House?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide red" onclick="@(async () => AdjustHouse(@GameLogic.Enums.Houses.Apartment, false))">+1 Apartment</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide red" onclick="@(async () => AdjustHouse(@GameLogic.Enums.Houses.House, false))">+1 House</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide red" onclick="@(async () => AdjustHouse(@GameLogic.Enums.Houses.Mansion, false))">+1 Mansion</button>
                     </div>
                 }
                 else if (SelectedPanel == "car")
                 {
                     <div>
-                        <h5>Car</h5>
-                        <p>Details about car...</p>
+                        <h5>Bought New Wheels?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide green" onclick="@(async () => AdjustCar(@GameLogic.Enums.Cars.Basic, true))">+1 Basic Car</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide green" onclick="@(async () => AdjustCar(@GameLogic.Enums.Cars.Luxury, true))">+1 Luxury Car</button>
+                        <h5>Lost Your Wheels?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide red" onclick="@(async () => AdjustCar(@GameLogic.Enums.Cars.Basic, false))">-1 Basic Car</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide red" onclick="@(async () => AdjustCar(@GameLogic.Enums.Cars.Luxury, false))">-1 Luxury Car</button>
                     </div>
                 }
                 else if (SelectedPanel == "education")
                 {
                     <div>
-                        <h5>Education</h5>
-                        <p>Details about education...</p>
+                        <h5>Gained a Degree?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide green" onclick="@(async () => AdjustEducation(1))">+1 Degree</button>
+                        <h5>Lost a Degree?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide red" onclick="@(async () => AdjustEducation(-1))">-1 Degree</button>
                     </div>
                 }
                 else if (SelectedPanel == "career")
                 {
                     <div>
-                        <h5>Career</h5>
-                        <p>Details about career...</p>
+                        <h5>Nice, a Promotion?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide green" onclick="@(async () => AdjustCareer(1))">Promoted!</button>
+                        <h5>Ouch, a Demotion?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide red" onclick="@(async () => AdjustCareer(-1))">Demoted :(</button>
                     </div>
                 }
                 else if (SelectedPanel == "marriage")
                 {
                     <div>
-                        <h5>Marriage</h5>
-                        <p>Details about marriage...</p>
+                        <h5>Got Married?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide green" onclick="@(async () => AdjustMarriage(true))">Just Married</button>
+                        <h5>Not So Much?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide red" onclick="@(async () => AdjustMarriage(false))">Just Unmarried</button>
                     </div>
                 }
                 else if (SelectedPanel == "children")
                 {
                     <div>
-                        <h5>Children</h5>
-                        <p>Details about children...</p>
+                        <h5>Adjust Number of Children?</h5>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide green" onclick="@(async () => AdjustChildren(1))">+1 Child</button>
+                        <button type="button" class="btn btn-primary player-menu-buttons wide red" onclick="@(async () => AdjustChildren(-1))">-1 Child</button>
                     </div>
                 }
                 else {
                     <h4>The Usual Happened</h4>
-                    <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => await ShowPanel("movedOnBoard"))">Moved On Board</button>
-                    <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => await ShowPanel("cashMoney"))">Cash Money</button>
-                    <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => await ShowPanel("lifePoints"))">Life Points</button>
+                    <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => ShowPanel("movedOnBoard"))">Moved On Board</button>
+                    <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => ShowPanel("cashMoney"))">Cash Money</button>
+                    <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => ShowPanel("lifePoints"))">Life Points</button>
                     <h4>Something Else Changed</h4>
-                    <button type="button" class="btn btn-primary player-menu-buttons assets" onclick="@(async () => await ShowPanel("salary"))">Salary</button>
-                    <button type="button" class="btn btn-primary player-menu-buttons assets" onclick="@(async () => await ShowPanel("house"))">House</button>
-                    <button type="button" class="btn btn-primary player-menu-buttons assets" onclick="@(async () => await ShowPanel("car"))">Car</button>
-                    <button type="button" class="btn btn-primary player-menu-buttons life-events" onclick="@(async () => await ShowPanel("education"))">Education</button>
-                    <button type="button" class="btn btn-primary player-menu-buttons life-events" onclick="@(async () => await ShowPanel("career"))">Career</button>
-                    <button type="button" class="btn btn-primary player-menu-buttons life-events" onclick="@(async () => await ShowPanel("marriage"))">Marriage</button>
-                    <button type="button" class="btn btn-primary player-menu-buttons life-events" onclick="@(async () => await ShowPanel("children"))">Children</button>
+                    <button type="button" class="btn btn-primary player-menu-buttons assets" onclick="@(async () => ShowPanel("salary"))">Salary</button>
+                    <button type="button" class="btn btn-primary player-menu-buttons assets" onclick="@(async () => ShowPanel("house"))">House</button>
+                    <button type="button" class="btn btn-primary player-menu-buttons assets" onclick="@(async () => ShowPanel("car"))">Car</button>
+                    <button type="button" class="btn btn-primary player-menu-buttons life-events" onclick="@(async () => ShowPanel("education"))">Education</button>
+                    <button type="button" class="btn btn-primary player-menu-buttons life-events" onclick="@(async () => ShowPanel("career"))">Career</button>
+                    <button type="button" class="btn btn-primary player-menu-buttons life-events" onclick="@(async () => ShowPanel("marriage"))">Marriage</button>
+                    <button type="button" class="btn btn-primary player-menu-buttons life-events" onclick="@(async () => ShowPanel("children"))">Children</button>
                 }
             </div>
             <div class="modal-footer operations">
                 @if (SelectedPanel != "default")
                 {
-                    <button type="button" class="btn btn-secondary ops-back" onclick="@(async () => await ShowPanel("default"))">Back</button>
+                    <button type="button" class="btn btn-secondary ops-back" onclick="@(async () => ShowPanel("default"))">Back</button>
                 }
                 <button type="button" class="btn btn-secondary ops-close" @onclick="async () => await OnClick.InvokeAsync(null)">Close</button>
             </div>
@@ -142,47 +166,102 @@
     public string SelectedPanel = "default";
     public int CashMoneyAdjustmentValue = 0;
     public int LifePointsAdjustmentValue = 0;
+    public int SalaryAdjustmentValue = 0;
 
     protected override void OnInitialized()
     {
         //Console.WriteLine($"Rendering PlayerDetailsComponent for Player {Player.PlayerNumber}");
     }
 
-    public async Task ShowPanel(string panel)
+    public void ShowPanel(string panel)
     {
         Console.WriteLine("ShowPanel: '" + panel + "' for player " + SelectedPlayer?.PlayerNumber);
         SelectedPanel = panel;
         CashMoneyAdjustmentValue = 0;
     }
 
-    public async Task SetLandedSpace(string space)
+    public void SetLandedSpace(string space)
     {
         Console.WriteLine("SetLandedSpace: '" + space + "' for player " + SelectedPlayer?.PlayerNumber);
-        SelectedPlayer?.SetLandedSpace(space);
+        SelectedPlayer.CurrentSpace = (GameLogic.Enums.SpaceTypes)Enum.Parse(typeof(GameLogic.Enums.SpaceTypes), space, false);
         SelectedPanel = "default";
     }
 
-    public async Task AdjustCashMoney(int amount)
+    public void AdjustCashMoney(int amount)
     {
         Console.WriteLine("AdjustCashMoney: '" + amount + "' for player " + SelectedPlayer?.PlayerNumber);
         CashMoneyAdjustmentValue += amount;
     }
 
-    public async Task SetCashMoney()
+    public void SetCashMoney()
     {
         Console.WriteLine("SetCashMoney: '" + CashMoneyAdjustmentValue + "' for player " + SelectedPlayer?.PlayerNumber);
-        SelectedPlayer?.AdjustCashMoney(CashMoneyAdjustmentValue);
+        SelectedPlayer.CashMoney += CashMoneyAdjustmentValue;
     }
 
-    public async Task AdjustLifePoints(int amount)
+    public void AdjustLifePoints(int amount)
     {
         Console.WriteLine("AdjustLifePoints: '" + amount + "' for player " + SelectedPlayer?.PlayerNumber);
         LifePointsAdjustmentValue += amount;
     }
 
-    public async Task SetLifePoints()
+    public void SetLifePoints()
     {
         Console.WriteLine("SetLifePoints: '" + LifePointsAdjustmentValue + "' for player " + SelectedPlayer?.PlayerNumber);
-        SelectedPlayer?.AdjustLifePoints(LifePointsAdjustmentValue);
+        SelectedPlayer.LifePoints += LifePointsAdjustmentValue;
+    }
+
+    public void AdjustSalary(int amount)
+    {
+        Console.WriteLine("AdjustSalary: '" + amount + "' for player " + SelectedPlayer?.PlayerNumber);
+        SalaryAdjustmentValue += amount;
+    }
+
+    public void SetSalary()
+    {
+        Console.WriteLine("SetSalary: '" + SalaryAdjustmentValue + "' for player " + SelectedPlayer?.PlayerNumber);
+        SelectedPlayer.SalaryOffset += SalaryAdjustmentValue;
+    }
+
+    public void AdjustHouse(GameLogic.Enums.Houses house, bool add)
+    {
+        Console.WriteLine("AdjustHouse: '" + house + "' (" + add + ") for player " + SelectedPlayer?.PlayerNumber);
+        SelectedPlayer.BuyOrSellHouse(house, add);
+        SelectedPanel = "default";
+    }
+
+    public void AdjustCar(GameLogic.Enums.Cars car, bool add)
+    {
+        Console.WriteLine("AdjustCar: '" + car + "' (" + add + ") for player " + SelectedPlayer?.PlayerNumber);
+        SelectedPlayer.BuyOrSellCar(car, add);
+        SelectedPanel = "default";
+    }
+
+    public void AdjustEducation(int degrees)
+    {
+        Console.WriteLine("AdjustEducation: '" + degrees + "' for player " + SelectedPlayer?.PlayerNumber);
+        SelectedPlayer.GainOrLoseEducation(degrees);
+        SelectedPanel = "default";
+    }
+
+    public void AdjustCareer(int careerLevels)
+    {
+        Console.WriteLine("AdjustCareer: '" + careerLevels + "' for player " + SelectedPlayer?.PlayerNumber);
+        SelectedPlayer.PromoteOrDemoteCareer(careerLevels);
+        SelectedPanel = "default";
+    }
+
+    public void AdjustMarriage(bool married)
+    {
+        Console.WriteLine("AdjustMarriage: '" + married + "' for player " + SelectedPlayer?.PlayerNumber);
+        SelectedPlayer.Married = married;
+        SelectedPanel = "default";
+    }
+
+    public void AdjustChildren(int children)
+    {
+        Console.WriteLine("AdjustChildren: '" + children + "' for player " + SelectedPlayer?.PlayerNumber);
+        SelectedPlayer.Children += children;
+        SelectedPanel = "default";
     }
 }
