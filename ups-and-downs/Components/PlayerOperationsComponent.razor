@@ -13,6 +13,7 @@
                 @if (SelectedPanel == "movedOnBoard")
                 {
                     <div>
+                        @* [TODO]: Add set current space color buttons, change color of menu buttons here away from purple *@
                         <h5>Moved On Board</h5>
                         <p>Details about moving on board...</p>
                         <button type="button" class="btn btn-primary player-menu-buttons standard" onclick="@(async () => SetLandedSpace("Blank"))">Blank Space</button>
@@ -40,8 +41,8 @@
                         <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustCashMoney(-10000))">- $$10k</button>
                         <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustCashMoney(-100000))">- $$100k</button>
                         <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustCashMoney(-1000000))">- $$1MM</button>
-                        <h5>Done?</h5>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow" onclick="@(async () => SetCashMoney())">Apply</button>
+                        @* <h5>Done?</h5> *@
+                        @* <button type="button" class="btn btn-primary player-menu-buttons narrow" onclick="@(async () => SetCashMoney())">Apply</button> *@
                     </div>
                 }
                 else if (SelectedPanel == "lifePoints")
@@ -54,8 +55,8 @@
                         <h5>Lost Life Points?</h5>
                         <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustLifePoints(-100))">- LP100</button>
                         <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustLifePoints(-1000))">- LP1000</button>
-                        <h5>Done?</h5>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow" onclick="@(async () => SetLifePoints())">Apply</button>
+                        @* <h5>Done?</h5> *@
+                        @* <button type="button" class="btn btn-primary player-menu-buttons narrow" onclick="@(async () => SetLifePoints())">Apply</button> *@
                     </div>
                 }
                 else if (SelectedPanel == "salary")
@@ -68,8 +69,8 @@
                         <h5>Got a Demerit?</h5>
                         <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustSalary(-100))">- $$100</button>
                         <button type="button" class="btn btn-primary player-menu-buttons narrow red" onclick="@(async () => AdjustSalary(-1000))">- $$1000</button>
-                        <h5>Done?</h5>
-                        <button type="button" class="btn btn-primary player-menu-buttons narrow" onclick="@(async () => SetSalary())">Apply</button>
+                        @* <h5>Done?</h5> *@
+                        @* <button type="button" class="btn btn-primary player-menu-buttons narrow" onclick="@(async () => SetSalary())">Apply</button> *@
                     </div>
                 }
                 else if (SelectedPanel == "house")
@@ -191,36 +192,39 @@
     {
         Console.WriteLine("AdjustCashMoney: '" + amount + "' for player " + SelectedPlayer?.PlayerNumber);
         CashMoneyAdjustmentValue += amount;
+        SetCashMoney(amount);
     }
 
-    public void SetCashMoney()
+    public void SetCashMoney(int amount)
     {
-        Console.WriteLine("SetCashMoney: '" + CashMoneyAdjustmentValue + "' for player " + SelectedPlayer?.PlayerNumber);
-        SelectedPlayer.CashMoney += CashMoneyAdjustmentValue;
+        Console.WriteLine("SetCashMoney: '" + amount + "' -> '" + CashMoneyAdjustmentValue + "' for player " + SelectedPlayer?.PlayerNumber);
+        SelectedPlayer.CashMoney += amount;
     }
 
     public void AdjustLifePoints(int amount)
     {
         Console.WriteLine("AdjustLifePoints: '" + amount + "' for player " + SelectedPlayer?.PlayerNumber);
         LifePointsAdjustmentValue += amount;
+        SetLifePoints(amount);
     }
 
-    public void SetLifePoints()
+    public void SetLifePoints(int amount)
     {
-        Console.WriteLine("SetLifePoints: '" + LifePointsAdjustmentValue + "' for player " + SelectedPlayer?.PlayerNumber);
-        SelectedPlayer.LifePoints += LifePointsAdjustmentValue;
+        Console.WriteLine("SetLifePoints: '" + amount + "' -> '" + LifePointsAdjustmentValue + "' for player " + SelectedPlayer?.PlayerNumber);
+        SelectedPlayer.LifePoints += amount;
     }
 
     public void AdjustSalary(int amount)
     {
         Console.WriteLine("AdjustSalary: '" + amount + "' for player " + SelectedPlayer?.PlayerNumber);
         SalaryAdjustmentValue += amount;
+        SetSalary(amount);
     }
 
-    public void SetSalary()
+    public void SetSalary(int amount)
     {
-        Console.WriteLine("SetSalary: '" + SalaryAdjustmentValue + "' for player " + SelectedPlayer?.PlayerNumber);
-        SelectedPlayer.SalaryOffset += SalaryAdjustmentValue;
+        Console.WriteLine("SetSalary: '" + amount + "' -> '" + SalaryAdjustmentValue + "' for player " + SelectedPlayer?.PlayerNumber);
+        SelectedPlayer.SalaryOffset += amount;
     }
 
     public void AdjustHouse(GameLogic.Enums.Houses house, bool add)
