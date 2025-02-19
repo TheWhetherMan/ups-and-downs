@@ -9,8 +9,8 @@
     <Grid Background="{StaticResource BlackBean}">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Foreground="{StaticResource RoseRed}" Text="Ups And Downs" FontSize="48" Margin="0" />
-            <Button Style="{StaticResource BasicButtonStyleRed}" Click="StartButton_Click"
-                    Content="Start Game" Width="200" Height="50" Margin="0 50 0 0" />
+            <Button Style="{StaticResource BasicButtonStyleGreen}" Click="StartButton_Click"
+                    Content="Begin New Game" Width="200" Height="50" Margin="0 50 0 0" />
         </StackPanel> 
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using System.Windows;
 
 namespace UpsAndDowns
 {
@@ -7,11 +8,24 @@ namespace UpsAndDowns
         public MainWindow()
         {
             InitializeComponent();
+            RegisterMessages();
         }
 
-        public void StartNewGame()
+        private void RegisterMessages()
         {
+            WeakReferenceMessenger.Default.Register<Messages.ConfigureGameMessage>(this, (r, m) =>
+            {
+                GoToGameConfiguration();
+            });
+        }
 
+        private void GoToGameConfiguration()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                ParentGrid.Children.Clear();
+                ParentGrid.Children.Add(new Controls.GameConfigurationScreen());
+            });
         }
     }
 }

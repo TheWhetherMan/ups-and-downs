@@ -1,10 +1,12 @@
+using CommunityToolkit.Mvvm.Messaging;
+using System.Diagnostics;
 using UpsAndDowns.GameLogic.Effects;
 using UpsAndDowns.GameLogic.Enums;
-using UpsAndDowns.GameLogic.Misc;
+using UpsAndDowns.Messages;
 
 namespace UpsAndDowns.GameLogic
 {
-	public class GameManager
+    public class GameManager
 	{
 		private static GameManager? _instance;
 		public static GameManager Instance
@@ -24,12 +26,28 @@ namespace UpsAndDowns.GameLogic
 		public List<Player> Players { get; private set; } = new();
 		private List<Player> _unselectedPlayers = new();
 		private Random _random = new();
-		
-		public void StartNewGame(int playerCount)
+
+        private GameManager() 
+		{	
+			Debug.WriteLine("GameManager.Constructor");
+        }
+
+		internal void InitializeGame()
+        {
+            Debug.WriteLine("GameManager.InitializeGame");
+            RegisterMessages();
+        }
+
+        private void RegisterMessages()
+        {
+			WeakReferenceMessenger.Default.Register<StartNewGameMessage>(this, (r, m) => StartNewGame(m.PlayerCount));
+        }
+
+        public void StartNewGame(int playerCount)
 		{
+			Debug.WriteLine($"GameManager.StartNewGame: {playerCount}");
 			CurrentState = GameStates.InProgress;
 			// TODO
-			Console.WriteLine($"Game started for {playerCount} players.");
 		}
 
 		public Player GetPlayer(int playerNumber)
@@ -51,15 +69,15 @@ namespace UpsAndDowns.GameLogic
 		
 		public void AdvanceGameByOneYear()
 		{
-			Console.WriteLine($"Year {CurrentYear} has ended.");
+			Debug.WriteLine($"Year {CurrentYear} has ended.");
 			CurrentYear++;
 			foreach (Player player in Players)
 				player.AdvanceYear();
 
 			if (CurrentYear >= GameLengthYears)
-				Console.WriteLine($"Game over!");
+				Debug.WriteLine($"Game over!");
 			else
-				Console.WriteLine($"Starting year {CurrentYear}...");
+				Debug.WriteLine($"Starting year {CurrentYear}...");
 		}
 
 		public void ApplyGameEvent(GameEvent eve, ModifierLevel modLevel, Player affectedPlayer)

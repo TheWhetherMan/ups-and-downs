@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="UpsAndDowns.Controls.GameConfigurationScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UpsAndDowns.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1024">
+    <Grid Background="{StaticResource BlackBean}">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Foreground="{StaticResource RoseRed}" Text="How many players?" FontSize="48" 
+                       Margin="0" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Style="{StaticResource BasicButtonStyleRed}" Click="MinusOneButton_Click"
+                        Content="-1" Width="100" Height="70" Margin="0 50 0 0" />
+                <TextBlock x:Name="PlayerCountText" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                           Foreground="{StaticResource Celadon}" Text="1" FontSize="42" Margin="50 50 50 0" />
+                <Button Style="{StaticResource BasicButtonStyleBlue}" Click="PlusOneButton_Click"
+                        Content="+1" Width="100" Height="70" Margin="0 50 0 0" />
+            </StackPanel>
+            <Button Style="{StaticResource BasicButtonStyleGreen}" Click="StartButton_Click"
+                    Content="Start!" Width="200" Height="50" Margin="0 50 0 0" />
+        </StackPanel>
+    </Grid>
+</UserControl>

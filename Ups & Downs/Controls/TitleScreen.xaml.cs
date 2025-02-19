@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using System.Windows.Controls;
 
 namespace UpsAndDowns.Controls
 {
@@ -11,7 +12,7 @@ namespace UpsAndDowns.Controls
 
         private void StartButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            WeakReferenceMessenger.Default.Send(new Messages.ConfigureGameMessage());
         }
     }
 }
