@@ -28,16 +28,7 @@ namespace UpsAndDowns.GameLogic
 		public void StartNewGame(int playerCount)
 		{
 			CurrentState = GameStates.InProgress;
-			Players = [];
-			for (int i = 1; i <= playerCount; i++)
-			{
-				Players.Add(new Player(i) 
-				{ 
-					CardPosition = new CardPosPoint(
-						Constants.PlayerCardPositions[i - 1].X, 
-						Constants.PlayerCardPositions[i - 1].Y) 
-				});
-			}
+			// TODO
 			Console.WriteLine($"Game started for {playerCount} players.");
 		}
 

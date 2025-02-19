@@ -4,9 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UpsAndDowns"
+        xmlns:controls="clr-namespace:UpsAndDowns.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="Ups And Downs" Height="600" Width="1024">
+    <Grid Background="{StaticResource BlackBean}">
+        <Grid x:Name="ParentGrid">
+            <controls:TitleScreen />
+        </Grid>
     </Grid>
 </Window>

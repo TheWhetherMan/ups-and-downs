@@ -134,9 +134,9 @@ public class Player
     {
         double points = LifePoints;
         points += CashMoney * 0.001;
-        points += CareerLevel * 1000;
+        points += CareerLevel * 200;
         points += Married ? 2000 : 0;
-        points += Children * 2000;
+        points += Children * 1000;
         points += Assets.Sum(asset => asset.ConvertToLifePoints());
         LifePoints = points;
         return points;

@@ -8,13 +8,20 @@ public class House : Asset
 
     public House(int yearPurchased, int initialValue)
     {
-        AssetType = Enums.AssetTypes.House;
+        AssetType = AssetTypes.House;
         YearPurchased = yearPurchased;
         InitialValue = initialValue;
     }
 
+    public override double GetSellPrice()
+    {
+        double sellPrice = InitialValue;
+        sellPrice += YearsOwned * (0.04 * InitialValue);
+        return sellPrice;
+    }
+
     public override double ConvertToLifePoints()
     {
-        throw new NotImplementedException();
+        return InitialValue * YearsOwned * 0.0005;
     }
 }
