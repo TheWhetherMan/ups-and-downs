@@ -57,4 +57,10 @@ namespace UpsAndDowns.GameLogic.Enums
         House,
         Mansion
     }
+
+    public enum LotteryResults
+    {
+        NoWinner,
+        Winner
+    }
 }

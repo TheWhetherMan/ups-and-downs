@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace UpsAndDowns.Controls
 {
-    /// <summary>
-    /// Interaction logic for ControlBar.xaml
-    /// </summary>
     public partial class ControlBar : UserControl
     {
         public ControlBar()

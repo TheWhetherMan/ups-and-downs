@@ -20,5 +20,7 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
         <local:ControlBar VerticalAlignment="Bottom" />
+
+        <!-- TODO: PLAYER TURN DIALOG CONTAINER -->
     </Grid>
 </UserControl>
