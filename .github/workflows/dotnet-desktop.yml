@@ -21,20 +21,11 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: Restore dependencies
-        run: dotnet restore
-        working-directory: Ups & Downs
-
-      - name: Build solution
-        run: dotnet build --configuration Release --no-restore
-        working-directory: Ups & Downs
-
       - name: Publish artifacts
         run: dotnet publish -c Release -o ./publish
         working-directory: Ups & Downs
         
       - name: Upload build artifacts
-        working-directory: Ups & Downs
         uses: actions/upload-artifact@v4
         with:
           name: WPF-Build
