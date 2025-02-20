@@ -28,3 +28,12 @@ jobs:
       - name: Build solution
         run: dotnet build --configuration Release --no-restore
         working-directory: Ups & Downs
+
+      - name: Publish artifacts
+        run: dotnet publish -c Release -o ./publish
+        
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: WPF-Build
+          path: ./publish
