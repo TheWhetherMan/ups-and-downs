@@ -7,7 +7,7 @@ namespace UpsAndDowns.Controls
     {
         public PlayerTurnDialog()
         {
-            InitializeComponent();
+            //InitializeComponent(); // TODO
         }
 
         public void SetPlayerForTurn(Player player)
