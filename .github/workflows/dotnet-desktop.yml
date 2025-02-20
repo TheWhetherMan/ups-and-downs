@@ -31,8 +31,10 @@ jobs:
 
       - name: Publish artifacts
         run: dotnet publish -c Release -o ./publish
+        working-directory: Ups & Downs
         
       - name: Upload build artifacts
+        working-directory: Ups & Downs
         uses: actions/upload-artifact@v4
         with:
           name: WPF-Build
