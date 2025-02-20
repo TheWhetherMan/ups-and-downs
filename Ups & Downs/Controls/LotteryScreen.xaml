@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="UpsAndDowns.Controls.PlayerTurnDialog"
+﻿<UserControl x:Class="UpsAndDowns.Controls.LotteryScreen"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:UpsAndDowns.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1024">
-    <Grid Background="#2D0605">
+    <Grid>
         
     </Grid>
 </UserControl>

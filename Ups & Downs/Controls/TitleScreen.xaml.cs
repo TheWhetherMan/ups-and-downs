@@ -12,7 +12,7 @@ namespace UpsAndDowns.Controls
 
         private void StartButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            WeakReferenceMessenger.Default.Send(new Messages.ConfigureGameMessage());
+            WeakReferenceMessenger.Default.Send(new Messages.GoToConfigureGameMessage());
         }
     }
 }

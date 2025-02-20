@@ -20,11 +20,12 @@ namespace UpsAndDowns.GameLogic
 		}
 
 		public GameStates CurrentState = GameStates.NotStarted;
+		public List<Player> Players { get; private set; } = new();
 		public int GameLengthYears { get; private set; } = 10;
 		public int CurrentYear { get; private set; } = 0;
-		
-		public List<Player> Players { get; private set; } = new();
-		private List<Player> _unselectedPlayers = new();
+		public int PlayerCount { get; private set; } = 0;
+
+        private List<Player> _unselectedPlayers = new();
 		private Random _random = new();
 
         private GameManager() 
@@ -40,15 +41,17 @@ namespace UpsAndDowns.GameLogic
 
         private void RegisterMessages()
         {
-			WeakReferenceMessenger.Default.Register<StartNewGameMessage>(this, (r, m) => StartNewGame(m.PlayerCount));
+			WeakReferenceMessenger.Default.Register<GoToStartNewGameMessage>(this, (r, m) => StartNewGame(m.PlayerCount));
         }
 
         public void StartNewGame(int playerCount)
 		{
 			Debug.WriteLine($"GameManager.StartNewGame: {playerCount}");
-			CurrentState = GameStates.InProgress;
-			// TODO
-		}
+            CurrentState = GameStates.InProgress;
+            PlayerCount = playerCount;
+            for (int i = 1; i <= playerCount; i++)
+                Players.Add(new Player(i));
+        }
 
 		public Player GetPlayer(int playerNumber)
 		{

@@ -6,6 +6,7 @@
     <SolidColorBrush x:Key="YInMnBlue" Color="#3E517A"/>
     <SolidColorBrush x:Key="CornflowerBlue" Color="CornflowerBlue"/>
     <SolidColorBrush x:Key="RoseRed" Color="#C33C54"/>
+    <SolidColorBrush x:Key="Mustard" Color="#FCD757"/>
 
     <Style TargetType="{x:Type TextBlock}">
         <Setter Property="FontFamily" Value="Consolas" />
@@ -17,6 +18,9 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Padding" Value="10,5"/>
         <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Margin" Value="10"/>
         <Setter Property="BorderBrush" Value="#2D0605"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
@@ -39,6 +43,9 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Padding" Value="10,5"/>
         <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Margin" Value="10"/>
         <Setter Property="BorderBrush" Value="#2D0605"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
@@ -61,6 +68,9 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Padding" Value="10,5"/>
         <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Margin" Value="10"/>
         <Setter Property="BorderBrush" Value="#2D0605"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
@@ -70,6 +80,31 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="5">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BasicButtonStyleOrange" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Mustard}"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="BorderBrush" Value="#2D0605"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="5">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>

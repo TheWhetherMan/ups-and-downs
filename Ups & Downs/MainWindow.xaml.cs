@@ -13,9 +13,13 @@ namespace UpsAndDowns
 
         private void RegisterMessages()
         {
-            WeakReferenceMessenger.Default.Register<Messages.ConfigureGameMessage>(this, (r, m) =>
+            WeakReferenceMessenger.Default.Register<Messages.GoToConfigureGameMessage>(this, (r, m) =>
             {
                 GoToGameConfiguration();
+            });
+            WeakReferenceMessenger.Default.Register<Messages.GoToStartNewGameMessage>(this, (r, m) =>
+            {
+                GoToGameHome();
             });
         }
 
@@ -25,6 +29,15 @@ namespace UpsAndDowns
             {
                 ParentGrid.Children.Clear();
                 ParentGrid.Children.Add(new Controls.GameConfigurationScreen());
+            });
+        }
+
+        private void GoToGameHome()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                ParentGrid.Children.Clear();
+                ParentGrid.Children.Add(new Controls.HomeScreen());
             });
         }
     }

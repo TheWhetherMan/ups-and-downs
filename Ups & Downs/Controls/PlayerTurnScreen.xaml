@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="UpsAndDowns.Controls.PlayerTurnScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UpsAndDowns.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1024">
+    <Grid>
+        <Rectangle Fill="{StaticResource YInMnBlue}" Opacity="0.8" />
+        <Border CornerRadius="10" Background="{StaticResource CornflowerBlue}" Margin="30">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0.6*" />
+                    <RowDefinition Height="0.6*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="0.6*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" x:Name="PlayerTurnHeader" Text="Player X's Turn" FontSize="42" Foreground="{StaticResource YInMnBlue}" 
+                       VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="Where did you land?" FontSize="30" Foreground="{StaticResource YInMnBlue}" 
+                       VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="2" Text="Normal Spaces" FontStyle="Italic" FontSize="24" Foreground="{StaticResource YInMnBlue}" 
+                       VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <WrapPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Style="{StaticResource BasicButtonStyleGreen}" Content="Green Space" />
+                    <Button Style="{StaticResource BasicButtonStyleBlue}" Content="Blue Space" />
+                    <Button Style="{StaticResource BasicButtonStyleOrange}" Content="Orange Space" />
+                    <Button Style="{StaticResource BasicButtonStyleRed}" Content="Pink Space" />
+                </WrapPanel>
+                <TextBlock Grid.Row="4" Text="Special Spaces" FontStyle="Italic" FontSize="24" Foreground="{StaticResource YInMnBlue}" 
+                       VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <WrapPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Style="{StaticResource BasicButtonStyleGreen}" Content="Education" />
+                    <Button Style="{StaticResource BasicButtonStyleBlue}" Content="Promotion" />
+                    <Button Style="{StaticResource BasicButtonStyleRed}" Content="Marriage" />
+                    <Button Style="{StaticResource BasicButtonStyleRed}" Content="Children" />
+                    <Button Style="{StaticResource BasicButtonStyleGreen}" Content="Special Event" />
+                    <Button Style="{StaticResource BasicButtonStyleOrange}" Content="Buy Cars" />
+                    <Button Style="{StaticResource BasicButtonStyleOrange}" Content="Buy Houses" />
+                </WrapPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

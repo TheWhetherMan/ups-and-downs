@@ -4,6 +4,9 @@ namespace UpsAndDowns.GameLogic.Enums
     {
         NotStarted,
         InProgress,
+        LotterySelection,
+        LotteryResults,
+        PlayerTurn,
         Completed
     }
 

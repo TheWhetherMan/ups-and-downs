@@ -33,7 +33,7 @@ namespace UpsAndDowns.Controls
 
         private void StartButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            WeakReferenceMessenger.Default.Send(new Messages.StartNewGameMessage() 
+            WeakReferenceMessenger.Default.Send(new Messages.GoToStartNewGameMessage() 
             { 
                 PlayerCount = PlayerCount 
             });
