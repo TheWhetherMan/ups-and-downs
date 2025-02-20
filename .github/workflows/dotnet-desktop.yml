@@ -1,4 +1,4 @@
-name: Build WPF App
+name: Build and Release WPF App
 
 on:
   push:
@@ -24,9 +24,33 @@ jobs:
       - name: Publish artifacts
         run: dotnet publish -c Release -o ./publish
         working-directory: Ups & Downs
-        
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: WPF-Build
           path: Ups & Downs/publish
+
+  release:
+    needs: build
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: WPF-Build
+          path: ./release-artifacts
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: Release v1.0.${{ github.run_number }}
+          draft: false
+          prerelease: false
+          files: ./release-artifacts/**
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
