@@ -4,7 +4,7 @@
     <SolidColorBrush x:Key="CelestialBlue" Color="#009DDC"/>
     <SolidColorBrush x:Key="Celadon" Color="#80D39B"/>
     <SolidColorBrush x:Key="YInMnBlue" Color="#3E517A"/>
-    <SolidColorBrush x:Key="BlackBean" Color="#2D0605"/>
+    <SolidColorBrush x:Key="CornflowerBlue" Color="CornflowerBlue"/>
     <SolidColorBrush x:Key="RoseRed" Color="#C33C54"/>
 
     <Style TargetType="{x:Type TextBlock}">

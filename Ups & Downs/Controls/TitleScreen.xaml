@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:UpsAndDowns.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1024">
-    <Grid Background="{StaticResource BlackBean}">
+    <Grid Background="{StaticResource CornflowerBlue}">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Foreground="{StaticResource RoseRed}" Text="Ups And Downs" FontSize="48" Margin="0" />
+            <TextBlock Foreground="{StaticResource YInMnBlue}" Text="Ups And Downs" FontSize="48" Margin="0" />
             <Button Style="{StaticResource BasicButtonStyleGreen}" Click="StartButton_Click"
                     Content="Begin New Game" Width="200" Height="50" Margin="0 50 0 0" />
         </StackPanel> 

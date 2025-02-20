@@ -6,15 +6,15 @@
              xmlns:local="clr-namespace:UpsAndDowns.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1024">
-    <Grid Background="{StaticResource BlackBean}">
+    <Grid Background="{StaticResource CornflowerBlue}">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Foreground="{StaticResource RoseRed}" Text="How many players?" FontSize="48" 
+            <TextBlock Foreground="{StaticResource YInMnBlue}" Text="How many players?" FontSize="48" 
                        Margin="0" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Style="{StaticResource BasicButtonStyleRed}" Click="MinusOneButton_Click"
                         Content="-1" Width="100" Height="70" Margin="0 50 0 0" />
                 <TextBlock x:Name="PlayerCountText" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                           Foreground="{StaticResource Celadon}" Text="1" FontSize="42" Margin="50 50 50 0" />
+                           Foreground="{StaticResource YInMnBlue}" Text="1" FontSize="42" Margin="50 50 50 0" />
                 <Button Style="{StaticResource BasicButtonStyleBlue}" Click="PlusOneButton_Click"
                         Content="+1" Width="100" Height="70" Margin="0 50 0 0" />
             </StackPanel>
