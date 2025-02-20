@@ -4,6 +4,7 @@
     <SolidColorBrush x:Key="CelestialBlue" Color="#009DDC"/>
     <SolidColorBrush x:Key="Celadon" Color="#80D39B"/>
     <SolidColorBrush x:Key="YInMnBlue" Color="#3E517A"/>
+    <SolidColorBrush x:Key="YInMnBlueDark" Color="#242f47"/> 
     <SolidColorBrush x:Key="CornflowerBlue" Color="CornflowerBlue"/>
     <SolidColorBrush x:Key="RoseRed" Color="#C33C54"/>
     <SolidColorBrush x:Key="Mustard" Color="#FCD757"/>
@@ -14,6 +15,7 @@
 
     <Style x:Key="BasicButtonStyleRed" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource RoseRed}"/>
+        <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Padding" Value="10,5"/>
@@ -39,6 +41,7 @@
 
     <Style x:Key="BasicButtonStyleGreen" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource Celadon}"/>
+        <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Padding" Value="10,5"/>
@@ -64,6 +67,7 @@
 
     <Style x:Key="BasicButtonStyleBlue" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource CelestialBlue}"/>
+        <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Padding" Value="10,5"/>
@@ -89,6 +93,7 @@
 
     <Style x:Key="BasicButtonStyleOrange" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource Mustard}"/>
+        <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Padding" Value="10,5"/>

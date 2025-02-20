@@ -19,20 +19,20 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="20" />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" x:Name="PlayerTurnHeader" Text="Player X's Turn" FontSize="42" Foreground="{StaticResource YInMnBlue}" 
-                       VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <TextBlock Grid.Row="1" Text="Where did you land?" FontSize="30" Foreground="{StaticResource YInMnBlue}" 
-                       VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <TextBlock Grid.Row="2" Text="Normal Spaces" FontStyle="Italic" FontSize="24" Foreground="{StaticResource YInMnBlue}" 
-                       VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="0" x:Name="PlayerTurnHeader" Text="Player X's Turn" FontSize="42" Foreground="{StaticResource YInMnBlueDark}" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="Where did you land?" FontSize="30" Foreground="{StaticResource YInMnBlueDark}" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="2" Text="- Normal Spaces -" FontStyle="Italic" FontSize="24" Foreground="{StaticResource YInMnBlueDark}" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center" />
                 <WrapPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button Style="{StaticResource BasicButtonStyleGreen}" Content="Green Space" />
                     <Button Style="{StaticResource BasicButtonStyleBlue}" Content="Blue Space" />
                     <Button Style="{StaticResource BasicButtonStyleOrange}" Content="Orange Space" />
                     <Button Style="{StaticResource BasicButtonStyleRed}" Content="Pink Space" />
                 </WrapPanel>
-                <TextBlock Grid.Row="4" Text="Special Spaces" FontStyle="Italic" FontSize="24" Foreground="{StaticResource YInMnBlue}" 
-                       VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="4" Text="~ Special Spaces ~" FontStyle="Italic" FontSize="24" Foreground="{StaticResource YInMnBlueDark}" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center" />
                 <WrapPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button Style="{StaticResource BasicButtonStyleGreen}" Content="Education" />
                     <Button Style="{StaticResource BasicButtonStyleBlue}" Content="Promotion" />
@@ -44,5 +44,7 @@
                 </WrapPanel>
             </Grid>
         </Border>
+        <Button x:Name="CloseButton" Content="Back" Style="{StaticResource BasicButtonStyleRed}" Width="100" 
+                VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50 50 0 0" />
     </Grid>
 </UserControl>
