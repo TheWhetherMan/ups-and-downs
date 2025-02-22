@@ -61,7 +61,7 @@ The current intended hardware spec is:
 
 ```
 GMKtec Mini PC
-1024x600 7" Touchscreen
+1280x800 10.1" Touchscreen
 Mini Receipt Printer
 ```
 
