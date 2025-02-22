@@ -26,21 +26,32 @@
                 <TextBlock Grid.Row="2" Text="- Normal Spaces -" FontStyle="Italic" FontSize="24" Foreground="{StaticResource YInMnBlueDark}" 
                            VerticalAlignment="Center" HorizontalAlignment="Center" />
                 <WrapPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button Style="{StaticResource BasicButtonStyleGreen}" Content="Green Space" />
-                    <Button Style="{StaticResource BasicButtonStyleBlue}" Content="Blue Space" />
-                    <Button Style="{StaticResource BasicButtonStyleOrange}" Content="Orange Space" />
-                    <Button Style="{StaticResource BasicButtonStyleRed}" Content="Pink Space" />
+                    <Button Style="{StaticResource BasicButtonStyleGreen}" Content="Green Space"
+                            Click="SpaceButton_Green" />
+                    <Button Style="{StaticResource BasicButtonStyleBlue}" Content="Blue Space"
+                            Click="SpaceButton_Blue" />
+                    <Button Style="{StaticResource BasicButtonStyleOrange}" Content="Yellow Space"
+                            Click="SpaceButton_Yellow" />
+                    <Button Style="{StaticResource BasicButtonStyleRed}" Content="Pink Space"
+                            Click="SpaceButton_Pink" />
                 </WrapPanel>
                 <TextBlock Grid.Row="4" Text="~ Special Spaces ~" FontStyle="Italic" FontSize="24" Foreground="{StaticResource YInMnBlueDark}" 
                            VerticalAlignment="Center" HorizontalAlignment="Center" />
                 <WrapPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button Style="{StaticResource BasicButtonStyleGreen}" Content="Education" />
-                    <Button Style="{StaticResource BasicButtonStyleBlue}" Content="Promotion" />
-                    <Button Style="{StaticResource BasicButtonStyleRed}" Content="Marriage" />
-                    <Button Style="{StaticResource BasicButtonStyleRed}" Content="Children" />
-                    <Button Style="{StaticResource BasicButtonStyleGreen}" Content="Special Event" />
-                    <Button Style="{StaticResource BasicButtonStyleOrange}" Content="Buy Cars" />
-                    <Button Style="{StaticResource BasicButtonStyleOrange}" Content="Buy Houses" />
+                    <Button Style="{StaticResource BasicButtonStyleGreen}" Content="Education"
+                            Click="SpecialButton_Education" />
+                    <Button Style="{StaticResource BasicButtonStyleBlue}" Content="Promotion"
+                            Click="SpecialButton_Promotion" />
+                    <Button Style="{StaticResource BasicButtonStyleRed}" Content="Marriage"
+                            Click="SpecialButton_Marriage" />
+                    <Button Style="{StaticResource BasicButtonStyleRed}" Content="Children"
+                            Click="SpecialButton_Children" />
+                    <Button Style="{StaticResource BasicButtonStyleGreen}" Content="Special Event"
+                            Click="SpecialButton_SpecialEvent" />
+                    <Button Style="{StaticResource BasicButtonStyleOrange}" Content="Buy Car"
+                            Click="SpecialButton_BuyCar" />
+                    <Button Style="{StaticResource BasicButtonStyleOrange}" Content="Buy House"
+                            Click="SpecialButton_BuyHouse" />
                 </WrapPanel>
             </Grid>
         </Border>
