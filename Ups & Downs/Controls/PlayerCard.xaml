@@ -8,7 +8,7 @@
              Width="480" Height="150">
     <Grid Background="#3E517A">
         <StackPanel Orientation="Vertical" Margin="8">
-            <TextBlock Foreground="#009DDC" Text="Player Nickname" FontSize="32" />
+            <TextBlock Foreground="#009DDC" Text="{Binding PlayerDisplayName}" d:Text="Player 1" FontSize="32" />
             <TextBlock Foreground="#009DDC" FontSize="32">
                 <Run Text="$$" /><Run Text="0" Foreground="#80D39B" />
             </TextBlock>

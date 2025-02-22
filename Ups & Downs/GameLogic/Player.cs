@@ -6,6 +6,8 @@ using UpsAndDowns.GameLogic.Misc;
 
 public class Player
 {
+    public string PlayerDisplayName => "Player " + PlayerNumber;
+
     public int PlayerNumber { get; set; }
     public int CashMoney { get; set; } = 0;
     public double LifePoints { get; set; } = 0;
@@ -54,31 +56,22 @@ public class Player
         Assets.Add(asset);
     }
 
-    public void BuyOrSellCar(Cars car, bool buying)
+    public void BuyOrSellCar(Cars carType, bool buying)
     {
-        int carValue = 0;
-        switch (car)
-        {
-            case Cars.Basic:
-                carValue = 15000; break;
-            case Cars.Luxury:
-                carValue = 50000; break;
-        }
-
         if (buying) 
         {
-            CashMoney -= carValue;
-            AddAsset(new Car(GameManager.Instance.CurrentYear, carValue));
+            Car newCar = new Car(GameManager.Instance.CurrentYear);
+            AddAsset(newCar);
+            CashMoney -= newCar.InitialValue;
         }
         else 
         {
             foreach (Asset asset in Assets)
             {
                 if (asset is Car carAsset && 
-                    carAsset.InitialValue == carValue && 
-                    carAsset.CarType == car)
+                    carAsset.CarType == carType)
                 {
-                    CashMoney += carValue;
+                    CashMoney += (int)carAsset.GetSellPrice();
                     Assets.Remove(asset);
                     break;
                 }
@@ -86,33 +79,22 @@ public class Player
         }
     }
 
-    public void BuyOrSellHouse(Houses house, bool buying)
+    public void BuyOrSellHouse(Houses houseType, bool buying)
     {
-        int houseValue = 0;
-        switch (house)
-        {
-            case Houses.Apartment:
-                houseValue = 100000; break;
-            case Houses.House:
-                houseValue = 250000; break;
-            case Houses.Mansion:
-                houseValue = 1000000; break;
-        }
-
         if (buying) 
         {
-            CashMoney -= houseValue;
-            AddAsset(new House(GameManager.Instance.CurrentYear, houseValue));
+            House newHouse = new House(GameManager.Instance.CurrentYear);
+            AddAsset(newHouse);
+            CashMoney -= newHouse.InitialValue;
         }
         else 
         {
             foreach (Asset asset in Assets)
             {
                 if (asset is House houseAsset && 
-                    houseAsset.InitialValue == houseValue && 
-                    houseAsset.HouseType == house)
+                    houseAsset.HouseType == houseType)
                 {
-                    CashMoney += houseValue;
+                    CashMoney += (int)houseAsset.GetSellPrice();
                     Assets.Remove(asset);
                     break;
                 }

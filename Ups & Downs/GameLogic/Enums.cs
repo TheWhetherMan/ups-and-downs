@@ -2,12 +2,13 @@ namespace UpsAndDowns.GameLogic.Enums
 {
     public enum GameStates
     {
-        NotStarted,
-        InProgress,
+        ConfiguringGame,
+        WaitingToStart,
+        AtHomeScreen,
         LotterySelection,
         LotteryResults,
         PlayerTurn,
-        Completed
+        Completed,
     }
 
     public enum ModifierLevel
@@ -51,13 +52,15 @@ namespace UpsAndDowns.GameLogic.Enums
     public enum Cars
     {
         Basic,
-        Luxury
+        Luxury,
+        Exotic
     }
 
     public enum Houses
     {
-        Apartment,
-        House,
+        FixerUpper,
+        Starter,
+        Luxury,
         Mansion
     }
 

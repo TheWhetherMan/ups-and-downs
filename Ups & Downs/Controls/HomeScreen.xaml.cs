@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows.Controls;
 using UpsAndDowns.GameLogic;
-using UpsAndDowns.Messages;
+using UpsAndDowns.GameLogic.Enums;
 
 namespace UpsAndDowns.Controls
 {
@@ -20,22 +20,60 @@ namespace UpsAndDowns.Controls
         {
             InitializeComponent();
             DataContext = this;
-            StartFirstTurn();
+            RegisterMessages();
+            Players = new ObservableCollection<Player>(GameManager.Instance.Players);
+        }
+
+        private void RegisterMessages()
+        {
+            WeakReferenceMessenger.Default.Register<Messages.GameStateChangedMessage>(this, (r, m) =>
+            {
+                if (GameManager.Instance.CurrentState == GameStates.PlayerTurn)
+                {
+                    ShowPlayerTurnScreen();
+                }
+                else if (GameManager.Instance.CurrentState == GameStates.AtHomeScreen)
+                {
+                    HidePlayerTurnScreen();
+                }
+            });
+            WeakReferenceMessenger.Default.Register<Messages.ReturnToHomeScreenMessage>(this, (r, m) =>
+            {
+                GameManager.Instance.CurrentState = GameStates.AtHomeScreen;
+            });
+            WeakReferenceMessenger.Default.Register<Messages.ReadyForFirstPlayerTurnMessage>(this, (r, m) =>
+            {
+                StartFirstTurn();
+            });
+            WeakReferenceMessenger.Default.Register<Messages.GameStartReadyMessage>(this, (r, m) =>
+            {
+                //Players = new ObservableCollection<Player>(GameManager.Instance.Players);
+            });
+        }
+
+        private void HidePlayerTurnScreen()
+        {
+            PlayerTurnScreenElement.Visibility = System.Windows.Visibility.Collapsed;
+        }
+
+        private void ShowPlayerTurnScreen()
+        {
+            PlayerTurnScreenElement.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void StartFirstTurn()
         {
             Debug.WriteLine("HomeScreen.StartFirstTurn");
             StartNextPlayersTurn();
+            GameManager.Instance.CurrentState = GameStates.PlayerTurn;
         }
 
         private void StartNextPlayersTurn()
         {
             Debug.WriteLine("HomeScreen.StartNextPlayersTurn");
-            Player nextPlayer = GameManager.Instance.SelectNextRandomPlayer();
+            GameManager.Instance.SelectNextRandomPlayer();
             PlayerTurnScreenElement.Visibility = System.Windows.Visibility.Visible;
-            PlayerTurnScreenElement.SetUpForPlayer(nextPlayer);
-            Debug.WriteLine($"HomeScreen.StartNextPlayersTurn -> {nextPlayer.PlayerNumber}");
+            Debug.WriteLine($"HomeScreen.StartNextPlayersTurn -> {GameManager.Instance.CurrentPlayer.PlayerNumber}");
         }
 
         private void PlayerCard_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

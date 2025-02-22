@@ -8,22 +8,34 @@ namespace UpsAndDowns.GameLogic
 {
     public class GameManager
 	{
-		private static GameManager? _instance;
+        private static GameManager? _instance;
 		public static GameManager Instance
 		{
 			get
 			{
-				if (_instance == null)
-					_instance = new GameManager();
+				_instance ??= new GameManager();
 				return _instance;
 			}
 		}
 
-		public GameStates CurrentState = GameStates.NotStarted;
-		public List<Player> Players { get; private set; } = new();
+        private GameStates _currentState = GameStates.WaitingToStart;
+        public GameStates CurrentState 
+		{ 
+			get => _currentState;
+			set 
+			{ 
+				_currentState = value; 
+				Debug.WriteLine($"GameManager.CurrentState -> {_currentState}");
+                WeakReferenceMessenger.Default.Send(new GameStateChangedMessage()); 
+			}
+		}
+
+        public List<Player> Players { get; private set; } = new();
+		public Player CurrentPlayer { get; private set; } = new(0);
 		public int GameLengthYears { get; private set; } = 10;
 		public int CurrentYear { get; private set; } = 0;
 		public int PlayerCount { get; private set; } = 0;
+		public bool GameHasStarted { get; internal set; } = false;
 
         private List<Player> _unselectedPlayers = new();
 		private Random _random = new();
@@ -41,16 +53,16 @@ namespace UpsAndDowns.GameLogic
 
         private void RegisterMessages()
         {
-			WeakReferenceMessenger.Default.Register<GoToStartNewGameMessage>(this, (r, m) => StartNewGame(m.PlayerCount));
+			WeakReferenceMessenger.Default.Register<StartNewGameMessage>(this, (r, m) => StartNewGame(m.PlayerCount));
         }
 
         public void StartNewGame(int playerCount)
 		{
 			Debug.WriteLine($"GameManager.StartNewGame: {playerCount}");
-            CurrentState = GameStates.InProgress;
             PlayerCount = playerCount;
             for (int i = 1; i <= playerCount; i++)
                 Players.Add(new Player(i));
+			WeakReferenceMessenger.Default.Send(new GameStartReadyMessage());
         }
 
 		public Player GetPlayer(int playerNumber)
@@ -58,16 +70,15 @@ namespace UpsAndDowns.GameLogic
 			return Players.FirstOrDefault(player => player.PlayerNumber == playerNumber)!;
         }
 
-		public Player SelectNextRandomPlayer()
+		public void SelectNextRandomPlayer()
 		{
 			// Reset the list of unselected players if there are none left
 			if (_unselectedPlayers.Count == 0)
 				_unselectedPlayers = new List<Player>(Players);
 
 			int index = _random.Next(_unselectedPlayers.Count);
-			Player selectedPlayer = _unselectedPlayers[index];
+            CurrentPlayer = _unselectedPlayers[index];
 			_unselectedPlayers.RemoveAt(index);
-			return selectedPlayer;
 		}
 		
 		public void AdvanceGameByOneYear()

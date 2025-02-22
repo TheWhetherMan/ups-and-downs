@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:UpsAndDowns"
         xmlns:controls="clr-namespace:UpsAndDowns.Controls"
         mc:Ignorable="d"
-        Title="Ups And Downs" Height="600" Width="1024">
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Title="Ups And Downs" 
+        Height="600" Width="1024">
     <Grid Background="{StaticResource CornflowerBlue}">
         <Grid x:Name="ParentGrid">
             <controls:TitleScreen />

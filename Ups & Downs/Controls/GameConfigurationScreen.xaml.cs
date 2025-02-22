@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using System.Windows.Controls;
+using UpsAndDowns.GameLogic;
 
 namespace UpsAndDowns.Controls
 {
@@ -33,7 +34,7 @@ namespace UpsAndDowns.Controls
 
         private void StartButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            WeakReferenceMessenger.Default.Send(new Messages.GoToStartNewGameMessage() 
+            WeakReferenceMessenger.Default.Send(new Messages.StartNewGameMessage() 
             { 
                 PlayerCount = PlayerCount 
             });

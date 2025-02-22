@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using System.Windows;
+using UpsAndDowns.GameLogic;
 
 namespace UpsAndDowns
 {
@@ -17,7 +18,7 @@ namespace UpsAndDowns
             {
                 GoToGameConfiguration();
             });
-            WeakReferenceMessenger.Default.Register<Messages.GoToStartNewGameMessage>(this, (r, m) =>
+            WeakReferenceMessenger.Default.Register<Messages.StartNewGameMessage>(this, (r, m) =>
             {
                 GoToGameHome();
             });
@@ -29,6 +30,7 @@ namespace UpsAndDowns
             {
                 ParentGrid.Children.Clear();
                 ParentGrid.Children.Add(new Controls.GameConfigurationScreen());
+                GameManager.Instance.CurrentState = GameLogic.Enums.GameStates.ConfiguringGame;
             });
         }
 
@@ -38,6 +40,7 @@ namespace UpsAndDowns
             {
                 ParentGrid.Children.Clear();
                 ParentGrid.Children.Add(new Controls.HomeScreen());
+                GameManager.Instance.CurrentState = GameLogic.Enums.GameStates.AtHomeScreen;
             });
         }
     }

@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using System.Diagnostics;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using UpsAndDowns.GameLogic;
+using UpsAndDowns.GameLogic.Enums;
 
 namespace UpsAndDowns.Controls
 {
@@ -20,6 +11,44 @@ namespace UpsAndDowns.Controls
         public ControlBar()
         {
             InitializeComponent();
+            RegisterMessages();
+        }
+
+        private void RegisterMessages()
+        {
+            WeakReferenceMessenger.Default.Register<Messages.GameStateChangedMessage>(this, (r, m) =>
+            {
+                if (GameManager.Instance.CurrentState == GameStates.AtHomeScreen && 
+                    GameManager.Instance.GameHasStarted)
+                {
+                    CenterButton.Content = "Back To Player Turn";
+                }
+            });
+        }
+
+        private void OptionsButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Debug.WriteLine("OptionsButton_Click");
+        }
+
+        private void CenterButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Debug.WriteLine("CenterButton_Click");
+            if (GameManager.Instance.GameHasStarted is false)
+            {
+                GameManager.Instance.GameHasStarted = true;
+                WeakReferenceMessenger.Default.Send(new Messages.ReadyForFirstPlayerTurnMessage());
+            }
+            else if (GameManager.Instance.CurrentState == GameStates.AtHomeScreen)
+            {
+                GameManager.Instance.CurrentState = GameStates.PlayerTurn;
+            }
+        }
+
+        private void EndGameButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Debug.WriteLine("EndGameButton_Click");
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }
