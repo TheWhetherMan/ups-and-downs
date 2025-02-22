@@ -35,6 +35,14 @@ namespace UpsAndDowns.GameLogic.Enums
         Marriage
     }
 
+    public enum BoardZones
+    {
+        Green,
+        Blue,
+        Yellow,
+        Pink
+    }
+
     public enum EducationLevels
     {
         Secondary,
