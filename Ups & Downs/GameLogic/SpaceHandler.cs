@@ -5,6 +5,10 @@ namespace UpsAndDowns.GameLogic
 {
     public class SpaceHandler
     {
+        /// <summary>
+        /// Handles the normal spaces on the board (i.e. the blank colored ones)
+        /// </summary>
+        /// <param name="zone">What color of space was landed on?</param>
         public void HandleNormalSpace(BoardZones zone)
         {
             Debug.WriteLine($"SpaceHandler.HandleNormalSpace: {zone}");
@@ -21,6 +25,10 @@ namespace UpsAndDowns.GameLogic
             }
         }
 
+        /// <summary>
+        /// Handles the special spaces on the board (i.e. the ones with icons)
+        /// </summary>
+        /// <param name="spaceType">What type of special space was landed on?</param>
         public void HandleSpecialSpace(SpaceTypes spaceType)
         {
             Debug.WriteLine($"SpaceHandler.HandleSpecialSpace: {spaceType}");
