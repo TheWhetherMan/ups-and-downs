@@ -6,11 +6,15 @@ using UpsAndDowns.GameLogic.Misc;
 
 public class Player
 {
+    // Identification properties
     public string PlayerDisplayName => "Player " + PlayerNumber;
-
     public int PlayerNumber { get; set; }
+
+    // Core player properties
     public int CashMoney { get; set; } = 0;
     public double LifePoints { get; set; } = 0;
+
+    // Special/auxiliary properties
     public EducationLevels EducationLevel { get; set; } = EducationLevels.Secondary;
     public int CareerLevel { get; set; } = 0;
     public int Salary { get; set; } = 0;
