@@ -28,12 +28,12 @@ public partial class ControlBar : UserControl
 
     private void OptionsButton_Click(object sender, System.Windows.RoutedEventArgs e)
     {
-        Debug.WriteLine("OptionsButton_Click");
+        Logger.Log("OptionsButton_Click");
     }
 
     private void CenterButton_Click(object sender, System.Windows.RoutedEventArgs e)
     {
-        Debug.WriteLine("CenterButton_Click");
+        Logger.Log("CenterButton_Click");
         if (GameManager.Instance.GameHasStarted is false)
         {
             GameManager.Instance.GameHasStarted = true;
@@ -47,7 +47,7 @@ public partial class ControlBar : UserControl
 
     private void EndGameButton_Click(object sender, System.Windows.RoutedEventArgs e)
     {
-        Debug.WriteLine("EndGameButton_Click");
+        Logger.Log("EndGameButton_Click");
         System.Windows.Application.Current.Shutdown();
     }
 }
