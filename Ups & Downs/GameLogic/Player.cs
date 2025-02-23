@@ -1,8 +1,9 @@
-using UpsAndDowns.GameLogic;
 using UpsAndDowns.GameLogic.Assets;
-using UpsAndDowns.GameLogic.Effects;
+using UpsAndDowns.GameLogic.Events;
 using UpsAndDowns.GameLogic.Enums;
 using UpsAndDowns.GameLogic.Misc;
+
+namespace UpsAndDowns.GameLogic;
 
 public class Player
 {
@@ -23,7 +24,6 @@ public class Player
     public int Children { get; set; } = 0;
     public List<Asset> Assets { get; set; } = new();
     public SpaceTypes CurrentSpace { get; set; } = SpaceTypes.Start;
-    public CardPosPoint CardPosition { get; set; } = new(0, 0);
     public bool MovedThisTurn { get; set; } = false;
 
     public Player(int playerNumber)
@@ -38,7 +38,7 @@ public class Player
         LifePoints += 100;
     }
 
-    public void ApplyGameEvent(GameEvent eve, ModifierLevel modLevel)
+    public void ApplyGameEvent(GameEvent eve, LuckyStars modLevel)
     {
         if (eve.CashMoneyChange is int cash)
             CashMoney += eve.GetCashMoneyModifier(modLevel).ModifyCashMoney(cash);
