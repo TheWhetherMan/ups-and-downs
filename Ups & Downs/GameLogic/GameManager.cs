@@ -1,7 +1,7 @@
 using CommunityToolkit.Mvvm.Messaging;
 using UpsAndDowns.BusinessLogic;
-using UpsAndDowns.GameLogic.Effects;
 using UpsAndDowns.GameLogic.Enums;
+using UpsAndDowns.GameLogic.Events;
 using UpsAndDowns.Messages;
 
 namespace UpsAndDowns.GameLogic;
@@ -94,8 +94,8 @@ public class GameManager
             Logger.Log($"Starting year {CurrentYear}...");
     }
 
-    public void ApplyGameEvent(GameEvent eve, ModifierLevel modLevel, Player affectedPlayer)
+    public void ApplyGameEvent(GameEvent eve, LuckyStars luck, Player affectedPlayer)
     {
-        affectedPlayer.ApplyGameEvent(eve, modLevel);
+        affectedPlayer.ApplyGameEvent(eve, luck);
     }
 }
