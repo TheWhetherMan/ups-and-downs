@@ -11,7 +11,7 @@ public enum GameStates
     Completed,
 }
 
-public enum ModifierLevel
+public enum LuckyStars
 {
     Terrible,
     Bad,
@@ -80,8 +80,12 @@ public enum LotteryResults
     
 public enum EndOfYearEvents
 {
-    PartyPinata,    // All players roll their dice -- the player with the highest roll gets a bonus
-    DarkCurse,      // All players gain demerits
-    LuckyBreak,     // All players gain favors
-    BackToStart,    // All players roll their dice -- the player with the lowest roll goes back to start
+    ///<summary>All players roll their dice -- the player with the highest roll gets a bonus</summary>
+    PartyPinata,
+    ///<summary>All players gain demerits</summary>
+    DarkCurse,
+    ///<summary>All players gain favors</summary>
+    LuckyBreak,
+    ///<summary>All players roll their dice -- lowest or low roller(s) go back to start</summary>
+    BackToStart,
 }

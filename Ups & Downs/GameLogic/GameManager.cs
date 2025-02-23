@@ -94,7 +94,7 @@ public class GameManager
 			Debug.WriteLine($"Starting year {CurrentYear}...");
 	}
 
-	public void ApplyGameEvent(GameEvent eve, ModifierLevel modLevel, Player affectedPlayer)
+	public void ApplyGameEvent(GameEvent eve, LuckyStars modLevel, Player affectedPlayer)
 	{
 		affectedPlayer.ApplyGameEvent(eve, modLevel);
 	}

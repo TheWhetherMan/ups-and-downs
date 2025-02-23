@@ -2,7 +2,7 @@ using UpsAndDowns.GameLogic.Enums;
 
 namespace UpsAndDowns.GameLogic.Events;
 
-/// <summary></summary>
+/// <summary>A general-purpose event that can alter money, life points, career, and salary</summary>
 public record GameEvent
 {
     /// <summary>The user-facing description of the event</summary>
@@ -16,17 +16,17 @@ public record GameEvent
     /// <summary>Increment or decrement the player's salary by this much</summary>
     public int? SalaryChange { get; init; }
 
-    public CashMoneyModifier GetCashMoneyModifier(ModifierLevel modLevel) 
-        => new() { ModifierLevel = modLevel };
+    public CashMoneyModifier GetCashMoneyModifier(LuckyStars modLevel) 
+        => new() { LuckyStarsFactor = modLevel };
 
-    public LifePointsModifier GetLifePointsModifier(ModifierLevel modLevel) 
-        => new() { ModifierLevel = modLevel };
+    public LifePointsModifier GetLifePointsModifier(LuckyStars modLevel) 
+        => new() { LuckyStarsFactor = modLevel };
 
-    public CareerModifer GetCareerChangeModifier(ModifierLevel modLevel)
+    public CareerModifer GetCareerChangeModifier(LuckyStars modLevel)
         => CareerChange > 0 
-            ? new CareerPromotionModifier() { ModifierLevel = modLevel }
-            : new CareerDemotionModifier() { ModifierLevel = modLevel };
+            ? new CareerPromotionModifier() { LuckyStarsFactor = modLevel }
+            : new CareerDemotionModifier() { LuckyStarsFactor = modLevel };
 
-    public SalaryModifier GetSalaryModifier(ModifierLevel modLevel)
-        => new() { ModifierLevel = modLevel };
+    public SalaryModifier GetSalaryModifier(LuckyStars modLevel)
+        => new() { LuckyStarsFactor = modLevel };
 }
