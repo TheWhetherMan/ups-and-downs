@@ -1,6 +1,6 @@
 using UpsAndDowns.GameLogic.Enums;
 
-namespace UpsAndDowns.GameLogic.Effects;
+namespace UpsAndDowns.GameLogic.Events;
 
 /// <summary>This is the variable that a player can influence during an event</summary>
 public abstract record GameEventModifier

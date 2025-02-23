@@ -1,6 +1,5 @@
-﻿namespace UpsAndDowns.Messages
+﻿namespace UpsAndDowns.Messages;
+
+internal class GameStartReadyMessage
 {
-    internal class GameStartReadyMessage
-    {
-    }
 }

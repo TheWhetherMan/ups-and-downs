@@ -1,4 +1,4 @@
-namespace UpsAndDowns.GameLogic.Effects;
+namespace UpsAndDowns.GameLogic.Events;
 
 /// <summary>
 /// Can be introduced at various points during a game, 

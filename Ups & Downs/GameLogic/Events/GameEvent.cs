@@ -1,6 +1,6 @@
 using UpsAndDowns.GameLogic.Enums;
 
-namespace UpsAndDowns.GameLogic.Effects;
+namespace UpsAndDowns.GameLogic.Events;
 
 /// <summary></summary>
 public record GameEvent

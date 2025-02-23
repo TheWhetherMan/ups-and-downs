@@ -1,8 +1,9 @@
-using UpsAndDowns.GameLogic;
 using UpsAndDowns.GameLogic.Assets;
-using UpsAndDowns.GameLogic.Effects;
+using UpsAndDowns.GameLogic.Events;
 using UpsAndDowns.GameLogic.Enums;
 using UpsAndDowns.GameLogic.Misc;
+
+namespace UpsAndDowns.GameLogic;
 
 public class Player
 {
