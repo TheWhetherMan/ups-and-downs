@@ -1,6 +1,5 @@
-﻿namespace UpsAndDowns.Messages
+﻿namespace UpsAndDowns.Messages;
+
+public class ReadyForFirstPlayerTurnMessage
 {
-    public class ReadyForFirstPlayerTurnMessage
-    {
-    }
 }

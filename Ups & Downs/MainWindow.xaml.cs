@@ -2,46 +2,45 @@
 using System.Windows;
 using UpsAndDowns.GameLogic;
 
-namespace UpsAndDowns
+namespace UpsAndDowns;
+
+public partial class MainWindow : Window
 {
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-            RegisterMessages();
-        }
+        InitializeComponent();
+        RegisterMessages();
+    }
 
-        private void RegisterMessages()
+    private void RegisterMessages()
+    {
+        WeakReferenceMessenger.Default.Register<Messages.GoToConfigureGameMessage>(this, (r, m) =>
         {
-            WeakReferenceMessenger.Default.Register<Messages.GoToConfigureGameMessage>(this, (r, m) =>
-            {
-                GoToGameConfiguration();
-            });
-            WeakReferenceMessenger.Default.Register<Messages.StartNewGameMessage>(this, (r, m) =>
-            {
-                GoToGameHome();
-            });
-        }
+            GoToGameConfiguration();
+        });
+        WeakReferenceMessenger.Default.Register<Messages.StartNewGameMessage>(this, (r, m) =>
+        {
+            GoToGameHome();
+        });
+    }
 
-        private void GoToGameConfiguration()
+    private void GoToGameConfiguration()
+    {
+        Dispatcher.Invoke(() =>
         {
-            Dispatcher.Invoke(() =>
-            {
-                ParentGrid.Children.Clear();
-                ParentGrid.Children.Add(new Controls.GameConfigurationScreen());
-                GameManager.Instance.CurrentState = GameLogic.Enums.GameStates.ConfiguringGame;
-            });
-        }
+            ParentGrid.Children.Clear();
+            ParentGrid.Children.Add(new Controls.GameConfigurationScreen());
+            GameManager.Instance.CurrentState = GameLogic.Enums.GameStates.ConfiguringGame;
+        });
+    }
 
-        private void GoToGameHome()
+    private void GoToGameHome()
+    {
+        Dispatcher.Invoke(() =>
         {
-            Dispatcher.Invoke(() =>
-            {
-                ParentGrid.Children.Clear();
-                ParentGrid.Children.Add(new Controls.HomeScreen());
-                GameManager.Instance.CurrentState = GameLogic.Enums.GameStates.AtHomeScreen;
-            });
-        }
+            ParentGrid.Children.Clear();
+            ParentGrid.Children.Add(new Controls.HomeScreen());
+            GameManager.Instance.CurrentState = GameLogic.Enums.GameStates.AtHomeScreen;
+        });
     }
 }

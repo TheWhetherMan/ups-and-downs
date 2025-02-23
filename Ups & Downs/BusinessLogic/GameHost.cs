@@ -1,12 +1,8 @@
 ﻿using UpsAndDowns.GameLogic;
 
-namespace UpsAndDowns.BusinessLogic
+namespace UpsAndDowns.BusinessLogic;
+
+public class GameHost
 {
-    public class GameHost
-    {
-        public void InitializeHost()
-        {
-            GameManager.Instance.InitializeGame();
-        }
-    }
+
 }

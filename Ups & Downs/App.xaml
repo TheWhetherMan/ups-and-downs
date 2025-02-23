@@ -1,7 +1,7 @@
-﻿<Application x:Class="Ups___Downs.App"
+﻿<Application x:Class="UpsAndDowns.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Ups___Downs"
+             xmlns:local="clr-namespace:UpsAndDowns"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>

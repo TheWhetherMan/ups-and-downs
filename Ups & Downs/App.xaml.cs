@@ -1,17 +1,15 @@
-﻿using System.IO;
-using System.Windows;
+﻿using System.Windows;
 using UpsAndDowns.BusinessLogic;
+using UpsAndDowns.GameLogic;
 
-namespace Ups___Downs
+namespace UpsAndDowns;
+
+public partial class App : Application
 {
-    public partial class App : Application
-    {
-        public GameHost Host { get; private set; }
+    public GameHost Host { get; private set; }
 
-        public App()
-        {
-            Host = new GameHost();
-            Host.InitializeHost();
-        }
+    public App()
+    {
+        GameManager.Instance.InitializeGame();
     }
 }

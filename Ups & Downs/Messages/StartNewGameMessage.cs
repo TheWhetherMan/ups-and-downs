@@ -1,7 +1,6 @@
-﻿namespace UpsAndDowns.Messages
+﻿namespace UpsAndDowns.Messages;
+
+internal class StartNewGameMessage
 {
-    internal class StartNewGameMessage
-    {
-        public int PlayerCount { get; init; }
-    }
+    public int PlayerCount { get; init; }
 }

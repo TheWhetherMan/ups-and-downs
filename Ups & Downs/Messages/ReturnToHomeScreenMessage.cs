@@ -1,6 +1,5 @@
-﻿namespace UpsAndDowns.Messages
+﻿namespace UpsAndDowns.Messages;
+
+internal class ReturnToHomeScreenMessage
 {
-    internal class ReturnToHomeScreenMessage
-    {
-    }
 }

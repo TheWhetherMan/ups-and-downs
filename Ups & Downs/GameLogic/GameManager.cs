@@ -4,11 +4,11 @@ using UpsAndDowns.GameLogic.Effects;
 using UpsAndDowns.GameLogic.Enums;
 using UpsAndDowns.Messages;
 
-namespace UpsAndDowns.GameLogic
-{
-    public class GameManager
+namespace UpsAndDowns.GameLogic;
+
+public class GameManager
 	{
-        private static GameManager? _instance;
+    private static GameManager? _instance;
 		public static GameManager Instance
 		{
 			get
@@ -18,57 +18,57 @@ namespace UpsAndDowns.GameLogic
 			}
 		}
 
-        private GameStates _currentState = GameStates.WaitingToStart;
-        public GameStates CurrentState 
+    private GameStates _currentState = GameStates.WaitingToStart;
+    public GameStates CurrentState 
 		{ 
 			get => _currentState;
 			set 
 			{ 
 				_currentState = value; 
 				Debug.WriteLine($"GameManager.CurrentState -> {_currentState}");
-                WeakReferenceMessenger.Default.Send(new GameStateChangedMessage()); 
+            WeakReferenceMessenger.Default.Send(new GameStateChangedMessage()); 
 			}
 		}
 
-        public List<Player> Players { get; private set; } = new();
+    public List<Player> Players { get; private set; } = new();
 		public Player CurrentPlayer { get; private set; } = new(0);
 		public int GameLengthYears { get; private set; } = 10;
 		public int CurrentYear { get; private set; } = 0;
 		public int PlayerCount { get; private set; } = 0;
 		public bool GameHasStarted { get; internal set; } = false;
 
-        private List<Player> _unselectedPlayers = new();
+    private List<Player> _unselectedPlayers = new();
 		private Random _random = new();
 
-        private GameManager() 
+    private GameManager() 
 		{	
 			Debug.WriteLine("GameManager.Constructor");
-        }
+    }
 
 		internal void InitializeGame()
-        {
-            Debug.WriteLine("GameManager.InitializeGame");
-            RegisterMessages();
-        }
+    {
+        Debug.WriteLine("GameManager.InitializeGame");
+        RegisterMessages();
+    }
 
-        private void RegisterMessages()
-        {
+    private void RegisterMessages()
+    {
 			WeakReferenceMessenger.Default.Register<StartNewGameMessage>(this, (r, m) => StartNewGame(m.PlayerCount));
-        }
+    }
 
-        public void StartNewGame(int playerCount)
+    public void StartNewGame(int playerCount)
 		{
 			Debug.WriteLine($"GameManager.StartNewGame: {playerCount}");
-            PlayerCount = playerCount;
-            for (int i = 1; i <= playerCount; i++)
-                Players.Add(new Player(i));
+        PlayerCount = playerCount;
+        for (int i = 1; i <= playerCount; i++)
+            Players.Add(new Player(i));
 			WeakReferenceMessenger.Default.Send(new GameStartReadyMessage());
-        }
+    }
 
 		public Player GetPlayer(int playerNumber)
 		{
 			return Players.FirstOrDefault(player => player.PlayerNumber == playerNumber)!;
-        }
+    }
 
 		public void SelectNextRandomPlayer()
 		{
@@ -77,7 +77,7 @@ namespace UpsAndDowns.GameLogic
 				_unselectedPlayers = new List<Player>(Players);
 
 			int index = _random.Next(_unselectedPlayers.Count);
-            CurrentPlayer = _unselectedPlayers[index];
+        CurrentPlayer = _unselectedPlayers[index];
 			_unselectedPlayers.RemoveAt(index);
 		}
 		
@@ -98,5 +98,4 @@ namespace UpsAndDowns.GameLogic
 		{
 			affectedPlayer.ApplyGameEvent(eve, modLevel);
 		}
-    }
 }

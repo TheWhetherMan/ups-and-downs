@@ -1,7 +1,6 @@
-﻿namespace UpsAndDowns.Messages
-{
-    internal class GoToConfigureGameMessage
-    {
+﻿namespace UpsAndDowns.Messages;
 
-    }
+internal class GoToConfigureGameMessage
+{
+
 }

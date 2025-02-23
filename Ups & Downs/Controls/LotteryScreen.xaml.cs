@@ -13,16 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UpsAndDowns.Controls
+namespace UpsAndDowns.Controls;
+
+/// <summary>
+/// Interaction logic for LotteryScreen.xaml
+/// </summary>
+public partial class LotteryScreen : UserControl
 {
-    /// <summary>
-    /// Interaction logic for LotteryScreen.xaml
-    /// </summary>
-    public partial class LotteryScreen : UserControl
+    public LotteryScreen()
     {
-        public LotteryScreen()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
