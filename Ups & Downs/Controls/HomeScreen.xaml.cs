@@ -45,10 +45,6 @@ public partial class HomeScreen : UserControl
         {
             StartFirstTurn();
         });
-        WeakReferenceMessenger.Default.Register<Messages.GameStartReadyMessage>(this, (r, m) =>
-        {
-            //Players = new ObservableCollection<Player>(GameManager.Instance.Players);
-        });
     }
 
     private void HidePlayerTurnScreen()

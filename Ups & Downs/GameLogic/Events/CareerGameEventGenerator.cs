@@ -2,14 +2,25 @@ using UpsAndDowns.GameLogic.Enums;
 
 namespace UpsAndDowns.GameLogic.Events;
 
-public class GameEventBlueSpaceGenerator
+public class CareerGameEventGenerator
 {
-	/// <summary>
-	/// Generates a list of events that can occur when a player lands on a blue (i.e. career) space.
-	/// </summary>
-	public static List<GameEvent> GenerateBlueSpaceEvents()
+	private static List<GameEvent>? _blueEvents;
+
+    public static GameEvent GetRandomBlueSpaceEvent()
+    {
+        List<GameEvent> blueEvents = GenerateBlueSpaceEvents();
+        return blueEvents[new Random().Next(0, blueEvents.Count)];
+    }
+
+    /// <summary>
+    /// Generates a list of events that can occur when a player lands on a blue (i.e. career) space.
+    /// </summary>
+    public static List<GameEvent> GenerateBlueSpaceEvents()
 	{
-		List<GameEvent> blueEvents = new()
+		if (_blueEvents is not null)
+            return _blueEvents;
+
+        List<GameEvent> blues = new()
 		{
 			new GameEvent
 			{
@@ -47,6 +58,7 @@ public class GameEventBlueSpaceGenerator
 			},
 		};
 
-		return blueEvents;
+		_blueEvents = blues;
+        return _blueEvents;
 	}
 }

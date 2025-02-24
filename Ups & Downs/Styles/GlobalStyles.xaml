@@ -4,7 +4,7 @@
     <SolidColorBrush x:Key="CelestialBlue" Color="#009DDC"/>
     <SolidColorBrush x:Key="Celadon" Color="#80D39B"/>
     <SolidColorBrush x:Key="YInMnBlue" Color="#3E517A"/>
-    <SolidColorBrush x:Key="YInMnBlueDark" Color="#242f47"/> 
+    <SolidColorBrush x:Key="YInMnBlueDark" Color="#242f47"/>
     <SolidColorBrush x:Key="CornflowerBlue" Color="CornflowerBlue"/>
     <SolidColorBrush x:Key="RoseRed" Color="#C33C54"/>
     <SolidColorBrush x:Key="Mustard" Color="#FCD757"/>
@@ -13,16 +13,16 @@
         <Setter Property="Width" Value="1280"/>
         <Setter Property="Height" Value="800"/>
     </Style>
-    
+
     <Style TargetType="{x:Type TextBlock}">
         <Setter Property="FontFamily" Value="Consolas" />
     </Style>
 
-    <Style x:Key="BasicButtonStyleRed" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource RoseRed}"/>
-        <Setter Property="FontWeight" Value="Bold" />
+    <!-- Base Button Style -->
+    <Style x:Key="BaseButtonStyle" TargetType="Button">
         <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Padding" Value="10,5"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="Width" Value="200"/>
@@ -44,82 +44,42 @@
         </Setter>
     </Style>
 
-    <Style x:Key="BasicButtonStyleGreen" TargetType="Button">
+    <!-- Derived Button Styles -->
+    <Style x:Key="BasicButtonStyleRed" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource RoseRed}"/>
+    </Style>
+
+    <Style x:Key="BasicButtonStyleGreen" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
         <Setter Property="Background" Value="{StaticResource Celadon}"/>
-        <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Padding" Value="10,5"/>
-        <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="Width" Value="200"/>
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="Margin" Value="10"/>
-        <Setter Property="BorderBrush" Value="#2D0605"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="5">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
     </Style>
 
-    <Style x:Key="BasicButtonStyleBlue" TargetType="Button">
+    <Style x:Key="BasicButtonStyleBlue" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
         <Setter Property="Background" Value="{StaticResource CelestialBlue}"/>
-        <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Padding" Value="10,5"/>
-        <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="Width" Value="200"/>
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="Margin" Value="10"/>
-        <Setter Property="BorderBrush" Value="#2D0605"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="5">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
     </Style>
 
-    <Style x:Key="BasicButtonStyleOrange" TargetType="Button">
+    <Style x:Key="BasicButtonStyleOrange" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
         <Setter Property="Background" Value="{StaticResource Mustard}"/>
-        <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Padding" Value="10,5"/>
-        <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="Width" Value="200"/>
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="Margin" Value="10"/>
-        <Setter Property="BorderBrush" Value="#2D0605"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="5">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+    </Style>
+
+    <!-- Derived (Tall) Button Styles -->
+    <Style x:Key="TallButtonStyleRed" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource RoseRed}"/>
+        <Setter Property="Height" Value="80"/>
+    </Style>
+
+    <Style x:Key="TallButtonStyleGreen" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource Celadon}"/>
+        <Setter Property="Height" Value="80"/>
+    </Style>
+
+    <Style x:Key="TallButtonStyleBlue" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource CelestialBlue}"/>
+        <Setter Property="Height" Value="80"/>
+    </Style>
+
+    <Style x:Key="TallButtonStyleOrange" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource Mustard}"/>
+        <Setter Property="Height" Value="80"/>
     </Style>
 
 </ResourceDictionary>

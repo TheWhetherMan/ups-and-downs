@@ -9,7 +9,7 @@ public class SpaceHandler
     /// Handles the normal spaces on the board (i.e. the blank colored ones)
     /// </summary>
     /// <param name="zone">What color of space was landed on?</param>
-    public void HandleNormalSpace(BoardZones zone)
+    public void GetNormalSpaceEvent(BoardZones zone)
     {
         Logger.Log($"SpaceHandler.HandleNormalSpace", zone);
         switch (zone)

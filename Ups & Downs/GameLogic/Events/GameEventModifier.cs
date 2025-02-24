@@ -16,18 +16,22 @@ public abstract record GameEventModifier
 
 public sealed record CashMoneyModifier : GameEventModifier
 {
-    public override int ModifyCashMoney(int cashChange) 
-        => (int)(cashChange * cashChange > 0 
-            ? PercentageModifiers[(int)LuckyStarsFactor] 
-            : PercentageModifiers[6 - (int)LuckyStarsFactor]);
+    public override int ModifyCashMoney(int cashChange)
+    {
+        return cashChange > 0
+            ? (int)(cashChange * PercentageModifiers[(int)LuckyStarsFactor])
+            : (int)(cashChange * PercentageModifiers[6 - (int)LuckyStarsFactor]);
+    }
 }
 
 public sealed record LifePointsModifier : GameEventModifier
 {
-    public override int ModifyLifePoints(int lifePointsChange) 
-        => (int)(lifePointsChange * lifePointsChange > 0 
-            ? PercentageModifiers[(int)LuckyStarsFactor] 
-            : PercentageModifiers[6 - (int)LuckyStarsFactor]);
+    public override int ModifyLifePoints(int lifePointsChange)
+    {
+        return lifePointsChange > 0
+            ? (int)(lifePointsChange * PercentageModifiers[(int)LuckyStarsFactor])
+            : (int)(lifePointsChange * PercentageModifiers[6 - (int)LuckyStarsFactor]);
+    }
 }
 
 public abstract record CareerModifer : GameEventModifier;

@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using UpsAndDowns.BusinessLogic;
 using UpsAndDowns.GameLogic;
 using UpsAndDowns.GameLogic.Enums;
+using UpsAndDowns.GameLogic.Events;
 
 namespace UpsAndDowns.Controls;
 
@@ -16,6 +17,15 @@ public partial class PlayerTurnScreen : UserControl
         InitializeComponent();
         _spaceHandler = new SpaceHandler();
         IsVisibleChanged += PlayerTurnScreen_IsVisibleChanged;
+        RegisterMessages();
+    }
+
+    private void RegisterMessages()
+    {
+        WeakReferenceMessenger.Default.Register<Messages.BackToPlayerTurnScreenMessage>(this, (r, m) =>
+        {
+            BasicEventControlElement.Visibility = Visibility.Collapsed;
+        });
     }
 
     private void PlayerTurnScreen_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -37,29 +47,37 @@ public partial class PlayerTurnScreen : UserControl
         WeakReferenceMessenger.Default.Send(new Messages.ReturnToHomeScreenMessage());
     }
 
+    // BASIC BUTTONS
+
     private void SpaceButton_Green(object sender, RoutedEventArgs e)
     {
         Logger.Log("SpaceButton_Green");
-        _spaceHandler.HandleNormalSpace(BoardZones.Green);
+        BasicEventControlElement.UpdateForEvent(EducationGameEventGenerator.GetRandomGreenSpaceEvent());
+        BasicEventControlElement.Visibility = Visibility.Visible;
     }
 
     private void SpaceButton_Blue(object sender, RoutedEventArgs e)
     {
         Logger.Log("SpaceButton_Blue");
-        _spaceHandler.HandleNormalSpace(BoardZones.Blue);
+        BasicEventControlElement.UpdateForEvent(CareerGameEventGenerator.GetRandomBlueSpaceEvent());
+        BasicEventControlElement.Visibility = Visibility.Visible;
     }
 
     private void SpaceButton_Yellow(object sender, RoutedEventArgs e)
     {
         Logger.Log("SpaceButton_Yellow");
-        _spaceHandler.HandleNormalSpace(BoardZones.Yellow);
+        BasicEventControlElement.UpdateForEvent(AdventureGameEventGenerator.GetRandomYellowSpaceEvent());
+        BasicEventControlElement.Visibility = Visibility.Visible;
     }
 
     private void SpaceButton_Pink(object sender, RoutedEventArgs e)
     {
         Logger.Log("SpaceButton_Pink");
-        _spaceHandler.HandleNormalSpace(BoardZones.Pink);
+        BasicEventControlElement.UpdateForEvent(LoveGameEventGenerator.GetRandomPinkSpaceEvent());
+        BasicEventControlElement.Visibility = Visibility.Visible;
     }
+
+    // SPECIAL BUTTONS
 
     private void SpecialButton_Education(object sender, RoutedEventArgs e)
     {
