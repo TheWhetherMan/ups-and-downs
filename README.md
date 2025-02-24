@@ -14,7 +14,7 @@ _Ups & Downs_ is a reimagining of the Milton Bradley board game _The Game of Lif
 
 ## Architecture
 
-_Ups & Downs_ was originally being built using **Blazor** such that it could be run on a Raspberry Pi 5. While that did work, it was also a pain to work _with_. That said, the project is being built using **WPF** now.
+_Ups & Downs_ was originally being built using **Blazor** such that it could be run on a Raspberry Pi 5. While that did work, it was also a pain to work _with_. The project is being built using **WPF** now.
 
 ## Gameplay Mechanics & Changes
 
@@ -51,13 +51,13 @@ In _Twists & Turns_, there's a significant gap during gameplay where you aren't 
 
 What used to be a player drawing and reading a LIFE card will now be handled entirely by the game unit, saving time for all players.
 
-### More agency/control for each player -> Favors & Demerits
+### More agency/control for each player -> (Un)Lucky Stars
 
-Randomized events that pertain to a particular player will have a modifier mechanic that the player can control to hopefully improve the outcome. This is where favors and demerits come into play. If a player has favors on hand to cash in, they can improve the outcome of an event if they choose to. If they have accumulated any demerits, then they _must_ use them in the event, which will worsen the outcome.
+Randomized events that pertain to a particular player will have a modifier mechanic that the player can control to hopefully improve the outcome. This is where lucky stars come into play. If a player has them on hand to cash in, they can improve the outcome of an event if they choose to. If they have accumulated any unlucky stars, then they _must_ use them in the event, which will worsen the outcome.
 
 ## Hardware
 
-The current intended hardware spec is:
+Hardware being targeted:
 
 ```
 GMKtec Mini PC
