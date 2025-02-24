@@ -38,19 +38,19 @@ public class Player
         LifePoints += 100;
     }
 
-    public void ApplyGameEvent(GameEvent eve, LuckyStars modLevel)
+    public void ApplyGameEvent(GameEvent eve, LuckyStars luck)
     {
         if (eve.CashMoneyChange is int cash)
-            CashMoney += eve.GetCashMoneyModifier(modLevel).ModifyCashMoney(cash);
+            CashMoney += eve.GetCashMoneyModifier(luck).ModifyCashMoney(cash);
 
         if (eve.LifePointsChange is int life)
-            LifePoints += eve.GetLifePointsModifier(modLevel).ModifyLifePoints(life);
+            LifePoints += eve.GetLifePointsModifier(luck).ModifyLifePoints(life);
 
         if (eve.CareerChange is not null)
-            CareerLevel += eve.GetCareerChangeModifier(modLevel).ModifyCareerLevel();
+            CareerLevel += eve.GetCareerChangeModifier(luck).ModifyCareerLevel();
 
         if (eve.SalaryChange is int salary)
-            Salary += eve.GetSalaryModifier(modLevel).ModifySalary(salary);
+            Salary += eve.GetSalaryModifier(luck).ModifySalary(salary);
 
         CheckCurrentState();
     }

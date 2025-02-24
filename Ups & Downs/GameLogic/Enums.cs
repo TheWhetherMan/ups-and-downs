@@ -77,7 +77,7 @@ public enum LotteryResults
     NoWinner,
     Winner
 }
-    
+
 public enum EndOfYearEvents
 {
     ///<summary>All players roll their dice -- the player with the highest roll gets a bonus</summary>

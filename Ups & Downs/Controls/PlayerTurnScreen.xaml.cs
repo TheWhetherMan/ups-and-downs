@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using UpsAndDowns.BusinessLogic;
 using UpsAndDowns.GameLogic;
 using UpsAndDowns.GameLogic.Enums;
 
@@ -33,73 +33,73 @@ public partial class PlayerTurnScreen : UserControl
 
     private void BackButton_Click(object sender, RoutedEventArgs e)
     {
-        Debug.WriteLine("BackButton_Click");
+        Logger.Log("BackButton_Click");
         WeakReferenceMessenger.Default.Send(new Messages.ReturnToHomeScreenMessage());
     }
 
     private void SpaceButton_Green(object sender, RoutedEventArgs e)
     {
-        Debug.WriteLine("SpaceButton_Green");
+        Logger.Log("SpaceButton_Green");
         _spaceHandler.HandleNormalSpace(BoardZones.Green);
     }
 
     private void SpaceButton_Blue(object sender, RoutedEventArgs e)
     {
-        Debug.WriteLine("SpaceButton_Blue");
+        Logger.Log("SpaceButton_Blue");
         _spaceHandler.HandleNormalSpace(BoardZones.Blue);
     }
 
     private void SpaceButton_Yellow(object sender, RoutedEventArgs e)
     {
-        Debug.WriteLine("SpaceButton_Yellow");
+        Logger.Log("SpaceButton_Yellow");
         _spaceHandler.HandleNormalSpace(BoardZones.Yellow);
     }
 
     private void SpaceButton_Pink(object sender, RoutedEventArgs e)
     {
-        Debug.WriteLine("SpaceButton_Pink");
+        Logger.Log("SpaceButton_Pink");
         _spaceHandler.HandleNormalSpace(BoardZones.Pink);
     }
 
     private void SpecialButton_Education(object sender, RoutedEventArgs e)
     {
-        Debug.WriteLine("SpecialButton_Education");
+        Logger.Log("SpecialButton_Education");
         _spaceHandler.HandleSpecialSpace(SpaceTypes.Education);
     }
 
     private void SpecialButton_Promotion(object sender, RoutedEventArgs e)
     {
-        Debug.WriteLine("SpecialButton_Promotion");
+        Logger.Log("SpecialButton_Promotion");
         _spaceHandler.HandleSpecialSpace(SpaceTypes.Promotion);
     }
 
     private void SpecialButton_Marriage(object sender, RoutedEventArgs e)
     {
-        Debug.WriteLine("SpecialButton_Marriage");
+        Logger.Log("SpecialButton_Marriage");
         _spaceHandler.HandleSpecialSpace(SpaceTypes.Marriage);
     }
 
     private void SpecialButton_Children(object sender, RoutedEventArgs e)
     {
-        Debug.WriteLine("SpecialButton_Children");
+        Logger.Log("SpecialButton_Children");
         _spaceHandler.HandleSpecialSpace(SpaceTypes.Children);
     }
 
     private void SpecialButton_SpecialEvent(object sender, RoutedEventArgs e)
     {
-        Debug.WriteLine("SpecialButton_SpecialEvent");
+        Logger.Log("SpecialButton_SpecialEvent");
         _spaceHandler.HandleSpecialSpace(SpaceTypes.Event);
     }
 
     private void SpecialButton_BuyCar(object sender, RoutedEventArgs e)
     {
-        Debug.WriteLine("SpecialButton_BuyCar");
+        Logger.Log("SpecialButton_BuyCar");
         _spaceHandler.HandleSpecialSpace(SpaceTypes.Car);
     }
 
     private void SpecialButton_BuyHouse(object sender, RoutedEventArgs e)
     {
-        Debug.WriteLine("SpecialButton_BuyHouse");
+        Logger.Log("SpecialButton_BuyHouse");
         _spaceHandler.HandleSpecialSpace(SpaceTypes.House);
     }
 }

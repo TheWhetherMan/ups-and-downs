@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Windows.Controls;
+using UpsAndDowns.BusinessLogic;
 using UpsAndDowns.GameLogic;
 using UpsAndDowns.GameLogic.Enums;
 
@@ -63,17 +63,17 @@ public partial class HomeScreen : UserControl
 
     private void StartFirstTurn()
     {
-        Debug.WriteLine("HomeScreen.StartFirstTurn");
+        Logger.Log("HomeScreen.StartFirstTurn");
         StartNextPlayersTurn();
         GameManager.Instance.CurrentState = GameStates.PlayerTurn;
     }
 
     private void StartNextPlayersTurn()
     {
-        Debug.WriteLine("HomeScreen.StartNextPlayersTurn");
+        Logger.Log("HomeScreen.StartNextPlayersTurn");
         GameManager.Instance.SelectNextRandomPlayer();
         PlayerTurnScreenElement.Visibility = System.Windows.Visibility.Visible;
-        Debug.WriteLine($"HomeScreen.StartNextPlayersTurn -> {GameManager.Instance.CurrentPlayer.PlayerNumber}");
+        Logger.Log($"HomeScreen.StartNextPlayersTurn -> {GameManager.Instance.CurrentPlayer.PlayerNumber}");
     }
 
     private void PlayerCard_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -82,7 +82,7 @@ public partial class HomeScreen : UserControl
         {
             if (card.DataContext is Player player)
             {
-                Debug.WriteLine($"PlayerCard_MouseDown: {player.PlayerNumber}");
+                Logger.Log($"PlayerCard_MouseDown: {player.PlayerNumber}");
             }
         }
     }

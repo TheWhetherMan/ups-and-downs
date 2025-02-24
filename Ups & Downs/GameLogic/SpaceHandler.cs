@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using UpsAndDowns.BusinessLogic;
 using UpsAndDowns.GameLogic.Enums;
 
 namespace UpsAndDowns.GameLogic;
@@ -11,7 +11,7 @@ public class SpaceHandler
     /// <param name="zone">What color of space was landed on?</param>
     public void HandleNormalSpace(BoardZones zone)
     {
-        Debug.WriteLine($"SpaceHandler.HandleNormalSpace: {zone}");
+        Logger.Log($"SpaceHandler.HandleNormalSpace", zone);
         switch (zone)
         {
             case BoardZones.Green:
@@ -31,7 +31,7 @@ public class SpaceHandler
     /// <param name="spaceType">What type of special space was landed on?</param>
     public void HandleSpecialSpace(SpaceTypes spaceType)
     {
-        Debug.WriteLine($"SpaceHandler.HandleSpecialSpace: {spaceType}");
+        Logger.Log($"SpaceHandler.HandleSpecialSpace", spaceType);
         switch (spaceType)
         {
             case SpaceTypes.Start:

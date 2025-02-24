@@ -1,6 +1,6 @@
-﻿using System.IO;
-using System.Windows;
+﻿using System.Windows;
 using UpsAndDowns.BusinessLogic;
+using UpsAndDowns.GameLogic;
 
 namespace UpsAndDowns;
 
@@ -10,7 +10,6 @@ public partial class App : Application
 
     public App()
     {
-        Host = new GameHost();
-        Host.InitializeHost();
+        GameManager.Instance.InitializeGame();
     }
 }
