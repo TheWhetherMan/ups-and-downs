@@ -68,3 +68,9 @@ Mini Receipt Printer
 ## References
 
 ![image](https://github.com/user-attachments/assets/163c3cba-c944-4abc-a8bb-a59d6635b812)
+
+## Attributions
+
+### Sprites & Images
+
+[Icons8](https://icons8.com/)
