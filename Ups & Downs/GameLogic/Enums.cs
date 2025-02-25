@@ -13,8 +13,8 @@ public enum GameStates
 
 public enum LuckyStars
 {
-    Terrible = -3,
-    Bad      = -2,
+    Miserable = -3,
+    Terrible      = -2,
     Poor     = -1,
     Neutral  = 0,
     Okay     = 1,

@@ -20,7 +20,7 @@
 
     <Style x:Key="GridTextBlockStyle" TargetType="{x:Type TextBlock}">
         <Setter Property="FontFamily" Value="Consolas" />
-        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontSize" Value="30"/>
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Foreground" Value="{StaticResource YInMnBlueDark}"/>
         <Setter Property="Margin" Value="10" />

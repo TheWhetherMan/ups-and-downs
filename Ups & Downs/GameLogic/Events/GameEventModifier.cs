@@ -39,7 +39,7 @@ public sealed record CashMoneyModifier : GameEventModifier
 {
     public override int ModifyCashMoney(int cashChange)
     {
-        double cash = Math.Abs(cashChange);
+        double cash = cashChange;
         cash *= cashChange > 0 
             ? GainModifiers[(int)LuckyStarsFactor] 
             : LossModifiers[(int)LuckyStarsFactor];
@@ -52,7 +52,7 @@ public sealed record LifePointsModifier : GameEventModifier
 {
     public override int ModifyLifePoints(int lifePointsChange)
     {
-        double lifePoints = Math.Abs(lifePointsChange);
+        double lifePoints = lifePointsChange;
         lifePoints *= lifePointsChange > 0
             ? GainModifiers[(int)LuckyStarsFactor]
             : LossModifiers[(int)LuckyStarsFactor];
@@ -69,9 +69,9 @@ public sealed record CareerPromotionModifier : CareerModifer
     {
         switch (LuckyStarsFactor)
         {
-            case LuckyStars.Terrible: 
+            case LuckyStars.Miserable: 
                 return -1;                                      // Instant demotion
-            case LuckyStars.Bad: 
+            case LuckyStars.Terrible: 
                 return new Random().Next(0, 1) == 0 ? -1 : 0;   // 50% chance of demotion
             case LuckyStars.Poor:
                 return new Random().Next(0, 1) == 0 ? 0 : 1;    // 50% chance of no promotion 
@@ -95,9 +95,9 @@ public sealed record CareerDemotionModifier : CareerModifer
     {
         switch (LuckyStarsFactor)
         {
-            case LuckyStars.Terrible: 
+            case LuckyStars.Miserable: 
                 return -2;                                      // Instant double demotion
-            case LuckyStars.Bad: 
+            case LuckyStars.Terrible: 
                 return new Random().Next(0, 1) == 0 ? -1 : -2;  // 50% chance of double demotion
             case LuckyStars.Poor:
                 return new Random().Next(0, 4) == 0 ? -1 : -2;  // 25% chance of double demotion 
@@ -117,8 +117,13 @@ public sealed record CareerDemotionModifier : CareerModifer
 
 public sealed record SalaryModifier : GameEventModifier
 {
-    public override int ModifySalary(int salaryAdjustment) 
-        => (int)(salaryAdjustment * salaryAdjustment > 0 
-            ? PercentageModifiers[(int)LuckyStarsFactor] 
-            : PercentageModifiers[6 - (int)LuckyStarsFactor]);
+    public override int ModifySalary(int salaryAdjustment)
+    {
+        double salaryChange = salaryAdjustment;
+        salaryChange *= salaryAdjustment > 0
+            ? GainModifiers[(int)LuckyStarsFactor]
+            : LossModifiers[(int)LuckyStarsFactor];
+
+        return (int)salaryChange;
+    }
 }
