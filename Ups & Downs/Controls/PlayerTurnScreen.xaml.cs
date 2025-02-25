@@ -25,6 +25,18 @@ public partial class PlayerTurnScreen : UserControl
         WeakReferenceMessenger.Default.Register<Messages.BackToPlayerTurnScreenMessage>(this, (r, m) =>
         {
             BasicEventControlElement.Visibility = Visibility.Collapsed;
+            BasicEventControlResultsElement.Visibility = Visibility.Collapsed;
+        });
+        WeakReferenceMessenger.Default.Register<Messages.GoToBasicEventsResultsMessage>(this, (r, m) =>
+        {
+            BasicEventControlElement.Visibility = Visibility.Collapsed;
+            BasicEventControlResultsElement.Visibility = Visibility.Visible;
+            BasicEventControlResultsElement.UpdateResultsForEvent(m.ActiveEvent, m.LuckyStars);
+        });
+        WeakReferenceMessenger.Default.Register<Messages.ReturnToHomeScreenMessage>(this, (r, m) =>
+        {
+            BasicEventControlElement.Visibility = Visibility.Collapsed;
+            BasicEventControlResultsElement.Visibility = Visibility.Collapsed;
         });
     }
 

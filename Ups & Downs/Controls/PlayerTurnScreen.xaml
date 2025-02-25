@@ -61,5 +61,6 @@
         <Button x:Name="BackButton" Content="Back" Style="{StaticResource BasicButtonStyleBlue}" Width="100" 
                 VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50 0 0 50" Click="BackButton_Click" />
         <local:BasicEventControl x:Name="BasicEventControlElement" Visibility="Collapsed" />
+        <local:BasicEventResultsControl x:Name="BasicEventControlResultsElement" Visibility="Collapsed" />
     </Grid>
 </UserControl>

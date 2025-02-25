@@ -1,3 +1,4 @@
+using UpsAndDowns.GameLogic.Enums;
 using UpsAndDowns.GameLogic.Misc;
 
 namespace UpsAndDowns.GameLogic;

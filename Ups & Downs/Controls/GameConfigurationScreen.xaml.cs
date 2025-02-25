@@ -6,13 +6,13 @@ namespace UpsAndDowns.Controls;
 
 public partial class GameConfigurationScreen : UserControl
 {
-    private int _playerCount;
+    private int _playerCount = 2;
     public int PlayerCount
     {
         get { return _playerCount; }
         set 
         {
-            _playerCount = Math.Clamp(value, 1, 6); 
+            _playerCount = Math.Clamp(value, 2, 6); 
             PlayerCountText.Text = _playerCount.ToString(); 
         }
     }

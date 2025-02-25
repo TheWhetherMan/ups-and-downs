@@ -18,6 +18,17 @@
         <Setter Property="FontFamily" Value="Consolas" />
     </Style>
 
+    <Style x:Key="GridTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="Consolas" />
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{StaticResource YInMnBlueDark}"/>
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+
     <!-- Base Button Style -->
     <Style x:Key="BaseButtonStyle" TargetType="Button">
         <Setter Property="Foreground" Value="Black"/>

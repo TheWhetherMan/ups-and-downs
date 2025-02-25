@@ -12,13 +12,13 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="1" x:Name="EventDescriptionHeader" Text="" FontSize="42" 
+                <TextBlock Grid.Row="1" x:Name="EventDescriptionHeader" Text="" FontSize="46" 
                            Foreground="{StaticResource YInMnBlueDark}" Margin="40 0" FontWeight="Bold"
                            VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"
                            d:Text="Your research trip to the museum ended when you knocked over a T-Rex skeleton."/>

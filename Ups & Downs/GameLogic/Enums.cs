@@ -13,13 +13,13 @@ public enum GameStates
 
 public enum LuckyStars
 {
-    Terrible,
-    Bad,
-    Poor,
-    Neutral,
-    Okay,
-    Good,
-    Great
+    Terrible = -3,
+    Bad      = -2,
+    Poor     = -1,
+    Neutral  = 0,
+    Okay     = 1,
+    Good     = 2,
+    Great    = 3
 }
 
 public enum SpaceTypes

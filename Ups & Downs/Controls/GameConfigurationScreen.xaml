@@ -14,7 +14,7 @@
                 <Button Style="{StaticResource BasicButtonStyleRed}" Click="MinusOneButton_Click"
                         Content="-1" Width="100" Height="70" Margin="0 50 0 0" />
                 <TextBlock x:Name="PlayerCountText" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                           Foreground="{StaticResource YInMnBlue}" Text="1" FontSize="42" Margin="50 50 50 0" />
+                           Foreground="{StaticResource YInMnBlue}" Text="2" FontSize="42" Margin="50 50 50 0" />
                 <Button Style="{StaticResource BasicButtonStyleBlue}" Click="PlusOneButton_Click"
                         Content="+1" Width="100" Height="70" Margin="0 50 0 0" />
             </StackPanel>

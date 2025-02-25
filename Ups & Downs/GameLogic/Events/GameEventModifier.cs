@@ -6,7 +6,28 @@ namespace UpsAndDowns.GameLogic.Events;
 public abstract record GameEventModifier
 {
     public required LuckyStars LuckyStarsFactor { get; init; }
-    public readonly double[] PercentageModifiers = { 0.00, 0.50, 0.75, 1.00, 1.25, 1.50, 2.00 };
+
+    public readonly Dictionary<int, double> GainModifiers = new()
+    {
+        { -3, 0.0 },
+        { -2, 0.5 },
+        { -1, 0.75 },
+        {  0, 1.0 },
+        {  1, 1.25 },
+        {  2, 1.5 },
+        {  3, 2.0 },
+    };
+
+    public readonly Dictionary<int, double> LossModifiers = new()
+    {
+        { -3, 2.0 },
+        { -2, 1.5 },
+        { -1, 1.25 },
+        {  0, 1.0 },
+        {  1, 0.75 },
+        {  2, 0.5 },
+        {  3, 0.0 },
+    };
 
     public virtual int ModifyCashMoney(int cashChange) => 0;
     public virtual int ModifyLifePoints(int lifePointsChange) => 0;
@@ -18,9 +39,12 @@ public sealed record CashMoneyModifier : GameEventModifier
 {
     public override int ModifyCashMoney(int cashChange)
     {
-        return cashChange > 0
-            ? (int)(cashChange * PercentageModifiers[(int)LuckyStarsFactor])
-            : (int)(cashChange * PercentageModifiers[6 - (int)LuckyStarsFactor]);
+        double cash = Math.Abs(cashChange);
+        cash *= cashChange > 0 
+            ? GainModifiers[(int)LuckyStarsFactor] 
+            : LossModifiers[(int)LuckyStarsFactor];
+
+        return (int)cash;
     }
 }
 
@@ -28,9 +52,12 @@ public sealed record LifePointsModifier : GameEventModifier
 {
     public override int ModifyLifePoints(int lifePointsChange)
     {
-        return lifePointsChange > 0
-            ? (int)(lifePointsChange * PercentageModifiers[(int)LuckyStarsFactor])
-            : (int)(lifePointsChange * PercentageModifiers[6 - (int)LuckyStarsFactor]);
+        double lifePoints = Math.Abs(lifePointsChange);
+        lifePoints *= lifePointsChange > 0
+            ? GainModifiers[(int)LuckyStarsFactor]
+            : LossModifiers[(int)LuckyStarsFactor];
+
+        return (int)lifePoints;
     }
 }
 

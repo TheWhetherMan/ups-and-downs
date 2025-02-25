@@ -17,6 +17,7 @@ namespace UpsAndDowns.Controls
             set { _eventChanges = value; }
         }
 
+        private GameEvent? _activeEvent;
         private int _luckyStars = 0;
 
         public BasicEventControl()
@@ -28,6 +29,7 @@ namespace UpsAndDowns.Controls
 
         internal void UpdateForEvent(GameEvent gameEvent)
         {
+            _activeEvent = gameEvent;
             EventChanges.Clear();
             EventDescriptionHeader.Text = gameEvent.Description;
             AddEventHints(gameEvent);
@@ -106,7 +108,11 @@ namespace UpsAndDowns.Controls
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-            // [TODO] => Go to the event results screen
+            WeakReferenceMessenger.Default.Send(new Messages.GoToBasicEventsResultsMessage() 
+            { 
+                ActiveEvent = _activeEvent, 
+                LuckyStars = _luckyStars
+            });
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
