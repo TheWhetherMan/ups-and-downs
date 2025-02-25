@@ -15,7 +15,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <local:PlayerCard Margin="10" MouseDown="PlayerCard_MouseDown" />
+                    <local:PlayerCard Margin="10" MouseDown="PlayerCard_MouseDown" DataContext="{Binding}" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

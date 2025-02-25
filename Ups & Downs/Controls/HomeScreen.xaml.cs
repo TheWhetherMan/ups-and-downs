@@ -41,6 +41,10 @@ public partial class HomeScreen : UserControl
         {
             GameManager.Instance.CurrentState = GameStates.AtHomeScreen;
         });
+        WeakReferenceMessenger.Default.Register<Messages.PlayerTurnCompletedMessage>(this, (r, m) =>
+        {
+            GameManager.Instance.CurrentState = GameStates.AtHomeScreen;
+        });
         WeakReferenceMessenger.Default.Register<Messages.ReadyForFirstPlayerTurnMessage>(this, (r, m) =>
         {
             StartFirstTurn();

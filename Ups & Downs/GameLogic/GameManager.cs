@@ -53,15 +53,23 @@ public class GameManager
 
     private void RegisterMessages()
     {
-        WeakReferenceMessenger.Default.Register<StartNewGameMessage>(this, (r, m) => StartNewGame(m.PlayerCount));
+        WeakReferenceMessenger.Default.Register<StartNewGameMessage>(this, (r, m)
+            => StartNewGame(m.PlayerCount));
     }
 
     public void StartNewGame(int playerCount)
     {
         Logger.Log($"GameManager.StartNewGame: {playerCount}");
+
         PlayerCount = playerCount;
         for (int i = 1; i <= playerCount; i++)
-            Players.Add(new Player(i));
+        {
+            Player newPlayer = new Player(i);
+            Players.Add(newPlayer);
+            newPlayer.CashMoney += 100000;
+            newPlayer.LifePoints = 10;
+        }
+
         WeakReferenceMessenger.Default.Send(new GameStartReadyMessage());
     }
 

@@ -105,7 +105,7 @@ namespace UpsAndDowns.Controls
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-            WeakReferenceMessenger.Default.Send(new Messages.ReturnToHomeScreenMessage());
+            WeakReferenceMessenger.Default.Send(new Messages.PlayerTurnCompletedMessage());
         }
     }
 }

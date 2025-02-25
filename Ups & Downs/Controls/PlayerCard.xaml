@@ -5,15 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UpsAndDowns.Controls"
              mc:Ignorable="d" 
+             x:Name="_this"
              Width="610" Height="216">
     <Grid Background="#3E517A">
         <StackPanel Orientation="Vertical" Margin="8">
-            <TextBlock Foreground="#009DDC" Text="{Binding PlayerDisplayName}" d:Text="Player 1" FontSize="36" />
+            <TextBlock Foreground="#009DDC" Text="{Binding ElementName=_this, Path=Player.PlayerDisplayName}" d:Text="Player 1" 
+                       FontSize="46" Margin="0 0 0 10" />
             <TextBlock Foreground="#009DDC" FontSize="36">
-                <Run Text="$$" /><Run Text="0" Foreground="#80D39B" />
+                <Run Text="$$" /><Run Text="{Binding ElementName=_this, Path=ReflectedCashMoney}" Foreground="#80D39B" />
             </TextBlock>
             <TextBlock Foreground="#009DDC" Text="" FontSize="36">
-                <Run Text="LP" /><Run Text="0" Foreground="#80D39B" />
+                <Run Text="LP" /><Run Text="{Binding ElementName=_this, Path=ReflectedLifePoints}" Foreground="#80D39B" />
             </TextBlock>
         </StackPanel>
     </Grid>
