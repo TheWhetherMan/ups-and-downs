@@ -30,6 +30,8 @@ public partial class HomeScreen : UserControl
         {
             if (GameManager.Instance.CurrentState == GameStates.PlayerTurn)
             {
+                if (GameManager.Instance.PlayerTurnCompleted)
+                    GameManager.Instance.SelectNextRandomPlayer();
                 ShowPlayerTurnScreen();
             }
             else if (GameManager.Instance.CurrentState == GameStates.AtHomeScreen)

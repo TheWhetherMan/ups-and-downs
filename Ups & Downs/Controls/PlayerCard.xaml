@@ -9,13 +9,13 @@
              Width="610" Height="216">
     <Grid Background="#3E517A">
         <StackPanel Orientation="Vertical" Margin="8">
-            <TextBlock Foreground="#009DDC" Text="{Binding ElementName=_this, Path=Player.PlayerDisplayName}" d:Text="Player 1" 
+            <TextBlock Foreground="{StaticResource Celadon}" Text="{Binding ElementName=_this, Path=Player.PlayerDisplayName}" d:Text="Player 1" 
                        FontSize="46" Margin="0 0 0 10" />
-            <TextBlock Foreground="#009DDC" FontSize="36">
-                <Run Text="$$" /><Run Text="{Binding ElementName=_this, Path=ReflectedCashMoney}" Foreground="#80D39B" />
+            <TextBlock Foreground="{StaticResource RoseRed}" FontSize="36">
+                <Run Text="$$" /><Run Text="{Binding ElementName=_this, Path=ReflectedCashMoney}" Foreground="{StaticResource Celadon}" />
             </TextBlock>
-            <TextBlock Foreground="#009DDC" Text="" FontSize="36">
-                <Run Text="LP" /><Run Text="{Binding ElementName=_this, Path=ReflectedLifePoints}" Foreground="#80D39B" />
+            <TextBlock Foreground="{StaticResource RoseRed}" Text="" FontSize="36">
+                <Run Text="LP" /><Run Text="{Binding ElementName=_this, Path=ReflectedLifePoints}" Foreground="{StaticResource Celadon}" />
             </TextBlock>
         </StackPanel>
     </Grid>

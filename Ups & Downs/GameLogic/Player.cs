@@ -2,6 +2,7 @@ using UpsAndDowns.GameLogic.Assets;
 using UpsAndDowns.GameLogic.Events;
 using UpsAndDowns.GameLogic.Enums;
 using UpsAndDowns.GameLogic.Misc;
+using UpsAndDowns.BusinessLogic;
 
 namespace UpsAndDowns.GameLogic;
 
@@ -38,8 +39,14 @@ public class Player
         LifePoints += 100;
     }
 
-    public void ApplyGameEvent(GameEvent eve, LuckyStars luck)
+    public void ApplyGameEvent(GameEvent? eve, LuckyStars luck)
     {
+        if (eve is null)
+        {
+            Logger.Log("Player.ApplyGameEvent: Null event given!");
+            return;
+        }
+
         if (eve.CashMoneyChange is int cash)
             CashMoney += eve.GetCashMoneyModifier(luck).ModifyCashMoney(cash);
 

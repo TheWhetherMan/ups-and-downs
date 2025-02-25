@@ -11,6 +11,7 @@ namespace UpsAndDowns.Controls
 {
     public partial class BasicEventResultsControl : UserControl
     {
+        private GameEvent? _activeEvent;
         private int _stars = 0;
 
         public BasicEventResultsControl()
@@ -26,6 +27,7 @@ namespace UpsAndDowns.Controls
                 return;
             }
 
+            _activeEvent = eve;
             UpdateLuckyStarIcons(luckyStars);
 
             if (eve.CashMoneyChange is int cash)
@@ -105,6 +107,8 @@ namespace UpsAndDowns.Controls
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
+            GameManager.Instance.PlayerTurnCompleted = true;
+            GameManager.Instance.CurrentPlayer.ApplyGameEvent(_activeEvent, (LuckyStars)_stars);
             WeakReferenceMessenger.Default.Send(new Messages.PlayerTurnCompletedMessage());
         }
     }
