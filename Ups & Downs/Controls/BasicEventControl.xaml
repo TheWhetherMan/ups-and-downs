@@ -8,7 +8,7 @@
              d:DesignHeight="800" d:DesignWidth="1280">
     <Grid>
         <Rectangle Fill="{StaticResource YInMnBlue}" Opacity="0.8" />
-        <Border CornerRadius="10" Background="{StaticResource CornflowerBlue}" Margin="30">
+        <Border x:Name="ParentBorder" CornerRadius="10" Background="{StaticResource CornflowerBlue}" Margin="30">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -16,29 +16,48 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="1" x:Name="EventDescriptionHeader" Text="Event Description" FontSize="42" 
-                           Foreground="{StaticResource YInMnBlueDark}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <ItemsControl Grid.Row="2" ItemsSource="{Binding EventChanges}" d:ItemsSource="{d:SampleData}" Margin="0 0 0 0">
+                <TextBlock Grid.Row="1" x:Name="EventDescriptionHeader" Text="" FontSize="42" 
+                           Foreground="{StaticResource YInMnBlueDark}" Margin="40 0" FontWeight="Bold"
+                           VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"
+                           d:Text="Your research trip to the museum ended when you knocked over a T-Rex skeleton."/>
+                <ItemsControl Grid.Row="2" ItemsSource="{Binding EventChanges}" d:ItemsSource="{d:SampleData}" 
+                              Margin="0 0 0 0">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Background="DarkRed" />
+                            <TextBlock Text="{Binding}" Foreground="{StaticResource YInMnBlueDark}" FontSize="24" FontWeight="Bold"
+                                       Margin="10" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-                <WrapPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Grid.Row="3" Orientation="Vertical" Width="{Binding ElementName=ParentBorder, Path=ActualWidth}" 
+                            VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image x:Name="StarN3" Source="/Resources/Images/star_dark.png"  Width="50" Visibility="Collapsed" />
+                        <Image x:Name="StarN2" Source="/Resources/Images/star_dark.png"  Width="50" Visibility="Collapsed" />
+                        <Image x:Name="StarN1" Source="/Resources/Images/star_dark.png"  Width="50" Visibility="Collapsed" />
+                        <Image x:Name="Star00" Source="/Resources/Images/star_faded.png" Width="50" Visibility="Visible" />
+                        <Image x:Name="StarP1" Source="/Resources/Images/star_glow.png"  Width="50" Visibility="Collapsed" />
+                        <Image x:Name="StarP2" Source="/Resources/Images/star_glow.png"  Width="50" Visibility="Collapsed" />
+                        <Image x:Name="StarP3" Source="/Resources/Images/star_glow.png"  Width="50" Visibility="Collapsed" />
+                    </StackPanel>
+                    <TextBlock x:Name="LuckDescriptionText" Text="No Luck" TextAlignment="Center" 
+                               Foreground="{StaticResource YInMnBlueDark}" Margin="0 20" FontSize="20" />
+                </StackPanel>
+                <WrapPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button Style="{StaticResource TallButtonStyleRed}" Content="Remove Luck" Click="RemoveLuckButton_Click" />
                     <Button Style="{StaticResource TallButtonStyleYellow}" Content="Add Luck" Click="AddLuckButton_Click" />
                 </WrapPanel>
-                <Button Grid.Row="4" Style="{StaticResource TallButtonStyleBlue}" Content="Confirm" Click="ConfirmButton_Click" />
-                <Button x:Name="BackButton" Content="Back" Style="{StaticResource BasicButtonStyleRed}" Width="100" 
-                        VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50 50 0 0" Click="BackButton_Click" />
+                <Button Grid.Row="5" Style="{StaticResource TallButtonStyleGreen}" Content="Confirm" Click="ConfirmButton_Click" />
             </Grid>
         </Border>
+        <Button x:Name="BackButton" Content="Back" Style="{StaticResource BasicButtonStyleBlue}" Width="100" 
+                VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50 0 0 50" Click="BackButton_Click" />
     </Grid>
 </UserControl>

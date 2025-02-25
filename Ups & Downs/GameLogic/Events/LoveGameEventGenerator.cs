@@ -59,7 +59,7 @@ public class LoveGameEventGenerator
             },
             new GameEvent
             {
-                Description = "Your thoughtful birthday present for your signifant other was well-received!",
+                Description = "Your thoughtful birthday present for your significant other was well-received!",
                 LifePointsChange = 60
             },
             new GameEvent

@@ -45,7 +45,7 @@ public class EducationGameEventGenerator
 			},
 			new GameEvent
 			{
-				Description = "The friend you helped study did great on their quiz!",
+				Description = "The friend you helped study did great on their exams!",
 				LifePointsChange = 150
 			},
 			new GameEvent
@@ -55,7 +55,7 @@ public class EducationGameEventGenerator
 			},
             new GameEvent
             {
-                Description = "Your field trip to the museum ended when you knocked over a T-Rex skeleton.",
+                Description = "Your research trip to the museum ended when you knocked over a T-Rex skeleton.",
                 LifePointsChange = -50,
                 CashMoneyChange = -10000
             },

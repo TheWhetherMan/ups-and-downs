@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1280">
     <Grid>
+        <Rectangle Opacity="0.8" Fill="{StaticResource YInMnBlueDark}" />
         <Border CornerRadius="10" Background="{StaticResource CornflowerBlue}" Margin="30">
             <Grid>
                 <Grid.RowDefinitions>
@@ -19,9 +20,11 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="40" />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="1" x:Name="PlayerTurnHeader" Text="Player X's Turn" FontSize="42" Foreground="{StaticResource YInMnBlueDark}" 
+                <TextBlock Grid.Row="1" x:Name="PlayerTurnHeader" Text="Player X's Turn" FontSize="56" 
+                           Foreground="{StaticResource YInMnBlueDark}" FontWeight="Bold" 
                            VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <TextBlock Grid.Row="2" Text="Where did you land?" FontSize="30" Foreground="{StaticResource YInMnBlueDark}" 
+                <TextBlock Grid.Row="2" Text="Where did you land?" FontSize="30" 
+                           Foreground="{StaticResource YInMnBlueDark}" FontWeight="Bold"
                            VerticalAlignment="Center" HorizontalAlignment="Center" />
                 <TextBlock Grid.Row="3" Text="- Normal Spaces -" FontStyle="Italic" FontSize="24" Foreground="{StaticResource YInMnBlueDark}" 
                            VerticalAlignment="Center" HorizontalAlignment="Center" />
@@ -37,7 +40,7 @@
                 </WrapPanel>
                 <TextBlock Grid.Row="5" Text="~ Special Spaces ~" FontStyle="Italic" FontSize="24" Foreground="{StaticResource YInMnBlueDark}" 
                            VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <WrapPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <WrapPanel Grid.Row="6" Margin="100 0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button Style="{StaticResource TallButtonStyleGreen}" Content="Education"
                             Click="SpecialButton_Education" />
                     <Button Style="{StaticResource TallButtonStyleBlue}" Content="Promotion"
@@ -55,8 +58,8 @@
                 </WrapPanel>
             </Grid>
         </Border>
-        <Button x:Name="BackButton" Content="Back" Style="{StaticResource BasicButtonStyleRed}" Width="100" 
-                VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50 50 0 0" Click="BackButton_Click" />
-        <local:BasicEventControl x:Name="BasicEventControlElement" Visibility="Visible" />
+        <Button x:Name="BackButton" Content="Back" Style="{StaticResource BasicButtonStyleBlue}" Width="100" 
+                VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50 0 0 50" Click="BackButton_Click" />
+        <local:BasicEventControl x:Name="BasicEventControlElement" Visibility="Collapsed" />
     </Grid>
 </UserControl>
