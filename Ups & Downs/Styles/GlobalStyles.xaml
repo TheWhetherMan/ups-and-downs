@@ -77,7 +77,7 @@
         <Setter Property="Height" Value="80"/>
     </Style>
 
-    <Style x:Key="TallButtonStyleOrange" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+    <Style x:Key="TallButtonStyleYellow" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
         <Setter Property="Background" Value="{StaticResource Mustard}"/>
         <Setter Property="Height" Value="80"/>
     </Style>

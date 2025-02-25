@@ -33,7 +33,7 @@
                 </ItemsControl>
                 <WrapPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button Style="{StaticResource TallButtonStyleRed}" Content="Remove Luck" Click="RemoveLuckButton_Click" />
-                    <Button Style="{StaticResource TallButtonStyleGreen}" Content="Add Luck" Click="AddLuckButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleYellow}" Content="Add Luck" Click="AddLuckButton_Click" />
                 </WrapPanel>
                 <Button Grid.Row="4" Style="{StaticResource TallButtonStyleBlue}" Content="Confirm" Click="ConfirmButton_Click" />
                 <Button x:Name="BackButton" Content="Back" Style="{StaticResource BasicButtonStyleRed}" Width="100" 

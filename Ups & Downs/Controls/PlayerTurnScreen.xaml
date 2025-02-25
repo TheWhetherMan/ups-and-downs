@@ -30,7 +30,7 @@
                             Click="SpaceButton_Green" />
                     <Button Style="{StaticResource TallButtonStyleBlue}" Content="Blue Space"
                             Click="SpaceButton_Blue" />
-                    <Button Style="{StaticResource TallButtonStyleOrange}" Content="Yellow Space"
+                    <Button Style="{StaticResource TallButtonStyleYellow}" Content="Yellow Space"
                             Click="SpaceButton_Yellow" />
                     <Button Style="{StaticResource TallButtonStyleRed}" Content="Pink Space"
                             Click="SpaceButton_Pink" />
@@ -48,9 +48,9 @@
                             Click="SpecialButton_Children" />
                     <Button Style="{StaticResource TallButtonStyleGreen}" Content="Special Event"
                             Click="SpecialButton_SpecialEvent" />
-                    <Button Style="{StaticResource TallButtonStyleOrange}" Content="Buy Car"
+                    <Button Style="{StaticResource TallButtonStyleYellow}" Content="Buy Car"
                             Click="SpecialButton_BuyCar" />
-                    <Button Style="{StaticResource TallButtonStyleOrange}" Content="Buy House"
+                    <Button Style="{StaticResource TallButtonStyleYellow}" Content="Buy House"
                             Click="SpecialButton_BuyHouse" />
                 </WrapPanel>
             </Grid>

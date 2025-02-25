@@ -11,9 +11,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\star_dark.png" />
+    <None Remove="Resources\Images\star_faded.png" />
+    <None Remove="Resources\Images\star_glow.png" />
+    <None Remove="Resources\Images\star_gold.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="Serilog" Version="4.2.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\star_dark.png" />
+    <Resource Include="Resources\Images\star_faded.png" />
+    <Resource Include="Resources\Images\star_glow.png" />
+    <Resource Include="Resources\Images\star_gold.png" />
   </ItemGroup>
 
 </Project>
