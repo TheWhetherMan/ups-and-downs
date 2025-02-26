@@ -15,6 +15,7 @@
     <None Remove="Resources\Images\star_faded.png" />
     <None Remove="Resources\Images\star_glow.png" />
     <None Remove="Resources\Images\star_gold.png" />
+    <None Remove="Resources\Sounds\banknote-counter.wav" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +29,7 @@
     <Resource Include="Resources\Images\star_faded.png" />
     <Resource Include="Resources\Images\star_glow.png" />
     <Resource Include="Resources\Images\star_gold.png" />
+    <EmbeddedResource Include="Resources\Sounds\banknote-counter.wav" />
   </ItemGroup>
 
 </Project>

@@ -36,6 +36,7 @@ public partial class PlayerCard : UserControl, INotifyPropertyChanged
     private readonly TimeSpan _updateIntervalSlow = TimeSpan.FromMilliseconds(50);
     private readonly Timer _timerFast;
     private readonly Timer _timerSlow;
+    private SoundLooper _soundLooper;
 
     public PlayerCard()
     {
@@ -43,6 +44,7 @@ public partial class PlayerCard : UserControl, INotifyPropertyChanged
         DataContextChanged += PlayerCard_DataContextChanged;
         _timerFast = new Timer(UpdatePlayerStatsFast, null, _updateIntervalFast, _updateIntervalFast);
         _timerSlow = new Timer(UpdatePlayerStatsSlow, null, _updateIntervalSlow, _updateIntervalSlow);
+        _soundLooper = new SoundLooper("UpsAndDowns.Resources.Sounds.banknote-counter.wav");
     }
 
     private void PlayerCard_DataContextChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
@@ -67,6 +69,14 @@ public partial class PlayerCard : UserControl, INotifyPropertyChanged
                 ReflectedCashMoney += 10 * diffSign;
             else
                 ReflectedCashMoney += 1 * diffSign;
+
+            if (_soundLooper.Playing is false)
+                _soundLooper.Play();
+        }
+        else
+        {
+            if (_soundLooper.Playing is true)
+                _soundLooper.Stop();
         }
     }
 
