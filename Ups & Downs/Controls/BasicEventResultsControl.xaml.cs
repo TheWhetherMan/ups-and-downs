@@ -97,9 +97,9 @@ namespace UpsAndDowns.Controls
             StarN3.Visibility = _stars <= -3 ? Visibility.Visible : Visibility.Collapsed;
             StarN2.Visibility = _stars <= -2 ? Visibility.Visible : Visibility.Collapsed;
             StarN1.Visibility = _stars <= -1 ? Visibility.Visible : Visibility.Collapsed;
-            StarP1.Visibility = _stars >= 1 ? Visibility.Visible : Visibility.Collapsed;
-            StarP2.Visibility = _stars >= 2 ? Visibility.Visible : Visibility.Collapsed;
-            StarP3.Visibility = _stars >= 3 ? Visibility.Visible : Visibility.Collapsed;
+            StarP1.Visibility = _stars >=  1 ? Visibility.Visible : Visibility.Collapsed;
+            StarP2.Visibility = _stars >=  2 ? Visibility.Visible : Visibility.Collapsed;
+            StarP3.Visibility = _stars >=  3 ? Visibility.Visible : Visibility.Collapsed;
 
             // Set luck description based on lucky stars value
             LuckDescriptionText.Text = Constants.LuckyStarDescriptions[_stars];

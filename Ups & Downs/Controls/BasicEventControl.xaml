@@ -11,18 +11,23 @@
         <Border x:Name="ParentBorder" CornerRadius="10" Background="{StaticResource CornflowerBlue}" Margin="30">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="30" />
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="1" x:Name="EventDescriptionHeader" Text="" FontSize="46" 
                            Foreground="{StaticResource YInMnBlueDark}" Margin="40 0" FontWeight="Bold"
                            VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"
-                           d:Text="Your research trip to the museum ended when you knocked over a T-Rex skeleton."/>
-                <ItemsControl Grid.Row="2" ItemsSource="{Binding EventChanges}" d:ItemsSource="{d:SampleData}" 
+                           d:Text="Your research trip to the museum ended when you knocked over a T-Rex skeleton." />
+                <TextBlock Grid.Row="2" x:Name="EventDescriptionSubHeader" Text="This event will affect:" FontSize="26" 
+                           Foreground="{StaticResource YInMnBlueDark}" Margin="0 30 0 0" FontWeight="Regular" FontStyle="Italic"
+                           VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" />
+                <ItemsControl Grid.Row="3" ItemsSource="{Binding EventChanges}" d:ItemsSource="{d:SampleData}" 
                               Margin="0 0 0 0">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -31,12 +36,12 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding}" Foreground="{StaticResource YInMnBlueDark}" FontSize="24" FontWeight="Bold"
-                                       Margin="10" />
+                            <TextBlock Text="{Binding}" Foreground="{StaticResource Mustard}" FontSize="24" 
+                                       FontWeight="Bold" Margin="10" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-                <StackPanel Grid.Row="3" Orientation="Vertical" Width="{Binding ElementName=ParentBorder, Path=ActualWidth}" 
+                <StackPanel Grid.Row="4" Orientation="Vertical" Width="{Binding ElementName=ParentBorder, Path=ActualWidth}" 
                             VerticalAlignment="Center" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Image x:Name="StarN3" Source="/Resources/Images/star_dark.png"  Width="50" Visibility="Collapsed" />
@@ -50,11 +55,11 @@
                     <TextBlock x:Name="LuckDescriptionText" Text="No Luck" TextAlignment="Center" 
                                Foreground="{StaticResource YInMnBlueDark}" Margin="0 20" FontSize="20" />
                 </StackPanel>
-                <WrapPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <WrapPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button Style="{StaticResource TallButtonStyleRed}" Content="Remove Luck" Click="RemoveLuckButton_Click" />
                     <Button Style="{StaticResource TallButtonStyleYellow}" Content="Add Luck" Click="AddLuckButton_Click" />
                 </WrapPanel>
-                <Button Grid.Row="5" Style="{StaticResource TallButtonStyleGreen}" Content="Confirm" Click="ConfirmButton_Click" />
+                <Button Grid.Row="6" Style="{StaticResource TallButtonStyleGreen}" Content="Confirm" Click="ConfirmButton_Click" />
             </Grid>
         </Border>
         <Button x:Name="BackButton" Content="Back" Style="{StaticResource BasicButtonStyleBlue}" Width="100" 
