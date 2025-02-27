@@ -9,7 +9,9 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         Title="Ups And Downs" 
-        Height="800" Width="1280">
+        WindowState="Maximized"
+        Height="800" MaxHeight="800" 
+        Width="1280" MaxWidth="1280">
     <Grid Background="{StaticResource CornflowerBlue}">
         <Grid x:Name="ParentGrid">
             <controls:TitleScreen />
