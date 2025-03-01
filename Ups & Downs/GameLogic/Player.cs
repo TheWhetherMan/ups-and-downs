@@ -63,9 +63,9 @@ public class Player
         if (eve.LuckyStarsChange is int stars)
         {
             if (stars > 0)
-                new PrintLuckyStarTicket().PrintTicket(new TicketSettings() { Quantity = stars });
+                new PrintLuckyStarTicket().PrintTicket(new TicketSettings() { Quantity = Math.Abs(stars), PlayerNumber = PlayerNumber });
             else if (stars < 0)
-                new PrintUnluckyStarTicket().PrintTicket(new TicketSettings() { Quantity = stars });
+                new PrintUnluckyStarTicket().PrintTicket(new TicketSettings() { Quantity = Math.Abs(stars), PlayerNumber = PlayerNumber });
             else 
                 Logger.Log("Player.ApplyGameEvent: Zero stars given!", eve);
         }

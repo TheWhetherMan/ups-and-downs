@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using System.Collections.ObjectModel;
-using System.Diagnostics.Tracing;
 using System.Windows;
 using System.Windows.Controls;
 using UpsAndDowns.GameLogic;
@@ -29,6 +28,7 @@ namespace UpsAndDowns.Controls
 
         internal void UpdateForEvent(GameEvent gameEvent)
         {
+            _luckyStars = 0;
             _activeEvent = gameEvent;
             EventChanges.Clear();
             EventDescriptionHeader.Text = gameEvent.Description;
