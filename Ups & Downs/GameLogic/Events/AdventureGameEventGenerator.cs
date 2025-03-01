@@ -26,7 +26,8 @@ public class AdventureGameEventGenerator
 			{
 				Description = "You zigged when you should've zagged and broke your leg in a freak snowboarding accident!",
 				LifePointsChange = -20,
-                CashMoneyChange = -5000
+                CashMoneyChange = -5000,
+                LuckyStarsChange = -1
             },
             new GameEvent
             {
@@ -38,12 +39,14 @@ public class AdventureGameEventGenerator
             {
                 Description = "While sky-diving your parachute failed to deploy, but you were able to land safely with your reserve chute!",
                 LifePointsChange = 200,
+                LuckyStarsChange = 2
             },
             new GameEvent
             {
                 Description = "You set a new track record with the hot rod you've been building in your spare time!",
                 LifePointsChange = 60,
-                CashMoneyChange = 10000
+                CashMoneyChange = 5000,
+                LuckyStarsChange = 1
             },
             new GameEvent
             {
@@ -55,7 +58,8 @@ public class AdventureGameEventGenerator
             {
                 Description = "While deer hunting you accidently shoot an endangered animal, now you must pay the steep fine!",
                 LifePointsChange = -20,
-                CashMoneyChange = -50000
+                CashMoneyChange = -50000,
+                LuckyStarsChange = -1
             },
         };
 

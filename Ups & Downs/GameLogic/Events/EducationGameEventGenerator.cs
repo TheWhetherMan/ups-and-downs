@@ -26,8 +26,9 @@ public class EducationGameEventGenerator
 			{
 				Description = "You found a $50 bill on the ground!",
 				CashMoneyChange = 50,
-				LifePointsChange = 20
-			},
+				LifePointsChange = 20,
+                LuckyStarsChange = 1
+            },
 			new GameEvent
 			{
 				Description = "You did way better than expected on your biology exam!",
@@ -36,8 +37,9 @@ public class EducationGameEventGenerator
 			new GameEvent
 			{
 				Description = "You studied the wrong chapter for your calculus exam...",
-				LifePointsChange = -100
-			},
+				LifePointsChange = -100,
+                LuckyStarsChange = -1
+            },
 			new GameEvent
 			{
 				Description = "Your instructor complemented your answers in class!",
@@ -57,7 +59,8 @@ public class EducationGameEventGenerator
             {
                 Description = "Your research trip to the museum ended when you knocked over a T-Rex skeleton.",
                 LifePointsChange = -50,
-                CashMoneyChange = -10000
+                CashMoneyChange = -10000,
+                LuckyStarsChange = -3
             },
         };
 

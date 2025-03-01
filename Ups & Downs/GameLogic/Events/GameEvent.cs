@@ -15,6 +15,8 @@ public record GameEvent
     public int? CareerChange { get; init; }
     /// <summary>Increment or decrement the player's salary by this much</summary>
     public int? SalaryChange { get; init; }
+    /// <summary>Give the player a ticket for this many (un)lucky stars</summary>
+    public int? LuckyStarsChange { get; init; }
 
     public CashMoneyModifier GetCashMoneyModifier(LuckyStars modLevel) 
         => new() { LuckyStarsFactor = modLevel };

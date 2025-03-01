@@ -25,13 +25,15 @@ public class LoveGameEventGenerator
 			new GameEvent
 			{
 				Description = "Your sibling told on you.",
-				LifePointsChange = -10
-			},
+				LifePointsChange = -10,
+                LuckyStarsChange = -1
+            },
 			new GameEvent
 			{
 				Description = "It's allowance day!",
-				CashMoneyChange = 100
-			},
+				CashMoneyChange = 100,
+                LuckyStarsChange = 1
+            },
             new GameEvent
             {
                 Description = "Your surprise Mother's Day gift was appreciated!",
@@ -55,7 +57,8 @@ public class LoveGameEventGenerator
             new GameEvent
             {
                 Description = "You forgot about your anniversary with your significant other!",
-                LifePointsChange = -120
+                LifePointsChange = -120,
+                LuckyStarsChange = -1
             },
             new GameEvent
             {
@@ -66,7 +69,8 @@ public class LoveGameEventGenerator
             {
                 Description = "While trying to surprise your significant other with breakfast in bed, you accidently put a spoon in the microwave and made it explode!",
                 LifePointsChange = -5,
-                CashMoneyChange = -100
+                CashMoneyChange = -100,
+                LuckyStarsChange = -2
             },
         };
 

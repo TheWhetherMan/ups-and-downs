@@ -43,8 +43,9 @@ public class CareerGameEventGenerator
 			{
 				Description = "The code you pushed to production had a bug, and the client isn't happy.",
 				LifePointsChange = -20,
-				CareerChange = -1
-			},
+				CareerChange = -1,
+                LuckyStarsChange = -1
+            },
 			new GameEvent
 			{
 				Description = "There was a pizza party at work, but they ran out of plain cheese before you got there.",

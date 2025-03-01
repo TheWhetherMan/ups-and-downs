@@ -15,8 +15,7 @@ namespace UpsAndDowns.Hardware
 
         public static void RunTest()
         {
-            PrintLuckyStarTicket ticket = new();
-            ticket.PrintTicket(new TicketSettings() { Quantity = 2 });
+            new PrintLuckyStarTicket().PrintTicket(new TicketSettings() { Quantity = 1, PlayerNumber = 1 });
         }
 
         internal static Image BitmapImageToBitmap(BitmapImage bitmapImage)
@@ -24,7 +23,7 @@ namespace UpsAndDowns.Hardware
             if (bitmapImage == null)
                 return null;
 
-            using MemoryStream outStream = new MemoryStream();
+            using MemoryStream outStream = new();
             BitmapEncoder encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
             encoder.Save(outStream);

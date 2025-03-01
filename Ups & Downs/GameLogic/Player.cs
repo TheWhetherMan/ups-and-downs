@@ -3,6 +3,7 @@ using UpsAndDowns.GameLogic.Events;
 using UpsAndDowns.GameLogic.Enums;
 using UpsAndDowns.GameLogic.Misc;
 using UpsAndDowns.BusinessLogic;
+using UpsAndDowns.Hardware;
 
 namespace UpsAndDowns.GameLogic;
 
@@ -58,6 +59,16 @@ public class Player
 
         if (eve.SalaryChange is int salary)
             Salary += eve.GetSalaryModifier(luck).ModifySalary(salary);
+
+        if (eve.LuckyStarsChange is int stars)
+        {
+            if (stars > 0)
+                new PrintLuckyStarTicket().PrintTicket(new TicketSettings() { Quantity = stars });
+            else if (stars < 0)
+                new PrintUnluckyStarTicket().PrintTicket(new TicketSettings() { Quantity = stars });
+            else 
+                Logger.Log("Player.ApplyGameEvent: Zero stars given!", eve);
+        }
 
         CheckCurrentState();
     }

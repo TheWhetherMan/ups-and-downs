@@ -4,7 +4,7 @@ using System.Windows.Media.Imaging;
 
 namespace UpsAndDowns.Hardware
 {
-    public class PrintLuckyStarTicket : IPrintableTicket
+    public class PrintUnluckyStarTicket : IPrintableTicket
     {
         private TicketSettings _ticketSettings = new();
 
@@ -22,15 +22,15 @@ namespace UpsAndDowns.Hardware
             if (e.Graphics == null)
                 return;
 
-            BitmapImage bitmapImage = new(new Uri("pack://application:,,,/Resources/Images/star_gold.png", UriKind.Absolute));
+            BitmapImage bitmapImage = new(new Uri("pack://application:,,,/Resources/Images/star_dark.png", UriKind.Absolute));
             Image imageToPrint = PrinterManager.BitmapImageToBitmap(bitmapImage);
             if (imageToPrint == null) 
                 return;
 
             int yPos = PrinterManager.InitialY;
             e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            e.Graphics.DrawString("Lucky Star Ticket", 
-                PrinterManager.LargeFont, PrinterManager.Brush, new Point(20, yPos));
+            e.Graphics.DrawString("Unlucky Star Ticket", 
+                PrinterManager.LargeFont, PrinterManager.Brush, new Point(15, yPos));
             yPos += PrinterManager.StandardLineHeight;
             e.Graphics.DrawString($"Player #{_ticketSettings.PlayerNumber}",
                 PrinterManager.MediumFont, PrinterManager.Brush, new Point(70, yPos));
@@ -44,14 +44,14 @@ namespace UpsAndDowns.Hardware
             else
                 yPos += PrinterManager.StandardLineHeight * 6;
 
-            e.Graphics.DrawString($"Value: {_ticketSettings.Quantity} Lucky Star(s)!", 
-                PrinterManager.MediumFont, PrinterManager.Brush, new Point(35, yPos));
+            e.Graphics.DrawString($"Value: {_ticketSettings.Quantity} Unlucky Star(s)!", 
+                PrinterManager.MediumFont, PrinterManager.Brush, new Point(20, yPos));
             yPos += PrinterManager.StandardLineHeight * 3;
-            e.Graphics.DrawString("May be redeemed at any time,", 
+            e.Graphics.DrawString("Must be redeemed entirely at", 
                 PrinterManager.MediumFont, PrinterManager.Brush, new Point(10, yPos));
             yPos += PrinterManager.StandardLineHeight;
-            e.Graphics.DrawString("but must be all at once!",
-                PrinterManager.MediumFont, PrinterManager.Brush, new Point(35, yPos));
+            e.Graphics.DrawString("the first opportunity!",
+                PrinterManager.MediumFont, PrinterManager.Brush, new Point(40, yPos));
             yPos += PrinterManager.StandardLineHeight;
             e.Graphics.DrawString("No cash value", 
                 PrinterManager.MediumFont, PrinterManager.Brush, new Point(55, yPos));
