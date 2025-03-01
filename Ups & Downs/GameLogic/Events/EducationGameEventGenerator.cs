@@ -25,39 +25,46 @@ public class EducationGameEventGenerator
 			new GameEvent
 			{
 				Description = "You found a $50 bill on the ground!",
-				CashMoneyChange = 50,
+                ShortName = "Found $50",
+                CashMoneyChange = 50,
 				LifePointsChange = 20,
                 LuckyStarsChange = 1
             },
 			new GameEvent
 			{
 				Description = "You did way better than expected on your biology exam!",
-				LifePointsChange = 125
+                ShortName = "Great Exam",
+                LifePointsChange = 125
 			},
 			new GameEvent
 			{
 				Description = "You studied the wrong chapter for your calculus exam...",
-				LifePointsChange = -100,
+                ShortName = "Wrong Chapter",
+                LifePointsChange = -100,
                 LuckyStarsChange = -1
             },
 			new GameEvent
 			{
 				Description = "Your instructor complemented your answers in class!",
-				LifePointsChange = 75
+                ShortName = "Great Student",
+                LifePointsChange = 75
 			},
 			new GameEvent
 			{
 				Description = "The friend you helped study did great on their exams!",
-				LifePointsChange = 150
+                ShortName = "Study Buddy",
+                LifePointsChange = 150
 			},
 			new GameEvent
 			{
 				Description = "The students you tutored for chemistry paid up!",
-				CashMoneyChange = 500
+                ShortName = "Tutor Tuition",
+                CashMoneyChange = 500
 			},
             new GameEvent
             {
                 Description = "Your research trip to the museum ended when you knocked over a T-Rex skeleton.",
+                ShortName = "T-Wrecked",
                 LifePointsChange = -50,
                 CashMoneyChange = -10000,
                 LuckyStarsChange = -3

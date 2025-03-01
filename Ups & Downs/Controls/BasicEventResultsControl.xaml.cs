@@ -32,9 +32,9 @@ namespace UpsAndDowns.Controls
 
             if (eve.CashMoneyChange is int cash)
             {
-                CashBeforeText.Text = cash.ToString();
+                CashBeforeText.Text = "$$" + cash.ToString();
+                CashAfterText.Text = "$$" + eve.GetCashMoneyModifier((LuckyStars)_stars).ModifyCashMoney(cash).ToString();
                 CashBeforeText.Visibility = Visibility.Visible;
-                CashAfterText.Text = eve.GetCashMoneyModifier((LuckyStars)_stars).ModifyCashMoney(cash).ToString();
                 CashAfterText.Visibility = Visibility.Visible;
             }
             else
@@ -45,9 +45,9 @@ namespace UpsAndDowns.Controls
 
             if (eve.LifePointsChange is int life)
             {
-                LifeBeforeText.Text = life.ToString();
+                LifeBeforeText.Text = "LP" + life.ToString();
+                LifeAfterText.Text = "LP" + eve.GetLifePointsModifier((LuckyStars)_stars).ModifyLifePoints(life).ToString();
                 LifeBeforeText.Visibility = Visibility.Visible;
-                LifeAfterText.Text = eve.GetLifePointsModifier((LuckyStars)_stars).ModifyLifePoints(life).ToString();
                 LifeAfterText.Visibility = Visibility.Visible;
             }
             else
@@ -58,9 +58,9 @@ namespace UpsAndDowns.Controls
 
             if (eve.CareerChange is int career)
             {
-                CareerBeforeText.Text = career.ToString();
+                CareerBeforeText.Text = "Career: " + career.ToString();
+                CareerAfterText.Text = "Career: " + eve.GetCareerChangeModifier((LuckyStars)_stars).ModifyCareerLevel().ToString();
                 CareerBeforeText.Visibility = Visibility.Visible;
-                CareerAfterText.Text = eve.GetCareerChangeModifier((LuckyStars)_stars).ModifyCareerLevel().ToString();
                 CareerAfterText.Visibility = Visibility.Visible;
             }
             else
@@ -71,9 +71,9 @@ namespace UpsAndDowns.Controls
 
             if (eve.SalaryChange is int salary)
             {
-                SalaryBeforeText.Text = salary.ToString();
+                SalaryBeforeText.Text = "Salary: " + salary.ToString();
+                SalaryAfterText.Text = "Salary: " + eve.GetSalaryModifier((LuckyStars)_stars).ModifySalary(salary).ToString();
                 SalaryBeforeText.Visibility = Visibility.Visible;
-                SalaryAfterText.Text = eve.GetSalaryModifier((LuckyStars)_stars).ModifySalary(salary).ToString();
                 SalaryAfterText.Visibility = Visibility.Visible;
             }
             else
@@ -108,6 +108,7 @@ namespace UpsAndDowns.Controls
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             GameManager.Instance.PlayerTurnCompleted = true;
+            GameManager.Instance.CurrentPlayer.MovedThisTurn = true;
             GameManager.Instance.CurrentPlayer.ApplyGameEvent(_activeEvent, (LuckyStars)_stars);
             WeakReferenceMessenger.Default.Send(new Messages.PlayerTurnCompletedMessage());
         }

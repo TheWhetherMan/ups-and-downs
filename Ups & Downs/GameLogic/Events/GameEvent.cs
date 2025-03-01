@@ -7,6 +7,8 @@ public record GameEvent
 {
     /// <summary>The user-facing description of the event</summary>
     public required string Description { get; init; }
+    /// <summary>The event's short name for printing on a ticket</summary>
+    public string? ShortName { get; init; }
     /// <summary>Increment or decrement the player's cash money by this much</summary>
     public int? CashMoneyChange { get; init; }
     /// <summary>Increment or decrement the player's life points by this much</summary>

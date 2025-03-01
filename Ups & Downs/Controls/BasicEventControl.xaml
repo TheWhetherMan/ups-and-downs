@@ -20,7 +20,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="30" />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="1" x:Name="EventDescriptionHeader" Text="" FontSize="46" 
+                <TextBlock Grid.Row="1" x:Name="EventDescriptionHeader" Text="" FontSize="38" 
                            Foreground="{StaticResource YInMnBlueDark}" Margin="40 0" FontWeight="Bold"
                            VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"
                            d:Text="Your research trip to the museum ended when you knocked over a T-Rex skeleton." />

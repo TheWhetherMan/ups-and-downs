@@ -65,7 +65,7 @@ public partial class PlayerCard : UserControl, INotifyPropertyChanged
 
             if (diffAbs > 1000)
                 ReflectedCashMoney += 100 * diffSign;
-            if (diffAbs > 100)
+            else if (diffAbs > 100)
                 ReflectedCashMoney += 10 * diffSign;
             else
                 ReflectedCashMoney += 1 * diffSign;

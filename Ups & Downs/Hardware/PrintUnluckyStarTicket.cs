@@ -46,7 +46,10 @@ namespace UpsAndDowns.Hardware
 
             e.Graphics.DrawString($"Value: {_ticketSettings.Quantity} Unlucky Star(s)!", 
                 PrinterManager.MediumFont, PrinterManager.Brush, new Point(20, yPos));
-            yPos += PrinterManager.StandardLineHeight * 3;
+            yPos += PrinterManager.StandardLineHeight;
+            e.Graphics.DrawString($"Event: {_ticketSettings.CurrentEvent?.ShortName ?? "?"}",
+                PrinterManager.MediumFont, PrinterManager.Brush, new Point(25, yPos));
+            yPos += PrinterManager.StandardLineHeight * 2;
             e.Graphics.DrawString("Must be redeemed entirely at", 
                 PrinterManager.MediumFont, PrinterManager.Brush, new Point(10, yPos));
             yPos += PrinterManager.StandardLineHeight;

@@ -25,36 +25,42 @@ public class CareerGameEventGenerator
 			new GameEvent
 			{
 				Description = "Your boss didn't laugh at your joke during the meeting.",
-				LifePointsChange = -30
+                ShortName = "Bad Joke",
+                LifePointsChange = -30
 			},
 			new GameEvent
 			{
 				Description = "The donuts you brought to work went over well!",
-				LifePointsChange = 25
+                ShortName = "Nuts for Donuts",
+                LifePointsChange = 25
 			},
 			new GameEvent
 			{
 				Description = "Your hard work on the project was recognized by your boss!",
-				LifePointsChange = 50,
+                ShortName = "Great Work",
+                LifePointsChange = 50,
 				CareerChange = 1,
 				CashMoneyChange = 1000
 			},
 			new GameEvent
 			{
 				Description = "The code you pushed to production had a bug, and the client isn't happy.",
-				LifePointsChange = -20,
+                ShortName = "Buggy Code",
+                LifePointsChange = -20,
 				CareerChange = -1,
                 LuckyStarsChange = -1
             },
 			new GameEvent
 			{
 				Description = "There was a pizza party at work, but they ran out of plain cheese before you got there.",
-				LifePointsChange = -10
+                ShortName = "No Plain Cheese",
+                LifePointsChange = -10
 			},
 			new GameEvent
 			{
 				Description = "You did consistently well on your performance reviews this year!",
-				CareerChange = 1,
+                ShortName = "Performance Review",
+                CareerChange = 1,
 				CashMoneyChange = 5000
 			},
 		};

@@ -25,25 +25,29 @@ public class AdventureGameEventGenerator
 			new GameEvent
 			{
 				Description = "You zigged when you should've zagged and broke your leg in a freak snowboarding accident!",
-				LifePointsChange = -20,
+                ShortName = "S-NO-Boarding",
+                LifePointsChange = -20,
                 CashMoneyChange = -5000,
                 LuckyStarsChange = -1
             },
             new GameEvent
             {
                 Description = "You were hit by a car while running in a marathon event! Fortunately, they have good insurance.",
+                ShortName = "Car Magnet",
                 LifePointsChange = -30,
                 CashMoneyChange = 100000
             },
             new GameEvent
             {
                 Description = "While sky-diving your parachute failed to deploy, but you were able to land safely with your reserve chute!",
+                ShortName = "Sky Diver",
                 LifePointsChange = 200,
                 LuckyStarsChange = 2
             },
             new GameEvent
             {
                 Description = "You set a new track record with the hot rod you've been building in your spare time!",
+                ShortName = "Hot Rod",
                 LifePointsChange = 60,
                 CashMoneyChange = 5000,
                 LuckyStarsChange = 1
@@ -51,12 +55,14 @@ public class AdventureGameEventGenerator
             new GameEvent
             {
                 Description = "You caught a record smallmouth bass in a fish competition!",
+                ShortName = "Fish Swish",
                 LifePointsChange = 40,
                 CashMoneyChange = 2000
             },
             new GameEvent
             {
                 Description = "While deer hunting you accidently shoot an endangered animal, now you must pay the steep fine!",
+                ShortName = "Missed The Deer",
                 LifePointsChange = -20,
                 CashMoneyChange = -50000,
                 LuckyStarsChange = -1

@@ -25,49 +25,58 @@ public class LoveGameEventGenerator
 			new GameEvent
 			{
 				Description = "Your sibling told on you.",
+                ShortName = "Tattle Tale",
 				LifePointsChange = -10,
                 LuckyStarsChange = -1
             },
 			new GameEvent
 			{
 				Description = "It's allowance day!",
-				CashMoneyChange = 100,
+                ShortName = "Tattle Tale",
+                CashMoneyChange = 100,
                 LuckyStarsChange = 1
             },
             new GameEvent
             {
                 Description = "Your surprise Mother's Day gift was appreciated!",
+                ShortName = "Mother's Day Surprise",
                 LifePointsChange = 30
             },
             new GameEvent
             {
                 Description = "Your surprise Father's Day gift was appreciated!",
+                ShortName = "Father's Day Surprise",
                 LifePointsChange = 30
             },
             new GameEvent
             {
                 Description = "You forgot about Valentine's Day!",
+                ShortName = "Forgot V-Day",
                 LifePointsChange = -40
             },
             new GameEvent
             {
                 Description = "You forgot about your significant other's birthday!",
+                ShortName = "Forgot Birthday",
                 LifePointsChange = -80
             },
             new GameEvent
             {
                 Description = "You forgot about your anniversary with your significant other!",
+                ShortName = "Forgot Anniversary",
                 LifePointsChange = -120,
                 LuckyStarsChange = -1
             },
             new GameEvent
             {
                 Description = "Your thoughtful birthday present for your significant other was well-received!",
+                ShortName = "Birthday Present",
                 LifePointsChange = 60
             },
             new GameEvent
             {
                 Description = "While trying to surprise your significant other with breakfast in bed, you accidently put a spoon in the microwave and made it explode!",
+                ShortName = "Microwave Exploded",
                 LifePointsChange = -5,
                 CashMoneyChange = -100,
                 LuckyStarsChange = -2

@@ -25,6 +25,7 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -32,13 +33,15 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <!-- LEFT SIDE -->
-                    <TextBlock Grid.Row="0" Grid.Column="0" x:Name="CashBeforeText" Text="Cash Money BEFORE" 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Before Luck:" FontStyle="Italic"
+                               Style="{StaticResource GridTextBlockStyle}" Foreground="{StaticResource Mustard}" />
+                    <TextBlock Grid.Row="1" Grid.Column="0" x:Name="CashBeforeText" Text="Cash Money BEFORE" 
                                Style="{StaticResource GridTextBlockStyle}" />
-                    <TextBlock Grid.Row="1" Grid.Column="0" x:Name="LifeBeforeText" Text="Life Points BEFORE"
+                    <TextBlock Grid.Row="2" Grid.Column="0" x:Name="LifeBeforeText" Text="Life Points BEFORE"
                                Style="{StaticResource GridTextBlockStyle}" />
-                    <TextBlock Grid.Row="2" Grid.Column="0" x:Name="CareerBeforeText" Text="Career BEFORE"
+                    <TextBlock Grid.Row="3" Grid.Column="0" x:Name="CareerBeforeText" Text="Career BEFORE"
                                Style="{StaticResource GridTextBlockStyle}" />
-                    <TextBlock Grid.Row="3" Grid.Column="0" x:Name="SalaryBeforeText" Text="Salary BEFORE"
+                    <TextBlock Grid.Row="4" Grid.Column="0" x:Name="SalaryBeforeText" Text="Salary BEFORE"
                                Style="{StaticResource GridTextBlockStyle}" />
                     <!-- CENTER -->
                     <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="4" Orientation="Vertical" 
@@ -57,13 +60,15 @@
                                    Foreground="{StaticResource YInMnBlueDark}" Margin="0 20" FontSize="20" />
                     </StackPanel>
                     <!-- RIGHT SIDE -->
-                    <TextBlock Grid.Row="0" Grid.Column="2" x:Name="CashAfterText" Text="Cash Money AFTER"
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="After Luck:" FontStyle="Italic"
+                               Style="{StaticResource GridTextBlockStyle}" Foreground="{StaticResource Mustard}" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" x:Name="CashAfterText" Text="Cash Money AFTER"
                                Style="{StaticResource GridTextBlockStyle}" />
-                    <TextBlock Grid.Row="1" Grid.Column="2" x:Name="LifeAfterText" Text="Life Points AFTER"
+                    <TextBlock Grid.Row="2" Grid.Column="2" x:Name="LifeAfterText" Text="Life Points AFTER"
                                Style="{StaticResource GridTextBlockStyle}" />
-                    <TextBlock Grid.Row="2" Grid.Column="2" x:Name="CareerAfterText" Text="Career AFTER"
+                    <TextBlock Grid.Row="3" Grid.Column="2" x:Name="CareerAfterText" Text="Career AFTER"
                                Style="{StaticResource GridTextBlockStyle}" />
-                    <TextBlock Grid.Row="3" Grid.Column="2" x:Name="SalaryAfterText" Text="Salary AFTER"
+                    <TextBlock Grid.Row="4" Grid.Column="2" x:Name="SalaryAfterText" Text="Salary AFTER"
                                Style="{StaticResource GridTextBlockStyle}" />
                 </Grid>
                 <Button Grid.Row="4" Style="{StaticResource TallButtonStyleGreen}" Content="Okay" 

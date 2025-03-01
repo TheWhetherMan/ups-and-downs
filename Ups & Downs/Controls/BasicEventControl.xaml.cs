@@ -29,6 +29,8 @@ namespace UpsAndDowns.Controls
         internal void UpdateForEvent(GameEvent gameEvent)
         {
             _luckyStars = 0;
+            UpdateLuckyStarIcons();
+
             _activeEvent = gameEvent;
             EventChanges.Clear();
             EventDescriptionHeader.Text = gameEvent.Description;

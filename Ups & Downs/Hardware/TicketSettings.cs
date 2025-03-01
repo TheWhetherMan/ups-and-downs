@@ -1,4 +1,5 @@
 ﻿using UpsAndDowns.GameLogic.Enums;
+using UpsAndDowns.GameLogic.Events;
 
 namespace UpsAndDowns.Hardware
 {
@@ -8,5 +9,6 @@ namespace UpsAndDowns.Hardware
         public int Quantity { get; set; } = 1;
         public string? BodyText { get; set; }
         public int? PlayerNumber { get; set; }
+        public GameEvent? CurrentEvent { get; set; }
     }
 }
