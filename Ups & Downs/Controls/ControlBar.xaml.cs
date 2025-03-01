@@ -19,10 +19,20 @@ public partial class ControlBar : UserControl
     {
         WeakReferenceMessenger.Default.Register<Messages.GameStateChangedMessage>(this, (r, m) =>
         {
-            if (GameManager.Instance.CurrentState == GameStates.AtHomeScreen && 
-                GameManager.Instance.GameHasStarted)
+            if (GameManager.Instance.GameHasStarted is false)
+                return;
+
+            if (GameManager.Instance.CurrentState == GameStates.AtHomeScreen)
             {
-                CenterButton.Content = "Back To Player Turn";
+                if (GameManager.Instance.AllPlayersHaveMoved)
+                {
+                    CenterButton.Content = "End Of Year";
+                }
+                else
+                {
+                    CenterButton.Content = "Back To Player Turn";
+                    CenterButton.IsEnabled = true;
+                }
             }
         });
     }
@@ -47,9 +57,17 @@ public partial class ControlBar : UserControl
         }
         else if (GameManager.Instance.CurrentState == GameStates.AtHomeScreen)
         {
-            // TODO :: CHECK IF ALL PLAYERS HAVE GONE. IF SO, DO END OF YEAR EVENT
-
-            GameManager.Instance.CurrentState = GameStates.PlayerTurn;
+            if (GameManager.Instance.AllPlayersHaveMoved)
+            {
+                CenterButton.IsEnabled = false;
+                GameManager.Instance.CurrentState = GameStates.EndOfYear;
+                WeakReferenceMessenger.Default.Send(new Messages.AdvanceYearMessage());
+            }
+            else
+            {
+                CenterButton.IsEnabled = true;
+                GameManager.Instance.CurrentState = GameStates.PlayerTurn;
+            }
         }
     }
 

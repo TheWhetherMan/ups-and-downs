@@ -18,7 +18,9 @@ public partial class PlayerCard : UserControl, INotifyPropertyChanged
 		set { _player = value; OnPropertyChanged(); }
 	}
 
-	private int _reflectedCashMoney;
+    public string MovedDisplayText => Player?.MovedThisTurn ?? false ? "Moved" : "Idle";
+
+    private int _reflectedCashMoney;
     public int ReflectedCashMoney
 	{
 		get { return _reflectedCashMoney; }
@@ -33,7 +35,7 @@ public partial class PlayerCard : UserControl, INotifyPropertyChanged
     }
 
     private readonly TimeSpan _updateIntervalFast = TimeSpan.FromMilliseconds(10);
-    private readonly TimeSpan _updateIntervalSlow = TimeSpan.FromMilliseconds(50);
+    private readonly TimeSpan _updateIntervalSlow = TimeSpan.FromMilliseconds(40);
     private readonly Timer _timerFast;
     private readonly Timer _timerSlow;
     private SoundLooper _soundLooper;

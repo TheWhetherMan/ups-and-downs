@@ -4,11 +4,35 @@ using UpsAndDowns.GameLogic.Enums;
 using UpsAndDowns.GameLogic.Misc;
 using UpsAndDowns.BusinessLogic;
 using UpsAndDowns.Hardware;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace UpsAndDowns.GameLogic;
 
-public class Player
+public class Player : INotifyPropertyChanged
 {
+    public event PropertyChangedEventHandler? PropertyChanged;
+    protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+    private bool _movedThisTurn;
+    public bool MovedThisTurn
+    {
+        get { return _movedThisTurn; }
+        set 
+        { 
+            _movedThisTurn = value; 
+            PlayerStatusText = value ? "Moved" : "Waiting";
+            OnPropertyChanged(); }
+    }
+
+    private string _playerStatusText = "Waiting";
+    public string PlayerStatusText
+    {
+        get { return _playerStatusText; }
+        set { _playerStatusText = value; OnPropertyChanged(); }
+    }
+
     // Identification properties
     public string PlayerDisplayName => "Player " + PlayerNumber;
     public int PlayerNumber { get; set; }
@@ -26,7 +50,6 @@ public class Player
     public int Children { get; set; } = 0;
     public List<Asset> Assets { get; set; } = new();
     public SpaceTypes CurrentSpace { get; set; } = SpaceTypes.Start;
-    public bool MovedThisTurn { get; set; } = false;
 
     public Player(int playerNumber)
     {
@@ -155,7 +178,6 @@ public class Player
 
     private void CheckCurrentState()
     {
-        if (LifePoints < 0) LifePoints = 0;
         if (CareerLevel < 0) CareerLevel = 0;
         if (Salary < 0) Salary = 0;
         if (Children < 0) Children = 0;

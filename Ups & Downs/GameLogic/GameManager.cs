@@ -1,3 +1,4 @@
+using AsyncAwaitBestPractices;
 using CommunityToolkit.Mvvm.Messaging;
 using UpsAndDowns.BusinessLogic;
 using UpsAndDowns.GameLogic.Enums;
@@ -35,6 +36,8 @@ public class GameManager
         }
     }
 
+    public bool AllPlayersHaveMoved => Players.All(p => p.MovedThisTurn is true);
+
     public List<Player> Players { get; private set; } = new();
     public Player CurrentPlayer { get; private set; } = new(0);
     public int GameLengthYears { get; private set; } = 10;
@@ -45,6 +48,7 @@ public class GameManager
 
     private List<Player> _unselectedPlayers = new();
     private Random _random = new();
+    private bool _endingYear;
 
     private GameManager()
     {
@@ -61,6 +65,8 @@ public class GameManager
     {
         WeakReferenceMessenger.Default.Register<StartNewGameMessage>(this, (r, m)
             => StartNewGame(m.PlayerCount));
+        WeakReferenceMessenger.Default.Register<AdvanceYearMessage>(this, (r, m)
+            => IterateYearForEachPlayer().SafeFireAndForget());
     }
 
     public void StartNewGame(int playerCount)
@@ -96,19 +102,31 @@ public class GameManager
         PlayerTurnCompleted = false;
     }
 
-    public void AdvanceGameByOneYear()
+    private async Task IterateYearForEachPlayer()
     {
-        Logger.Log($"Year {CurrentYear} has ended.");
-        CurrentYear++;
-        foreach (Player player in Players)
-            player.AdvanceYear();
+        try
+        {
+            if (_endingYear)
+                return;
+            else
+                _endingYear = true;
 
-        if (CurrentYear >= GameLengthYears)
-            Logger.Log($"Game over!");
-        else
-            Logger.Log($"Starting year {CurrentYear}...");
+            Logger.Log($"Year {CurrentYear} has ended.");
+            await Task.Delay(500);
 
-        OnYearAdvanced?.Invoke();
+            foreach (Player player in Players)
+            {
+                player.AdvanceYear();
+                await Task.Delay(4000);
+            }
+
+            CurrentYear++;
+            CurrentState = GameStates.AtHomeScreen;
+        }
+        finally
+        {
+            _endingYear = false;
+        }
     }
 
     public void ApplyGameEvent(GameEvent eve, LuckyStars luck, Player affectedPlayer)

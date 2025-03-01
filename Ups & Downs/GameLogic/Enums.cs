@@ -9,6 +9,7 @@ public enum GameStates
     LotteryResults,
     PlayerTurn,
     Completed,
+    EndOfYear,
 }
 
 public enum LuckyStars

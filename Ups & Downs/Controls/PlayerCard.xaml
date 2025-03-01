@@ -18,5 +18,7 @@
                 <Run Text="LP" /><Run Text="{Binding ElementName=_this, Path=ReflectedLifePoints}" Foreground="{StaticResource Celadon}" />
             </TextBlock>
         </StackPanel>
+        <TextBlock Foreground="{StaticResource RoseRed}" Margin="8" HorizontalAlignment="Right"
+                   Text="{Binding ElementName=_this, Path=Player.PlayerStatusText}" FontSize="20" />
     </Grid>
 </UserControl>
