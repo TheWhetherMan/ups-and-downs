@@ -1,82 +1,34 @@
 ﻿using System.Drawing;
-using System.Drawing.Printing;
-using System.Runtime.InteropServices;
-using System.Text;
+using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace UpsAndDowns.Hardware
 {
     internal class PrinterManager
     {
-        [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern bool OpenPrinter(string pPrinterName, out IntPtr hPrinter, IntPtr pDefault);
-
-        [DllImport("winspool.drv", SetLastError = true)]
-        public static extern bool ClosePrinter(IntPtr hPrinter);
-
-        [DllImport("winspool.drv", SetLastError = true)]
-        public static extern bool StartDocPrinter(IntPtr hPrinter, int level, ref DOCINFOA docInfo);
-
-        [DllImport("winspool.drv", SetLastError = true)]
-        public static extern bool EndDocPrinter(IntPtr hPrinter);
-
-        [DllImport("winspool.drv", SetLastError = true)]
-        public static extern bool StartPagePrinter(IntPtr hPrinter);
-
-        [DllImport("winspool.drv", SetLastError = true)]
-        public static extern bool EndPagePrinter(IntPtr hPrinter);
-
-        [DllImport("winspool.drv", SetLastError = true)]
-        public static extern bool WritePrinter(IntPtr hPrinter, byte[] pBytes, int dwCount, out int dwWritten);
-
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-        public class DOCINFOA
-        {
-            public int cbSize = Marshal.SizeOf(typeof(DOCINFOA));
-            public string pDocName = "ESC/POS Test";
-            public string pDataType = "RAW";
-        }
-
-        public static void SendToPrinter(string printerName, byte[] data)
-        {
-            PrintDocument printDoc = new PrintDocument();
-            printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
-            printDoc.PrinterSettings.PrinterName = "POS-58";
-            printDoc.Print();
-        }
-
-        private static void PrintPage(object sender, PrintPageEventArgs e)
-        {
-            e.Graphics.DrawString("Hello, Printer!", new Font("Arial", 12), Brushes.Black, new PointF(100, 100));
-        }
-
-        private static void SimpleTest(string printerName)
-        {
-            if (OpenPrinter(printerName, out IntPtr hPrinter, IntPtr.Zero))
-            {
-                Console.WriteLine("Printer opened successfully!");
-                ClosePrinter(hPrinter);
-            }
-            else
-            {
-                Console.WriteLine("Failed to open printer. Error: " + Marshal.GetLastWin32Error());
-            }
-        }
+        internal static string PrinterName = "POS-58";
+        internal static int InitialY = 0;
+        internal static int StandardLineHeight = 20;
+        internal static Font MediumFont = new("Verdana", 8);
+        internal static Font LargeFont = new("Verdana", 12);
+        internal static Brush Brush = Brushes.Black;
 
         public static void RunTest()
         {
-            //foreach (string printer in System.Drawing.Printing.PrintingPermission.inst)
-            //{
-            //    Logger.Log("Printer available: ", printer);
-            //}
+            PrintLuckyStarTicket ticket = new();
+            ticket.PrintTicket(new TicketSettings() { Quantity = 2 });
+        }
 
-            string printerName = "POS-58";
-            byte[] escposCommands = Encoding.ASCII.GetBytes("\x1B\x40" + // Initialize printer
-                                                            "Hello ESC/POS Printer!\n" +
-                                                            "\x1B\x64\x02" + // Feed paper
-                                                            "\x1D\x56\x41\x03"); // Cut paper
+        internal static Image BitmapImageToBitmap(BitmapImage bitmapImage)
+        {
+            if (bitmapImage == null)
+                return null;
 
-            SendToPrinter(printerName, escposCommands);
-            //SimpleTest(printerName);
+            using MemoryStream outStream = new MemoryStream();
+            BitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
+            encoder.Save(outStream);
+            return Image.FromStream(outStream);
         }
     }
 }

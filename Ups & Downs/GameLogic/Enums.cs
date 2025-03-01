@@ -89,3 +89,9 @@ public enum EndOfYearEvents
     ///<summary>All players roll their dice -- lowest or low roller(s) go back to start</summary>
     BackToStart,
 }
+
+public enum TicketTypes
+{
+    LuckyStars,
+    Lottery
+}
