@@ -35,6 +35,8 @@ namespace UpsAndDowns.Controls
             }
         }
 
+        // [TODO] UPDATE TEXT BASED ON PLAYER DECISION
+
         private void HandleCarResult()
         {
             SpecialSpaceHeader.Text = "Are you buying a car?";

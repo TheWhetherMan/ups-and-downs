@@ -21,6 +21,9 @@ namespace UpsAndDowns.Controls
             _spaceType = space;
             switch (space)
             {
+
+                // [TODO] SHOW/HIDE BUTTONS DEPENDING IF EXTRA STEPS ARE REQUIRED
+
                 case SpaceTypes.Car:
                     SpecialSpaceHeader.Text = "Are you buying a car?";
                     SpecialSpaceSubHeader.Text = "This will allow you to move farther on the board each turn!";
