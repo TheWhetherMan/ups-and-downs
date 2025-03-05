@@ -49,8 +49,8 @@
                             Click="SpecialButton_Marriage" />
                     <Button Style="{StaticResource TallButtonStyleRed}" Content="Children"
                             Click="SpecialButton_Children" />
-                    <Button Style="{StaticResource TallButtonStyleGreen}" Content="Special Event"
-                            Click="SpecialButton_SpecialEvent" />
+                    <!--<Button Style="{StaticResource TallButtonStyleGreen}" Content="Special Event"
+                            Click="SpecialButton_SpecialEvent" />-->
                     <Button Style="{StaticResource TallButtonStyleYellow}" Content="Buy Car"
                             Click="SpecialButton_BuyCar" />
                     <Button Style="{StaticResource TallButtonStyleYellow}" Content="Buy House"
@@ -62,5 +62,7 @@
                 VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50 0 0 50" Click="BackButton_Click" />
         <local:BasicEventControl x:Name="BasicEventControlElement" Visibility="Collapsed" />
         <local:BasicEventResultsControl x:Name="BasicEventControlResultsElement" Visibility="Collapsed" />
+        <local:SpecialEventControl x:Name="SpecialSpaceControlElement" Visibility="Collapsed" />
+        <local:SpecialEventResultControl x:Name="SpecialSpaceResultControlElement" Visibility="Collapsed" />
     </Grid>
 </UserControl>

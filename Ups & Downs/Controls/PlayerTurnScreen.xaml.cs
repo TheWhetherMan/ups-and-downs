@@ -26,6 +26,8 @@ public partial class PlayerTurnScreen : UserControl
         {
             BasicEventControlElement.Visibility = Visibility.Collapsed;
             BasicEventControlResultsElement.Visibility = Visibility.Collapsed;
+            SpecialSpaceControlElement.Visibility = Visibility.Collapsed;
+            SpecialSpaceResultControlElement.Visibility = Visibility.Collapsed;
         });
         WeakReferenceMessenger.Default.Register<Messages.GoToBasicEventsResultsMessage>(this, (r, m) =>
         {
@@ -37,6 +39,15 @@ public partial class PlayerTurnScreen : UserControl
         {
             BasicEventControlElement.Visibility = Visibility.Collapsed;
             BasicEventControlResultsElement.Visibility = Visibility.Collapsed;
+        });
+        WeakReferenceMessenger.Default.Register<Messages.SpecialSpaceSelectedMessage>(this, (r, m) =>
+        {
+            SpecialSpaceControlElement.Visibility = Visibility.Collapsed;
+            SpecialSpaceResultControlElement.Visibility = Visibility.Visible;
+        });
+        WeakReferenceMessenger.Default.Register<Messages.SpecialSpaceCompletedMessage>(this, (r, m) =>
+        {
+            SpecialSpaceResultControlElement.Visibility = Visibility.Collapsed;
         });
     }
 
@@ -94,42 +105,47 @@ public partial class PlayerTurnScreen : UserControl
     private void SpecialButton_Education(object sender, RoutedEventArgs e)
     {
         Logger.Log("SpecialButton_Education");
-        _spaceHandler.HandleSpecialSpace(SpaceTypes.Education);
+        ShowSpecialSpaceControl(SpaceTypes.Education);
     }
 
     private void SpecialButton_Promotion(object sender, RoutedEventArgs e)
     {
         Logger.Log("SpecialButton_Promotion");
-        _spaceHandler.HandleSpecialSpace(SpaceTypes.Promotion);
+        ShowSpecialSpaceControl(SpaceTypes.Promotion);
     }
 
     private void SpecialButton_Marriage(object sender, RoutedEventArgs e)
     {
         Logger.Log("SpecialButton_Marriage");
-        _spaceHandler.HandleSpecialSpace(SpaceTypes.Marriage);
+        ShowSpecialSpaceControl(SpaceTypes.Marriage);
     }
 
     private void SpecialButton_Children(object sender, RoutedEventArgs e)
     {
         Logger.Log("SpecialButton_Children");
-        _spaceHandler.HandleSpecialSpace(SpaceTypes.Children);
+        ShowSpecialSpaceControl(SpaceTypes.Children);
     }
 
     private void SpecialButton_SpecialEvent(object sender, RoutedEventArgs e)
     {
-        Logger.Log("SpecialButton_SpecialEvent");
-        _spaceHandler.HandleSpecialSpace(SpaceTypes.Event);
+
     }
 
     private void SpecialButton_BuyCar(object sender, RoutedEventArgs e)
     {
         Logger.Log("SpecialButton_BuyCar");
-        _spaceHandler.HandleSpecialSpace(SpaceTypes.Car);
+        ShowSpecialSpaceControl(SpaceTypes.Car);
     }
 
     private void SpecialButton_BuyHouse(object sender, RoutedEventArgs e)
     {
         Logger.Log("SpecialButton_BuyHouse");
-        _spaceHandler.HandleSpecialSpace(SpaceTypes.House);
+        ShowSpecialSpaceControl(SpaceTypes.House);
+    }
+
+    private void ShowSpecialSpaceControl(SpaceTypes space)
+    {
+        SpecialSpaceControlElement.UpdateForSpecialSpace(space);
+        SpecialSpaceControlElement.Visibility = Visibility.Visible;
     }
 }

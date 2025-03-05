@@ -39,6 +39,10 @@ public partial class HomeScreen : UserControl
                 HidePlayerTurnScreen();
             }
         });
+        WeakReferenceMessenger.Default.Register<Messages.ReadyForFirstPlayerTurnMessage>(this, (r, m) =>
+        {
+            StartFirstTurn();
+        });
         WeakReferenceMessenger.Default.Register<Messages.ReturnToHomeScreenMessage>(this, (r, m) =>
         {
             GameManager.Instance.CurrentState = GameStates.AtHomeScreen;
@@ -47,9 +51,9 @@ public partial class HomeScreen : UserControl
         {
             GameManager.Instance.CurrentState = GameStates.AtHomeScreen;
         });
-        WeakReferenceMessenger.Default.Register<Messages.ReadyForFirstPlayerTurnMessage>(this, (r, m) =>
+        WeakReferenceMessenger.Default.Register<Messages.SpecialSpaceCompletedMessage>(this, (r, m) =>
         {
-            StartFirstTurn();
+            HidePlayerTurnScreen();
         });
     }
 

@@ -22,7 +22,7 @@ public class Player : INotifyPropertyChanged
         set 
         { 
             _movedThisTurn = value; 
-            PlayerStatusText = value ? "Moved" : "Waiting";
+            PlayerStatusText = value ? "" : "Waiting";
             OnPropertyChanged(); }
     }
 

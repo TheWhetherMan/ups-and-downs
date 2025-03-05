@@ -12,20 +12,18 @@ public partial class PlayerCard : UserControl, INotifyPropertyChanged
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
     private Player? _player;
-	public Player? Player
-	{
-		get { return _player; }
-		set { _player = value; OnPropertyChanged(); }
-	}
-
-    public string MovedDisplayText => Player?.MovedThisTurn ?? false ? "Moved" : "Idle";
+    public Player? Player
+    {
+        get { return _player; }
+        set { _player = value; OnPropertyChanged(); }
+    }
 
     private int _reflectedCashMoney;
     public int ReflectedCashMoney
-	{
-		get { return _reflectedCashMoney; }
-		set { _reflectedCashMoney = value; OnPropertyChanged(); }
-	}
+    {
+        get { return _reflectedCashMoney; }
+        set { _reflectedCashMoney = value; OnPropertyChanged(); }
+    }
 
     private int _reflectedLifePoints;
     public int ReflectedLifePoints
@@ -90,9 +88,17 @@ public partial class PlayerCard : UserControl, INotifyPropertyChanged
         if (ReflectedLifePoints != Player.LifePoints)
         {
             if (ReflectedLifePoints < Player.LifePoints)
-                ReflectedLifePoints++;
+            {
+                ReflectedLifePoints += 5;
+                if (ReflectedLifePoints > Player.LifePoints)
+                    ReflectedLifePoints = (int)Player.LifePoints;
+            }
             else
-                ReflectedLifePoints--;
+            {
+                ReflectedLifePoints -= 5;
+                if (ReflectedLifePoints < Player.LifePoints)
+                    ReflectedLifePoints = (int)Player.LifePoints;
+            }
         }
     }
 }

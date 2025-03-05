@@ -33,8 +33,10 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <!-- LEFT SIDE -->
+                    <Border Grid.RowSpan="5" Grid.Column="0" CornerRadius="10" 
+                            Background="{StaticResource Celadon}" Margin="10" />
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Before Luck:" FontStyle="Italic"
-                               Style="{StaticResource GridTextBlockStyle}" Foreground="{StaticResource Mustard}" />
+                               Style="{StaticResource GridTextBlockStyle}" Foreground="{StaticResource YInMnBlueDark}" />
                     <TextBlock Grid.Row="1" Grid.Column="0" x:Name="CashBeforeText" Text="Cash Money BEFORE" 
                                Style="{StaticResource GridTextBlockStyle}" />
                     <TextBlock Grid.Row="2" Grid.Column="0" x:Name="LifeBeforeText" Text="Life Points BEFORE"
@@ -58,10 +60,14 @@
                         </StackPanel>
                         <TextBlock x:Name="LuckDescriptionText" Text="No Luck" TextAlignment="Center" 
                                    Foreground="{StaticResource YInMnBlueDark}" Margin="0 20" FontSize="20" />
+                        <TextBlock x:Name="LuckArrow" Text="----->" TextAlignment="Center" 
+                                   Foreground="{StaticResource Celadon}" Margin="0 20" FontSize="40" />
                     </StackPanel>
                     <!-- RIGHT SIDE -->
+                    <Border Grid.RowSpan="5" Grid.Column="2" CornerRadius="10" 
+                            Background="{StaticResource Celadon}" Margin="10" />
                     <TextBlock Grid.Row="0" Grid.Column="2" Text="After Luck:" FontStyle="Italic"
-                               Style="{StaticResource GridTextBlockStyle}" Foreground="{StaticResource Mustard}" />
+                               Style="{StaticResource GridTextBlockStyle}" Foreground="{StaticResource YInMnBlueDark}" />
                     <TextBlock Grid.Row="1" Grid.Column="2" x:Name="CashAfterText" Text="Cash Money AFTER"
                                Style="{StaticResource GridTextBlockStyle}" />
                     <TextBlock Grid.Row="2" Grid.Column="2" x:Name="LifeAfterText" Text="Life Points AFTER"

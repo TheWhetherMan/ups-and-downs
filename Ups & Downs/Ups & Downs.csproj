@@ -34,4 +34,13 @@
     <EmbeddedResource Include="Resources\Sounds\banknote-counter.wav" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Controls\SpecialEventResultControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\SpecialEventControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

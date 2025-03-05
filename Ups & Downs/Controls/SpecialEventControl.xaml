@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="UpsAndDowns.Controls.SpecialEventControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UpsAndDowns.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1280">
+    <Grid>
+        <Rectangle Fill="{StaticResource YInMnBlue}" Opacity="0.8" />
+        <Border x:Name="ParentBorder" CornerRadius="10" Background="{StaticResource CornflowerBlue}" Margin="30">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
+                    <TextBlock x:Name="SpecialSpaceHeader" Text="" FontSize="48" 
+                           Foreground="{StaticResource YInMnBlueDark}" Margin="40 0" FontWeight="Bold"
+                           VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"
+                           d:Text="Did XYZ happen?" />
+                    <TextBlock x:Name="SpecialSpaceSubHeader" Text="This event will do the following" FontSize="26" 
+                           Foreground="{StaticResource YInMnBlueDark}" Margin="0 30 0 0" FontWeight="Regular" FontStyle="Italic"
+                           VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Style="{StaticResource TallButtonStyleRed}" Content="Cancel" Click="CancelButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleGreen}" Content="Confirm" Click="ConfirmButton_Click" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
