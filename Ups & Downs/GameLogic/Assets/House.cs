@@ -9,10 +9,11 @@ public class House : Asset
     public const int FIXER_UPPER_HOME_PRICE = 100000;
     public const int STARTER_HOME_PRICE = 250000;
     public const int LUXURY_HOME_PRICE = 500000;
-    public const int MANSION_HOME_PRICE = 1000000;
+    public const int MANSION_HOME_PRICE = 2000000;
 
-    public House(int yearPurchased)
+    public House(int yearPurchased, Houses type)
     {
+        HouseType = type;
         AssetType = AssetTypes.House;
         YearPurchased = yearPurchased;
         switch (HouseType)

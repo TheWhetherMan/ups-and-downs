@@ -29,16 +29,17 @@
                 </StackPanel>
                 <StackPanel x:Name="BuyCarPanel" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 50"
                             Visibility="Visible">
-                    <Button Style="{StaticResource TallButtonStyleBlue}" Content="Economy" Click="CarButton_Click" />
-                    <Button Style="{StaticResource TallButtonStyleBlue}" Content="Luxury" Click="CarButton_Click" />
-                    <Button Style="{StaticResource TallButtonStyleBlue}" Content="Exotic" Click="CarButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Tag="Economy" Content="Economy    ($15k)" Click="CarButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Tag="Sports" Content="Sports     ($50k)" Click="CarButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Tag="Luxury" Content="Luxury    ($100k)" Click="CarButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Tag="Exotic" Content="Exotic    ($250k)" Click="CarButton_Click" />
                 </StackPanel>
                 <StackPanel x:Name="BuyHousePanel" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 50"
                             Visibility="Collapsed">
-                    <Button Style="{StaticResource TallButtonStyleBlue}" Content="Fixer-Upper" Click="HouseButton_Click" />
-                    <Button Style="{StaticResource TallButtonStyleBlue}" Content="Starter" Click="HouseButton_Click" />
-                    <Button Style="{StaticResource TallButtonStyleBlue}" Content="Luxury" Click="HouseButton_Click" />
-                    <Button Style="{StaticResource TallButtonStyleBlue}" Content="Mansion" Click="HouseButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Tag="Fixer-Upper" Content="Fixer-Upper ($100k)" Click="HouseButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Tag="Starter" Content="Starter    ($250k)" Click="HouseButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Tag="Luxury" Content="Luxury    ($500k)" Click="HouseButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Tag="Mansion" Content="Mansion    ($2MM)" Click="HouseButton_Click" />
                 </StackPanel>
                 <Button x:Name="ConfirmButton" Grid.Row="3" Style="{StaticResource TallButtonStyleYellow}" 
                         Content="Confirm" Click="ConfirmButton_Click" />

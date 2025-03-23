@@ -68,6 +68,8 @@ public partial class PlayerCard : UserControl, INotifyPropertyChanged
             int diffSign = Math.Sign(Player.CashMoney - ReflectedCashMoney);
             int diffAbs = Math.Abs(Player.CashMoney - ReflectedCashMoney);
 
+            if (diffAbs > 10000)
+                ReflectedCashMoney += 1000 * diffSign;
             if (diffAbs > 1000)
                 ReflectedCashMoney += 100 * diffSign;
             else if (diffAbs > 100)
@@ -94,6 +96,8 @@ public partial class PlayerCard : UserControl, INotifyPropertyChanged
             int diffSign = Math.Sign(Player.LifePoints - ReflectedLifePoints);
             int diffAbs = (int)Math.Abs(Player.LifePoints - ReflectedLifePoints);
 
+            if (diffAbs > 10000)
+                ReflectedLifePoints += 1000 * diffSign;
             if (diffAbs > 1000)
                 ReflectedLifePoints += 100 * diffSign;
             else if (diffAbs > 100)

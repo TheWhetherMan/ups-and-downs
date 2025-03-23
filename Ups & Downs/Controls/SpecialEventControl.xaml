@@ -21,7 +21,7 @@
                            Foreground="{StaticResource YInMnBlueDark}" Margin="40 0" FontWeight="Bold"
                            VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"
                            d:Text="Did XYZ happen?" />
-                    <TextBlock x:Name="SpecialSpaceSubHeader" Text="This event will do the following" FontSize="26" 
+                    <TextBlock x:Name="SpecialSpaceSubHeader" Text="This event will do the following" FontSize="26" MaxWidth="900"
                            Foreground="{StaticResource YInMnBlueDark}" Margin="0 30 0 0" FontWeight="Regular" FontStyle="Italic"
                            VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" />
                 </StackPanel>

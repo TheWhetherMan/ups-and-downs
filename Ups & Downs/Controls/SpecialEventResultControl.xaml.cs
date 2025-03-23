@@ -94,10 +94,12 @@ namespace UpsAndDowns.Controls
         {
             if (sender is Button carButton)
             {
-                switch (carButton.Content)
+                switch (carButton.Tag)
                 {
                     case "Economy":
                         _carType = Cars.Economy; break;
+                    case "Sports":
+                        _carType = Cars.Sports; break;
                     case "Luxury":
                         _carType = Cars.Luxury; break;
                     case "Exotic":
@@ -112,7 +114,7 @@ namespace UpsAndDowns.Controls
         {
             if (sender is Button houseButton)
             {
-                switch (houseButton.Content)
+                switch (houseButton.Tag)
                 {
                     case "Fixer-Upper":
                         _houseType = Houses.FixerUpper; break;

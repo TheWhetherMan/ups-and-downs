@@ -29,7 +29,7 @@
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
-    <!-- Base Button Style -->
+    <!-- Base Button Style with TextBlock -->
     <Style x:Key="BaseButtonStyle" TargetType="Button">
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontSize" Value="22"/>
@@ -48,7 +48,14 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="5">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ContentPresenter.Content>
+                                <TextBlock Text="{TemplateBinding Content}" 
+                                           TextWrapping="Wrap" 
+                                           TextAlignment="Center" 
+                                           VerticalAlignment="Center"/>
+                            </ContentPresenter.Content>
+                        </ContentPresenter>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

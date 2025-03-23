@@ -61,6 +61,7 @@ public enum AssetTypes
 public enum Cars
 {
     Economy,
+    Sports,
     Luxury,
     Exotic
 }

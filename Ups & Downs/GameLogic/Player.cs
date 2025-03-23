@@ -118,7 +118,7 @@ public class Player : INotifyPropertyChanged
     {
         if (buying) 
         {
-            Car newCar = new Car(GameManager.Instance.CurrentYear);
+            Car newCar = new Car(GameManager.Instance.CurrentYear, carType);
             AddAsset(newCar);
             CashMoney -= newCar.InitialValue;
         }
@@ -141,7 +141,7 @@ public class Player : INotifyPropertyChanged
     {
         if (buying) 
         {
-            House newHouse = new House(GameManager.Instance.CurrentYear);
+            House newHouse = new House(GameManager.Instance.CurrentYear, houseType);
             AddAsset(newHouse);
             CashMoney -= newHouse.InitialValue;
         }
@@ -163,26 +163,29 @@ public class Player : INotifyPropertyChanged
     public void GainOrLoseEducation(int educationChange)
     {
         EducationLevel += educationChange;
+        LifePoints += educationChange * Constants.LIFE_POINTS_GRADUATION_BONUS;
         Logger.Log($"{PlayerDisplayName} => GainOrLoseEducation: +(" + educationChange + ") =>" + EducationLevel);
     }
 
     public void PromoteOrDemoteCareer(int careerChange)
     {
         CareerLevel += careerChange;
+        LifePoints += careerChange * Constants.LIFE_POINTS_CAREER_PROMOTION_BONUS;
         Logger.Log($"{PlayerDisplayName} => PromoteOrDemoteCareer: +(" + careerChange + ") =>" + CareerLevel);
     }
 
     public void CelebrateMarriageOrAnniversary()
     {
         Married = true;
-        LifePoints += Constants.LIFE_POINTS_CHILDREN_YEARLY_BONUS * 2;
-        CashMoney += GameManager.Instance.PlayerCount * Constants.CASH_MONEY_MARRIED_GIFTS;
+        LifePoints += Constants.LIFE_POINTS_MARRIED_YEARLY_BONUS * 2;
+        CashMoney += GameManager.Instance.PlayerCount * Constants.CASH_MONEY_MARRIED_GIFTS_BONUS;
         Logger.Log($"{PlayerDisplayName} => CelebrateMarriageOrAnniversary");
     }
 
     public void AddChildren(int numberOfChildren)
     {
         Children += numberOfChildren;
+        LifePoints += Constants.LIFE_POINTS_CHILDREN_YEARLY_BONUS * 2;
         Logger.Log($"{PlayerDisplayName} => AddChildren: {numberOfChildren} children added!");
     }
 

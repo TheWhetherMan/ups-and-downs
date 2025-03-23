@@ -48,7 +48,7 @@ public class GameManager
 
     private List<Player> _unselectedPlayers = new();
     private Random _random = new();
-    private bool _endingYear;
+    private bool _nowEndingTheYear;
 
     private GameManager()
     {
@@ -109,7 +109,7 @@ public class GameManager
         {
             if (player != CurrentPlayer)
             {
-                player.CashMoney -= Constants.CASH_MONEY_MARRIED_GIFTS;
+                player.CashMoney -= Constants.CASH_MONEY_MARRIED_GIFTS_BONUS;
             }
         }
     }
@@ -118,10 +118,10 @@ public class GameManager
     {
         try
         {
-            if (_endingYear)
+            if (_nowEndingTheYear)
                 return;
             else
-                _endingYear = true;
+                _nowEndingTheYear = true;
 
             Logger.Log($"Year {CurrentYear} has ended.");
             await Task.Delay(500);
@@ -137,7 +137,7 @@ public class GameManager
         }
         finally
         {
-            _endingYear = false;
+            _nowEndingTheYear = false;
         }
     }
 

@@ -6,7 +6,9 @@ namespace UpsAndDowns.GameLogic;
 public static class Constants
 {
     // Initial
-    public static int CASH_MONEY_MARRIED_GIFTS = 5000;
+    public static int CASH_MONEY_MARRIED_GIFTS_BONUS = 5000;
+    public static int LIFE_POINTS_GRADUATION_BONUS = 300;
+    public static int LIFE_POINTS_CAREER_PROMOTION_BONUS = 200;
     // Yearly
     public static int LIFE_POINTS_MARRIED_YEARLY_BONUS = 1500;
     public static int LIFE_POINTS_CHILDREN_YEARLY_BONUS = 500;
