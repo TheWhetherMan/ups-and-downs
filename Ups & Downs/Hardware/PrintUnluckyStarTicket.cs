@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Media.Imaging;
+using UpsAndDowns.BusinessLogic;
 
 namespace UpsAndDowns.Hardware
 {
@@ -10,11 +11,18 @@ namespace UpsAndDowns.Hardware
 
         public void PrintTicket(TicketSettings ticketSettings)
         {
-            _ticketSettings = ticketSettings;
-            PrintDocument printDoc = new();
-            printDoc.PrinterSettings.PrinterName = PrinterManager.PrinterName;
-            printDoc.PrintPage += PrintTicket;
-            printDoc.Print();
+            try
+            {
+                _ticketSettings = ticketSettings;
+                PrintDocument printDoc = new();
+                printDoc.PrinterSettings.PrinterName = PrinterManager.GetPrinterName();
+                printDoc.PrintPage += PrintTicket;
+                printDoc.Print();
+            }
+            catch (Exception ex)
+            {
+                Logger.Log("PrintTicket exception", ex);
+            }
         }
 
         private void PrintTicket(object sender, PrintPageEventArgs e)
@@ -24,12 +32,12 @@ namespace UpsAndDowns.Hardware
 
             BitmapImage bitmapImage = new(new Uri("pack://application:,,,/Resources/Images/star_dark.png", UriKind.Absolute));
             Image imageToPrint = PrinterManager.BitmapImageToBitmap(bitmapImage);
-            if (imageToPrint == null) 
+            if (imageToPrint == null)
                 return;
 
             int yPos = PrinterManager.InitialY;
             e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            e.Graphics.DrawString("Unlucky Star Ticket", 
+            e.Graphics.DrawString("Unlucky Star Ticket",
                 PrinterManager.LargeFont, PrinterManager.Brush, new Point(15, yPos));
             yPos += PrinterManager.StandardLineHeight;
             e.Graphics.DrawString($"Player #{_ticketSettings.PlayerNumber}",
@@ -44,22 +52,22 @@ namespace UpsAndDowns.Hardware
             else
                 yPos += PrinterManager.StandardLineHeight * 6;
 
-            e.Graphics.DrawString($"Value: {_ticketSettings.Quantity} Unlucky Star(s)!", 
+            e.Graphics.DrawString($"Value: {_ticketSettings.Quantity} Unlucky Star(s)!",
                 PrinterManager.MediumFont, PrinterManager.Brush, new Point(20, yPos));
             yPos += PrinterManager.StandardLineHeight;
             e.Graphics.DrawString($"Event: {_ticketSettings.CurrentEvent?.ShortName ?? "?"}",
                 PrinterManager.MediumFont, PrinterManager.Brush, new Point(25, yPos));
             yPos += PrinterManager.StandardLineHeight * 2;
-            e.Graphics.DrawString("Must be redeemed entirely at", 
+            e.Graphics.DrawString("Must be redeemed entirely at",
                 PrinterManager.MediumFont, PrinterManager.Brush, new Point(10, yPos));
             yPos += PrinterManager.StandardLineHeight;
             e.Graphics.DrawString("the first opportunity!",
                 PrinterManager.MediumFont, PrinterManager.Brush, new Point(40, yPos));
             yPos += PrinterManager.StandardLineHeight;
-            e.Graphics.DrawString("No cash value", 
+            e.Graphics.DrawString("No cash value",
                 PrinterManager.MediumFont, PrinterManager.Brush, new Point(55, yPos));
         }
-        
+
         private void PrintImageSection(PrintPageEventArgs e, Image image, int yOffset)
         {
             if (_ticketSettings.Quantity == 3)

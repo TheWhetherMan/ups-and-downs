@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Media.Imaging;
+using UpsAndDowns.BusinessLogic;
 
 namespace UpsAndDowns.Hardware
 {
@@ -10,11 +11,18 @@ namespace UpsAndDowns.Hardware
 
         public void PrintTicket(TicketSettings ticketSettings)
         {
-            _ticketSettings = ticketSettings;
-            PrintDocument printDoc = new();
-            printDoc.PrinterSettings.PrinterName = PrinterManager.PrinterName;
-            printDoc.PrintPage += PrintTicket;
-            printDoc.Print();
+            try
+            {
+                _ticketSettings = ticketSettings;
+                PrintDocument printDoc = new();
+                printDoc.PrinterSettings.PrinterName = PrinterManager.GetPrinterName();
+                printDoc.PrintPage += PrintTicket;
+                printDoc.Print();
+            }
+            catch (Exception ex)
+            {
+                Logger.Log("PrintTicket exception", ex);
+            }
         }
 
         private void PrintTicket(object sender, PrintPageEventArgs e)

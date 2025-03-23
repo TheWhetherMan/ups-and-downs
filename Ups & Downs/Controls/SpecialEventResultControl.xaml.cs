@@ -114,12 +114,14 @@ namespace UpsAndDowns.Controls
             {
                 switch (houseButton.Content)
                 {
-                    case "Economy":
-                        _carType = Cars.Economy; break;
+                    case "Fixer-Upper":
+                        _houseType = Houses.FixerUpper; break;
+                    case "Starter":
+                        _houseType = Houses.Starter; break;
                     case "Luxury":
-                        _carType = Cars.Luxury; break;
-                    case "Exotic":
-                        _carType = Cars.Exotic; break;
+                        _houseType = Houses.Luxury; break;
+                    case "Mansion":
+                        _houseType = Houses.Mansion; break;
                 }
 
                 CompleteTurn();
