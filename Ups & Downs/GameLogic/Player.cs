@@ -60,7 +60,13 @@ public class Player : INotifyPropertyChanged
     {
         MovedThisTurn = false;
         CashMoney += Salary + SalaryOffset;
+
+        // Base life points per year
         LifePoints += 100;
+        // Life points from marriage
+        LifePoints += Married ? Constants.LIFE_POINTS_MARRIED_YEARLY_BONUS : 0;
+        // Life points from children
+        LifePoints += Children * Constants.LIFE_POINTS_CHILDREN_YEARLY_BONUS;
     }
 
     public void ApplyGameEvent(GameEvent? eve, LuckyStars luck)
@@ -157,20 +163,37 @@ public class Player : INotifyPropertyChanged
     public void GainOrLoseEducation(int educationChange)
     {
         EducationLevel += educationChange;
+        Logger.Log($"{PlayerDisplayName} => GainOrLoseEducation: +(" + educationChange + ") =>" + EducationLevel);
     }
 
     public void PromoteOrDemoteCareer(int careerChange)
     {
         CareerLevel += careerChange;
+        Logger.Log($"{PlayerDisplayName} => PromoteOrDemoteCareer: +(" + careerChange + ") =>" + CareerLevel);
+    }
+
+    public void CelebrateMarriageOrAnniversary()
+    {
+        Married = true;
+        LifePoints += Constants.LIFE_POINTS_CHILDREN_YEARLY_BONUS * 2;
+        CashMoney += GameManager.Instance.PlayerCount * Constants.CASH_MONEY_MARRIED_GIFTS;
+        Logger.Log($"{PlayerDisplayName} => CelebrateMarriageOrAnniversary");
+    }
+
+    public void AddChildren(int numberOfChildren)
+    {
+        Children += numberOfChildren;
+        Logger.Log($"{PlayerDisplayName} => AddChildren: {numberOfChildren} children added!");
     }
 
     public double ConvertAllAssetsToLifePoints()
     {
         double points = LifePoints;
         points += CashMoney * 0.001;
-        points += CareerLevel * 200;
-        points += Married ? 2000 : 0;
-        points += Children * 1000;
+        points += (int)EducationLevel * Constants.LIFE_POINTS_EDUCATION_LEVEL_FINAL_BONUS;
+        points += CareerLevel * Constants.LIFE_POINTS_CAREER_LEVEL_FINAL_BONUS;
+        points += Married ? Constants.LIFE_POINTS_MARRIED_FINAL_BONUS : 0;
+        points += Children * Constants.LIFE_POINTS_CHILDREN_FINAL_BONUS;
         points += Assets.Sum(asset => asset.ConvertToLifePoints());
         LifePoints = points;
         return points;

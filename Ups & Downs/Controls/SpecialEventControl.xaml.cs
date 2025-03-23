@@ -21,9 +21,6 @@ namespace UpsAndDowns.Controls
             _spaceType = space;
             switch (space)
             {
-
-                // [TODO] SHOW/HIDE BUTTONS DEPENDING IF EXTRA STEPS ARE REQUIRED
-
                 case SpaceTypes.Car:
                     SpecialSpaceHeader.Text = "Are you buying a car?";
                     SpecialSpaceSubHeader.Text = "This will allow you to move farther on the board each turn!";
@@ -45,8 +42,8 @@ namespace UpsAndDowns.Controls
                     SpecialSpaceSubHeader.Text = "Children give you lots of life points each turn!";
                     break;
                 case SpaceTypes.Marriage:
-                    SpecialSpaceHeader.Text = "Are you getting married, or is it an anniversay?";
-                    SpecialSpaceSubHeader.Text = "Getting married or celebrating an anniversary means life points and money from all other players!";
+                    SpecialSpaceHeader.Text = "Are you getting married or celebrating an anniversary?";
+                    SpecialSpaceSubHeader.Text = "Either means life points and money from all other players!";
                     break;
             }
         }
@@ -58,7 +55,7 @@ namespace UpsAndDowns.Controls
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-            WeakReferenceMessenger.Default.Send(new Messages.SpecialSpaceSelectedMessage() { Space = _spaceType });
+            WeakReferenceMessenger.Default.Send(new Messages.SpecialSpaceSelectedMessage() { LandedSpecialSpace = _spaceType });
         }
     }
 }

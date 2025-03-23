@@ -12,22 +12,36 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="auto" MinHeight="50" />
+                    <RowDefinition Height="100" />
                     <RowDefinition Height="100" />
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
                     <TextBlock x:Name="SpecialSpaceHeader" Text="" FontSize="48" 
-                           Foreground="{StaticResource YInMnBlueDark}" Margin="40 0" FontWeight="Bold"
-                           VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"
-                           d:Text="Did XYZ happen?" />
-                    <TextBlock x:Name="SpecialSpaceSubHeader" Text="This event will do the following" FontSize="26" 
-                           Foreground="{StaticResource YInMnBlueDark}" Margin="0 30 0 0" FontWeight="Regular" FontStyle="Italic"
-                           VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" />
+                               Foreground="{StaticResource YInMnBlueDark}" Margin="40 0" FontWeight="Bold"
+                               VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"
+                               d:Text="Did XYZ happen?" />
+                    <TextBlock x:Name="SpecialSpaceSubHeader" FontSize="26" MaxWidth="1000"
+                               Foreground="{StaticResource YInMnBlueDark}" Margin="0 30 0 0" FontWeight="Regular" FontStyle="Italic"
+                               VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" 
+                               d:Text="Being married gives you lots of life points over time, all players are happy to pitch in some money, too!" />
                 </StackPanel>
-                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource TallButtonStyleGreen}" Content="Okay" Click="OkayButton_Click" />
+                <StackPanel x:Name="BuyCarPanel" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 50"
+                            Visibility="Visible">
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Content="Economy" Click="CarButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Content="Luxury" Click="CarButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Content="Exotic" Click="CarButton_Click" />
                 </StackPanel>
+                <StackPanel x:Name="BuyHousePanel" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 50"
+                            Visibility="Collapsed">
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Content="Fixer-Upper" Click="HouseButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Content="Starter" Click="HouseButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Content="Luxury" Click="HouseButton_Click" />
+                    <Button Style="{StaticResource TallButtonStyleBlue}" Content="Mansion" Click="HouseButton_Click" />
+                </StackPanel>
+                <Button x:Name="ConfirmButton" Grid.Row="3" Style="{StaticResource TallButtonStyleYellow}" 
+                        Content="Confirm" Click="ConfirmButton_Click" />
             </Grid>
         </Border>
     </Grid>

@@ -54,6 +54,7 @@ public partial class HomeScreen : UserControl
         WeakReferenceMessenger.Default.Register<Messages.SpecialSpaceCompletedMessage>(this, (r, m) =>
         {
             HidePlayerTurnScreen();
+            GameManager.Instance.CurrentState = GameStates.AtHomeScreen;
         });
     }
 

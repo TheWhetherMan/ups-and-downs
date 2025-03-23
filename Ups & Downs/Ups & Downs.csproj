@@ -15,7 +15,15 @@
     <None Remove="Resources\Images\star_faded.png" />
     <None Remove="Resources\Images\star_glow.png" />
     <None Remove="Resources\Images\star_gold.png" />
+    <None Remove="Resources\Sounds\8BIT_RETRO_Coin_Collect_Two_Note_Deep_Twinkle_mono.wav" />
     <None Remove="Resources\Sounds\banknote-counter.wav" />
+    <None Remove="Resources\Sounds\retro_coin.wav" />
+    <None Remove="Resources\Sounds\retro_coin_clipped.wav" />
+    <None Remove="Resources\Sounds\retro_coin_extended.wav" />
+    <None Remove="Resources\Sounds\typewriter-key-1-shortened-b.wav" />
+    <None Remove="Resources\Sounds\UI_Click_Cut_mono.wav" />
+    <None Remove="Resources\Sounds\UI_Click_Cut_mono_short.wav" />
+    <None Remove="Resources\Sounds\UI_Click_Distinct_mono.wav" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +40,13 @@
     <Resource Include="Resources\Images\star_glow.png" />
     <Resource Include="Resources\Images\star_gold.png" />
     <EmbeddedResource Include="Resources\Sounds\banknote-counter.wav" />
+    <EmbeddedResource Include="Resources\Sounds\retro_coin.wav" />
+    <EmbeddedResource Include="Resources\Sounds\retro_coin_clipped.wav" />
+    <EmbeddedResource Include="Resources\Sounds\retro_coin_extended.wav" />
+    <EmbeddedResource Include="Resources\Sounds\typewriter-key-1-shortened-b.wav" />
+    <EmbeddedResource Include="Resources\Sounds\UI_Click_Cut_mono.wav" />
+    <EmbeddedResource Include="Resources\Sounds\UI_Click_Cut_mono_short.wav" />
+    <EmbeddedResource Include="Resources\Sounds\UI_Click_Distinct_mono.wav" />
   </ItemGroup>
 
   <ItemGroup>

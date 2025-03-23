@@ -44,6 +44,7 @@ public partial class PlayerTurnScreen : UserControl
         {
             SpecialSpaceControlElement.Visibility = Visibility.Collapsed;
             SpecialSpaceResultControlElement.Visibility = Visibility.Visible;
+            SpecialSpaceResultControlElement.UpdateForSpecialSpace(m.LandedSpecialSpace);
         });
         WeakReferenceMessenger.Default.Register<Messages.SpecialSpaceCompletedMessage>(this, (r, m) =>
         {

@@ -46,10 +46,10 @@ public enum BoardZones
 
 public enum EducationLevels
 {
-    Secondary,
-    College,
-    Masters,
-    Doctorate
+    Secondary = 1,
+    College = 2,
+    Masters = 3,
+    Doctorate = 4
 }
 
 public enum AssetTypes
@@ -60,7 +60,7 @@ public enum AssetTypes
 
 public enum Cars
 {
-    Basic,
+    Economy,
     Luxury,
     Exotic
 }

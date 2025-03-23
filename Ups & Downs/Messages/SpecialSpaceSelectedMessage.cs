@@ -4,6 +4,6 @@ namespace UpsAndDowns.Messages
 {
     internal class SpecialSpaceSelectedMessage
     {
-        public SpaceTypes Space { get; set; }
+        public SpaceTypes LandedSpecialSpace { get; set; }
     }
 }

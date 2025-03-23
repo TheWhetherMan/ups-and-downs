@@ -102,6 +102,18 @@ public class GameManager
         PlayerTurnCompleted = false;
     }
 
+    public void HandleMarriageForCurrentPlayer()
+    {
+        CurrentPlayer.CelebrateMarriageOrAnniversary();
+        foreach (Player player in Players)
+        {
+            if (player != CurrentPlayer)
+            {
+                player.CashMoney -= Constants.CASH_MONEY_MARRIED_GIFTS;
+            }
+        }
+    }
+
     private async Task IterateYearForEachPlayer()
     {
         try

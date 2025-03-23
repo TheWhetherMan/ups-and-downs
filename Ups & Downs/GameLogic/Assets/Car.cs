@@ -4,7 +4,7 @@ namespace UpsAndDowns.GameLogic.Assets;
 
 public class Car : Asset
 {
-    public Cars CarType { get; set; } = Cars.Basic;
+    public Cars CarType { get; set; } = Cars.Economy;
 
     public const int ECONOMY_CAR_PRICE = 10000;
     public const int LUXURY_CAR_PRICE = 50000;
@@ -16,7 +16,7 @@ public class Car : Asset
         YearPurchased = yearPurchased;
         switch (CarType)
         {
-            case Cars.Basic:
+            case Cars.Economy:
                 InitialValue = ECONOMY_CAR_PRICE; break;
             case Cars.Luxury:
                 InitialValue = LUXURY_CAR_PRICE; break;

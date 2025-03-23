@@ -32,19 +32,24 @@ public partial class PlayerCard : UserControl, INotifyPropertyChanged
         set { _reflectedLifePoints = value; OnPropertyChanged(); }
     }
 
+    // Timers
     private readonly TimeSpan _updateIntervalFast = TimeSpan.FromMilliseconds(10);
     private readonly TimeSpan _updateIntervalSlow = TimeSpan.FromMilliseconds(40);
-    private readonly Timer _timerFast;
-    private readonly Timer _timerSlow;
-    private SoundLooper _soundLooper;
+    private readonly Timer _timerCash;
+    private readonly Timer _timerLife;
+
+    // Sounds
+    private SoundLooper _cashLooper;
+    private SoundLooper _lifePointsLooper;
 
     public PlayerCard()
     {
         InitializeComponent();
         DataContextChanged += PlayerCard_DataContextChanged;
-        _timerFast = new Timer(UpdatePlayerStatsFast, null, _updateIntervalFast, _updateIntervalFast);
-        _timerSlow = new Timer(UpdatePlayerStatsSlow, null, _updateIntervalSlow, _updateIntervalSlow);
-        _soundLooper = new SoundLooper("UpsAndDowns.Resources.Sounds.banknote-counter.wav");
+        _timerCash = new Timer(UpdatePlayerStatsCashMoney, null, _updateIntervalFast, _updateIntervalFast);
+        _timerLife = new Timer(UpdatePlayerStatsLifePoints, null, _updateIntervalFast, _updateIntervalFast);
+        _cashLooper = new SoundLooper("UpsAndDowns.Resources.Sounds.banknote-counter.wav");
+        _lifePointsLooper = new SoundLooper("UpsAndDowns.Resources.Sounds.retro_coin_extended.wav");
     }
 
     private void PlayerCard_DataContextChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
@@ -53,7 +58,7 @@ public partial class PlayerCard : UserControl, INotifyPropertyChanged
             Player = player;
     }
 
-    private void UpdatePlayerStatsFast(object? _)
+    private void UpdatePlayerStatsCashMoney(object? _)
     {
         if (Player is null)
             return;
@@ -70,35 +75,38 @@ public partial class PlayerCard : UserControl, INotifyPropertyChanged
             else
                 ReflectedCashMoney += 1 * diffSign;
 
-            if (_soundLooper.Playing is false)
-                _soundLooper.Play();
+            if (_cashLooper.Playing is false)
+                _cashLooper.Play();
         }
-        else
+        else if (_cashLooper.Playing is true)
         {
-            if (_soundLooper.Playing is true)
-                _soundLooper.Stop();
+            _cashLooper.Stop();
         }
     }
 
-    private void UpdatePlayerStatsSlow(object? _)
+    private void UpdatePlayerStatsLifePoints(object? _)
     {
         if (Player is null)
             return;
 
         if (ReflectedLifePoints != Player.LifePoints)
         {
-            if (ReflectedLifePoints < Player.LifePoints)
-            {
-                ReflectedLifePoints += 5;
-                if (ReflectedLifePoints > Player.LifePoints)
-                    ReflectedLifePoints = (int)Player.LifePoints;
-            }
+            int diffSign = Math.Sign(Player.LifePoints - ReflectedLifePoints);
+            int diffAbs = (int)Math.Abs(Player.LifePoints - ReflectedLifePoints);
+
+            if (diffAbs > 1000)
+                ReflectedLifePoints += 100 * diffSign;
+            else if (diffAbs > 100)
+                ReflectedLifePoints += 10 * diffSign;
             else
-            {
-                ReflectedLifePoints -= 5;
-                if (ReflectedLifePoints < Player.LifePoints)
-                    ReflectedLifePoints = (int)Player.LifePoints;
-            }
+                ReflectedLifePoints += 1 * diffSign;
+
+            //if (_lifePointsLooper.Playing is false)
+            //    _lifePointsLooper.Play();
+        }
+        else if (_lifePointsLooper.Playing is true)
+        {
+            //_lifePointsLooper.Stop();
         }
     }
 }
