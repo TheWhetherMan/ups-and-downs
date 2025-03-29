@@ -16,6 +16,8 @@ _Ups & Downs_ is a reimagining of the Milton Bradley board game _The Game of Lif
 
 _Ups & Downs_ was originally being built using **Blazor** such that it could be run on a Raspberry Pi 5. While that did work, it was also a pain to work _with_. The project is being built using **WPF** now.
 
+![Screenshot 2025-03-29 145358](https://github.com/user-attachments/assets/9cab0133-1af3-4b65-bee4-090515defedd)
+
 ## Gameplay Mechanics & Changes
 
 _The Game of Life: Twists & Turns_ has some pretty cool aspects to it, but it also has some shortcomings that I think can be improved on:
